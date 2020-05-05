@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_183407) do
     t.text "description", null: false
     t.string "image", default: "https://logodix.com/logo/1868156.png", null: false
     t.integer "asking_price", null: false
-    t.string "area_code", null: false
+    t.string "zip_code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
