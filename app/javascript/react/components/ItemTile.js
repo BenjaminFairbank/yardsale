@@ -18,7 +18,7 @@ const ItemTile = props => {
       <img src={props.item.image}></img>
       <p>Description: {props.item.description}</p>
       <p>Asking Price: ${parseFloat(props.item.asking_price/100).toFixed(2)}</p>
-      <p>Locality: {props.item.area_code}</p>
+      <p>Locality: {props.item.zip_code}</p>
     </>
   )
 }
