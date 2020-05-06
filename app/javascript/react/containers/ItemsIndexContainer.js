@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect} from 'react'
 
 import ItemsComponent from "../components/ItemsComponent"
 
@@ -24,7 +24,7 @@ const ItemsIndexContainer = props => {
   }, [])
 
   return (
-    <div className="grid-container" id="items-index-container">
+    <div id="items-index-container" className="grid-container">
       <ItemsComponent items={items} />
     </div>
   )

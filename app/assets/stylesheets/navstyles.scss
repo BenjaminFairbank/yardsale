@@ -1,27 +1,28 @@
-
-@font-face {
-  font-family: Lobster;
-  src: url('fonts/Lobster/Lobster-Regular.ttf');
-}
+@import 'fonts';
+@import 'colors';
 
 nav.top-bar {
   height: 120px;
   padding: 1rem 1.5rem 0rem 2rem;
   background-image: url(https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Grass-Grounds-Coverings-PNG-Clipart/Grass_PNG_Clipart_Picture.png?m=1507172106);
+
   h1 {
     a {
-      color: #FA023C;
+      color: $highlight;
       font-family: Lobster;
       font-weight: bold;
       font-size: 60px;
       text-shadow: 4px 4px #000000;
     }
   }
+
   section.top-bar-section {
     text-align: center;
+
     ul {
       background-color: rgba(255, 255, 255, 0.3);
       padding: 0.8rem;
+
       li {
         font-size: 20px;
         list-style: none;
@@ -29,8 +30,9 @@ nav.top-bar {
         font-weight: bold;
         text-shadow: 1px 1px #000000;
         color: #82d312;
+
         a {
-          color: #FA023C;
+          color: $highlight;
         }
       }
     }

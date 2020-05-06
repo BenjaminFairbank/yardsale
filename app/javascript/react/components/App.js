@@ -2,13 +2,15 @@ import React from 'react'
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 
 import ItemsIndexContainer from "../containers/ItemsIndexContainer"
+import ItemShowContainer from "../containers/ItemShowContainer"
 
 export const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/items" component={ItemsIndexContainer} />
         <Route exact path="/" component={ItemsIndexContainer} />
+        <Route exact path="/items" component={ItemsIndexContainer} />
+        <Route exact path="/items/:id" component={ItemShowContainer} />
       </Switch>
     </BrowserRouter>
   )
