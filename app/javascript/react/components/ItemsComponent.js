@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import ItemTile from "./ItemTile"
 
@@ -11,7 +11,7 @@ const ItemsComponent = props => {
   })
 
   return (
-    <div className="grid-x grid-margin-x grid-margin-y" id="items-component">
+    <div id="items-component" className="grid-x grid-margin-x grid-margin-y">
       {itemMap}
     </div>
   )

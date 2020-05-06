@@ -23,7 +23,7 @@ user_10 = User.create(user_name: "RickyBobby", zip_code: "02634", email: "RickyB
 item_1 = Item.create(name: "First Item", description: "please buy me!", image: "https://logodix.com/logo/1868193.jpg", asking_price: 2000, zip_code: "02138", user: user_1)
 item_2 = Item.create(name: "Second Item", description: "please buy me next!", asking_price: 3000, zip_code: "02138", user: user_1)
 item_3 = Item.create(name: "Third Item", description: "the best items have long long descriptions", image: "https://logodix.com/logo/1868193.jpg", asking_price: 1569, zip_code: "02138", user: user_1)
-item_24 = Item.create(name: "Fourth Item1", description: "the best items have long long loooooooong descriptions", image: "https://logodix.com/logo/1868193.jpg", asking_price: 0, zip_code: "02138", user: user_1)
+item_4 = Item.create(name: "Fourth Item", description: "the best items have long long loooooooong descriptionsthe best items have long long loooooooong descriptionsthe best items have long long loooooooong descriptionsthe best items have long long loooooooong descriptionsthe best items have long long loooooooong descriptions", image: "https://logodix.com/logo/1868193.jpg", asking_price: 0, zip_code: "02138", user: user_1)
 
 item_11 = Item.create(name: "First Item2", description: "please buy me!", image: "https://logodix.com/logo/1868193.jpg", asking_price: 2000, zip_code: "02155", user: user_2)
 item_12 = Item.create(name: "Second Item2", description: "please buy me next!", asking_price: 3000, zip_code: "02155", user: user_2)

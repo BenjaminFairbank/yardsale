@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2020_05_06_011750) do
 
   create_table "items", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "name", null: false
-    t.text "description", null: false
+    t.string "name", limit: 30, null: false
+    t.string "description", null: false
     t.string "image", default: "https://logodix.com/logo/1868156.png", null: false
     t.integer "asking_price", null: false
     t.string "zip_code", null: false
