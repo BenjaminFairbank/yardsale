@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+
+import ItemFlipCard from "./ItemFlipCard"
 
 const ItemTile = props => {
 
@@ -12,14 +14,9 @@ const ItemTile = props => {
   const timeString = time.toDateString() + " " + hour + ":" + time.getMinutes() + " " + timeOfDay
 
   return (
-    <>
-      <h1>{props.item.name}</h1>
-      <p>Posted {timeString} by {props.item.user.user_name}</p>
-      <img src={props.item.image}></img>
-      <p>Description: {props.item.description}</p>
-      <p>Asking Price: ${parseFloat(props.item.asking_price/100).toFixed(2)}</p>
-      <p>Locality: {props.item.zip_code}</p>
-    </>
+    <div className="cell small-12 medium-6 large-4" id="item-tile">
+      <ItemFlipCard item={props.item} timeString={timeString} />
+    </div>
   )
 }
 
