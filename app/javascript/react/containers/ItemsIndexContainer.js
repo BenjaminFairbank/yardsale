@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react'
 
-import ItemTile from "../components/ItemTile"
+import ItemsComponent from "../components/ItemsComponent"
 
 const ItemsIndexContainer = props => {
   const [items, setItems] = useState([])
@@ -23,14 +23,10 @@ const ItemsIndexContainer = props => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
-  const itemMap = items.map(item => {
-    return (
-      <ItemTile key={item.id} item={item} />
-    )
-  })
-
   return (
-    <>{itemMap}</>
+    <div className="grid-container" id="items-index-container">
+      <ItemsComponent items={items} />
+    </div>
   )
 }
 
