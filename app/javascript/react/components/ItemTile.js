@@ -12,6 +12,9 @@ const ItemTile = props => {
       hour = time.getHours() - 12
       timeOfDay = "PM"
     }
+    if (time.getHours() === 0 ) {
+      hour = 12
+    }
     let min = time.getMinutes()
     if (time.getMinutes() < 10) {
       min = '0' + time.getMinutes()
