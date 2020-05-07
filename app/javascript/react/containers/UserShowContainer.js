@@ -63,6 +63,31 @@ const UserShowContainer = props => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
+  const fetchDeleteItem = (itemID) => {
+    fetch(`/api/v1/items/${itemID}`, {
+      credentials: "same-origin",
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+           error = new Error(errorMessage)
+        throw error
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      setUserItems(body.items)
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
   let newItemForm
   if (user.id === currentUser.id) {
     newItemForm = <NewItemFormContainer userItems={userItems} setUserItems={setUserItems}/>
@@ -74,7 +99,7 @@ const UserShowContainer = props => {
         <h2>{user.user_name}'s Lawn</h2>
       </div>
       <div>
-        <UserItemsComponent userItems={userItems} user={user} currentUser={currentUser}/>
+        <UserItemsComponent fetchDeleteItem={fetchDeleteItem} userItems={userItems} user={user} currentUser={currentUser}/>
       </div>
       <div id="new-item-form">
         {newItemForm}
