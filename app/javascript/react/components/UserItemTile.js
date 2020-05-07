@@ -12,7 +12,12 @@ const UserItemTile = props => {
       hour = time.getHours() - 12
       timeOfDay = "PM"
     }
-    const timeString = time.toDateString() + " " + hour + ":" + time.getMinutes() + " " + timeOfDay
+    let min = time.getMinutes()
+    if (time.getMinutes() < 10) {
+      min = '0' + time.getMinutes()
+    }
+
+    const timeString = time.toDateString() + " " + hour + ":" + min + " " + timeOfDay
     return timeString
   }
 
