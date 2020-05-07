@@ -69,3 +69,30 @@
     }
   }
 }
+
+#user-show-container {
+  padding: 1rem;
+  color: $yellow;
+
+  .user-info {
+    h2 {
+      font-family: Josefin;
+      font-weight: bold;
+      text-shadow: 2px 2px #000000;
+      font-size: 30px;
+    }
+  }
+
+  h3 {
+    font-family: Josefin;
+    font-weight: bold;
+    text-shadow: 2px 2px #000000;
+    font-size: 20px;
+  }
+
+  #user-items-component {
+    #tile-field {
+      padding-top: 1rem;
+    }
+  }
+}
