@@ -5,7 +5,7 @@ const UserItemsComponent = props => {
 
   const userItems = props.userItems.map((item) => {
     return (
-      <UserItemTile key={item.id} item={item}/>
+      <UserItemTile key={item.id} item={item} user={props.user} currentUser={props.currentUser} fetchDeleteItem={props.fetchDeleteItem} />
     )
   })
 

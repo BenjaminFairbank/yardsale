@@ -22,6 +22,13 @@ class Api::V1::ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    user = item.user
+    item.delete
+    render json: user
+  end
+
   private
 
   def item_params

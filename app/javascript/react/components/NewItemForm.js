@@ -68,7 +68,7 @@ const NewItemForm = props => {
 
         <ErrorList errors={errors} />
 
-        <input id="button" type="submit" value="Put your new item out on the lawn!" />
+        <input id="button" type="submit" value="Put the new item out on your lawn!" />
       </form>
     </div>
   )
