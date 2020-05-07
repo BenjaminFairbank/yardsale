@@ -1,15 +1,29 @@
+@import 'devise';
 @import 'navstyles';
 @import 'flipcard';
 @import 'colors';
 @import 'fonts';
 
+body {
+  background: $background;
+}
 
 #app {
   background: $background;
 }
 
-#items-component {
+.flash {
+  background: $background;
+  color: $highlight;
+  padding-left: 1rem;
   padding-top: 1rem;
+  font-family: fantasy;
+  font-weight: bold;
+  text-shadow: 1px 1px #000000;
+}
+
+#items-component {
+  margin-top: 1rem;
 }
 
 #item-show-component {
@@ -52,7 +66,7 @@
     right: 0;
 
     h1 {
-      font-family: Lobster;
+      font-family: 'Lobster';
       color: $theme;
       text-shadow: 3px 3px #000000;
     }
@@ -76,7 +90,7 @@
 
   .user-info {
     h2 {
-      font-family: Josefin;
+      font-family: 'Josefin';
       font-weight: bold;
       text-shadow: 2px 2px #000000;
       font-size: 30px;
@@ -84,7 +98,7 @@
   }
 
   h3 {
-    font-family: Josefin;
+    font-family: 'Josefin';
     font-weight: bold;
     text-shadow: 2px 2px #000000;
     font-size: 20px;

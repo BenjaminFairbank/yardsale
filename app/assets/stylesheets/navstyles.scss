@@ -1,7 +1,7 @@
 @import 'fonts';
 @import 'colors';
 
-nav.top-bar {
+#nav {
   height: 120px;
   padding: 1rem 1.5rem 0rem 2rem;
   background-image: url(https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Grass-Grounds-Coverings-PNG-Clipart/Grass_PNG_Clipart_Picture.png?m=1507172106);
@@ -9,7 +9,7 @@ nav.top-bar {
   h1 {
     a {
       color: $highlight;
-      font-family: Lobster;
+      font-family: 'Lobster';
       font-weight: bold;
       font-size: 60px;
       text-shadow: 4px 4px #000000;
@@ -26,7 +26,7 @@ nav.top-bar {
       li {
         font-size: 20px;
         list-style: none;
-        font-family: Lobster;
+        font-family: 'Lobster';
         font-weight: bold;
         text-shadow: 1px 1px #000000;
         color: #82d312;
