@@ -15,14 +15,15 @@ body {
 .flash {
   background: $background;
   color: $highlight;
-  padding: 1rem;
+  padding-left: 1rem;
+  padding-top: 1rem;
   font-family: fantasy;
   font-weight: bold;
   text-shadow: 1px 1px #000000;
 }
 
 #items-component {
-  padding-top: 1rem;
+  margin-top: 1rem;
 }
 
 #item-show-component {
