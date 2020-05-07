@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ItemShowComponent = props => {
 
@@ -21,6 +22,8 @@ const ItemShowComponent = props => {
     let ifUpdated = "Updated at " + updatedAt
   }
 
+  const id = props.item.user.id
+
   return (
     <div id="item-show-component">
       <div className="item-show-image">
@@ -31,7 +34,7 @@ const ItemShowComponent = props => {
         <br></br>
         <p>Asking Price:&nbsp;&nbsp; <span>$&nbsp;{parseFloat(props.item.asking_price/100).toFixed(2)}</span></p>
         <br></br>
-        <p>Posted by {props.item.user.user_name}, {createdAt}</p>
+        <p>Posted by <Link to={`../users/${id}`}>{props.item.user.user_name}</Link>, {createdAt}</p>
         <br></br>
         <p>{props.item.description}</p>
       </div>
