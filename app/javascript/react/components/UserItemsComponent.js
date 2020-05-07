@@ -3,12 +3,12 @@ import UserItemTile from "./UserItemTile"
 
 const UserItemsComponent = props => {
 
-  const userItems = props.user.items.map((item) => {
+  const userItems = props.userItems.map((item) => {
     return (
       <UserItemTile key={item.id} item={item}/>
     )
   })
-  
+
   let title
   if (props.user.id === props.currentUser.id) {
     title = `You have no items!`
