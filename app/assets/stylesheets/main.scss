@@ -105,8 +105,89 @@ body {
   }
 
   #user-items-component {
+
     #tile-field {
       padding-top: 1rem;
+
+    }
+  }
+}
+
+#new-item-form-container {
+  background: $formgreen;
+  margin: 2rem auto;
+  padding: 2rem 3rem;
+  width: 600px;
+
+  h1 {
+    text-align: center;
+    font-family: 'Lobster';
+    font-weight: bold;
+    text-shadow: 2px 2px #000000;
+    color: $yellow;
+  }
+
+  label {
+    font-family: 'Josefin';
+    font-weight: bold;
+    text-shadow: 1px 1px #000000;
+    color: $yellow;
+  }
+
+  em {
+    color: $highlight;
+    font-family: fantasy;
+    font-weight: bold;
+    text-shadow: 1px 1px #000000;
+    font-size: 15px;
+  }
+
+  #button {
+    font-family: 'Josefin';
+    color: white;
+    padding: 0.75rem;
+    margin: 1rem 0rem;
+    width: 100%;
+    background: $highlight;
+    border: none;
+  }
+
+  #button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    font-weight: bold;
+
+    font-family: 'Josefin';
+    color: white;
+    padding: 0.75rem;
+    margin: 1rem 0rem;
+    width: 100%;
+    background: $highlight;
+    border: none;
+  }
+
+  #new-item-form {
+
+    #form {
+      span {
+        text-align: right;
+      }
+      .alert {
+        background: $yellow;
+        border: none;
+
+        li {
+          list-style: none;
+          font-family: fantasy;
+          font-weight: bold;
+          color: $highlight;
+          text-shadow: 1px 1px #000000;
+        }
+
+        li:nth-child(n)::before {
+          content: "❌ ";
+
+        }
+      }
     }
   }
 }

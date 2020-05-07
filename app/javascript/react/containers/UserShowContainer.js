@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
+
 import UserItemsComponent from '../components/UserItemsComponent'
+import NewItemFormContainer from './NewItemFormContainer'
 
 const UserShowContainer = props => {
+
   const [user, setUser] = useState({
     id: "",
     email: "",
@@ -18,6 +21,8 @@ const UserShowContainer = props => {
     items: []
   })
 
+  const [userItems, setUserItems] = useState(user.items)
+
   const userID = props.match.params.id
 
   useEffect(() => {
@@ -33,7 +38,9 @@ const UserShowContainer = props => {
     })
     .then(response => response.json())
     .then(body => {
-      setUser(body)
+      let user = body
+      setUser(user)
+      setUserItems(user.items)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
@@ -56,12 +63,22 @@ const UserShowContainer = props => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
+  let newItemForm
+  if (user.id === currentUser.id) {
+    newItemForm = <NewItemFormContainer userItems={userItems} setUserItems={setUserItems}/>
+  }
+
   return (
     <div id="user-show-container">
       <div className="user-info">
         <h2>{user.user_name}'s Lawn</h2>
       </div>
-      <UserItemsComponent user={user} currentUser={currentUser}/>
+      <div>
+        <UserItemsComponent userItems={userItems} user={user} currentUser={currentUser}/>
+      </div>
+      <div id="new-item-form">
+        {newItemForm}
+      </div>
     </div>
   )
 }
