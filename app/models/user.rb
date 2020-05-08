@@ -8,4 +8,5 @@ class User < ApplicationRecord
   validates :zip_code, presence: true
 
   has_many :items
+  has_many :comments
 end

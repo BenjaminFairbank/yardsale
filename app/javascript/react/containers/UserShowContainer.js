@@ -18,7 +18,8 @@ const UserShowContainer = props => {
     email: "",
     user_name: "",
     zip_code: "",
-    items: []
+    items: [],
+    comments: []
   })
 
   const [userItems, setUserItems] = useState(user.items)

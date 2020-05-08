@@ -39,3 +39,12 @@ item_31 = Item.create(name: "First Item4", description: "please buy me!", image:
 item_32 = Item.create(name: "Second Item4", description: "please buy me next!", image: "https://i.etsystatic.com/14694522/r/il/8797f6/2033236905/il_794xN.2033236905_hxih.jpg", asking_price: 3000, zip_code: "02102", user: user_4)
 item_33 = Item.create(name: "Third Item4", description: "the best items have long long descriptions", image: "https://assets.catawiki.nl/assets/2018/3/5/1/1/c/11c7a1ee-347f-4b1a-a3b8-0f812038eb0e.jpg", asking_price: 1569, zip_code: "02102", user: user_4)
 item_34 = Item.create(name: "Fourth Item4", description: "the best items have long long loooooooong descriptions", image: "https://cdn.shopify.com/s/files/1/2622/2548/products/wholesale-plush-in-a-rush-106-14242280636518_1024x1024.jpg?v=1585150446", asking_price: 0, zip_code: "02102", user: user_4)
+
+
+comment_1 = Comment.create(body: "Wow would you look at that!", user: user_9, item: item_1)
+comment_2 = Comment.create(body: "Never seen one of those!", user: user_2, item: item_1)
+comment_3 = Comment.create(body: "amazing!", user: user_4, item: item_1)
+
+comment_1 = Comment.create(body: "Wow would you look at that!", user: user_7, item: item_2)
+comment_2 = Comment.create(body: "Never seen one of those!", user: user_5, item: item_2)
+comment_3 = Comment.create(body: "amazing!", user: user_8, item: item_2)
