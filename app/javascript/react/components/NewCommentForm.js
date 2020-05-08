@@ -49,11 +49,10 @@ const NewCommentForm = props => {
 
   return (
     <div id="new-comment-form">
-      <h1>Leave a comment of your own!</h1>
+      <h1>Leave a comment</h1>
 
       <form id="form" onSubmit={onSubmitHandler}>
 
-        <label htmlFor="body">Your commentary:</label>
         <input type="text" name="body" id="body" onChange={handleChange} value={newCommentFormData.body} />
 
         <ErrorList errors={errors} />

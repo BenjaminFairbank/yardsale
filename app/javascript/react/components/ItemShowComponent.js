@@ -31,6 +31,14 @@ const ItemShowComponent = props => {
 
   const id = props.item.user.id
 
+  let askingPrice = parseFloat(props.item.asking_price/100).toFixed(2)
+  if (props.item.asking_price > 99999) {
+    let price = askingPrice
+    let aPArray = price.toString().split('')
+    aPArray.splice( -6, 0, ',' )
+    askingPrice = aPArray.join('')
+  }
+
   return (
     <div id="item-show-component">
       <div className="item-show-image">
@@ -39,7 +47,7 @@ const ItemShowComponent = props => {
       <div className="item-show-details">
         <h1>{props.item.name}</h1>
         <br></br>
-        <p>Asking Price:&nbsp;&nbsp; <span>$&nbsp;{parseFloat(props.item.asking_price/100).toFixed(2)}</span></p>
+        <p>Asking Price:&nbsp;&nbsp; <span>$&nbsp;{askingPrice}</span></p>
         <br></br>
         <p>Posted by <Link to={`../users/${id}`}>{props.item.user.user_name}</Link>, {createdAt}</p>
         <br></br>
