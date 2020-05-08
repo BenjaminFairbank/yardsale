@@ -54,8 +54,6 @@ body {
   }
 
   .item-show-details {
-    // margin: 0.1rem;
-    // border-style: solid;
     padding: 1.5rem;
     display:inline-block;
     width: 450px;
@@ -81,25 +79,164 @@ body {
         font-size: 50px;
       }
     }
-  }
-}
 
-#comments-container {
-  margin: 1.5rem;
-  padding: 1rem;
-  border-style: solid;
+    a {
+      color: $yellow;
+    }
 
-  .comment-tile {
-    margin: 1.5rem;
-    padding: 1rem;
-    border-style: solid;
+    a:hover {
+      font-weight: bold;
+      text-shadow: 1px 1px #000000;
+    }
   }
 }
 
 #new-comment-form {
-  margin: 1.5rem;
+  background: $formgreen;
+  margin: 2rem auto;
+  margin-top: 0;
+  padding: 2rem 3rem;
+  padding-top: 0.5rem;
+  width: 800px;
+
+  h1 {
+    text-align: center;
+    font-family: 'Lobster';
+    font-weight: bold;
+    text-shadow: 2px 2px #000000;
+    color: $yellow;
+    margin-bottom: 1rem;
+  }
+
+  #button {
+    font-family: 'Josefin';
+    color: white;
+    padding: 0.75rem;
+    margin: 0;
+    width: 100%;
+    background: $highlight;
+    border: none;
+  }
+
+  #button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    font-weight: bold;
+
+    font-family: 'Josefin';
+    color: white;
+    padding: 0.75rem;
+    margin: 0;
+    width: 100%;
+    background: $highlight;
+    border: none;
+  }
+
+  span {
+    text-align: right;
+  }
+  .alert {
+    background: $yellow;
+    border: none;
+
+    li {
+      list-style: none;
+      font-family: fantasy;
+      font-weight: bold;
+      color: $highlight;
+      text-shadow: 1px 1px #000000;
+    }
+
+    li:nth-child(n)::before {
+      content: "❌ ";
+
+    }
+  }
+}
+
+
+#comments-container {
+  text-align: right;
+  width: 800px;
+  margin: auto;
+  margin-bottom: 0;
   padding: 1rem;
-  border-style: solid;
+  background: $formgreen;
+
+  h1 {
+    text-align: center;
+    font-family: 'Lobster';
+    font-weight: bold;
+    text-shadow: 2px 2px #000000;
+    color: $yellow;
+    margin-bottom: 1rem;
+  }
+
+  .comment-tile {
+    background: $background;
+    margin: 1.5rem 2rem;
+    padding: 1rem 1.5rem;
+
+    h3 {
+      text-align: left;
+      font-family: 'Lobster';
+      font-weight: bold;
+      text-shadow: 1px 1px #000000;
+      color: $yellow;
+      margin-bottom: 3rem;
+      font-size: 28px;
+    }
+
+    a {
+      color: $yellow;
+    }
+
+    a:hover {
+      color: $highlight;
+      font-weight: 1600;
+      text-shadow: 2px 2px #000000;
+    }
+
+    h4 {
+      text-align: left;
+      font-family: 'Josefin';
+      font-weight: bold;
+      text-shadow: 2px 2px #000000;
+      color: $yellow;
+      margin-bottom: 1rem;
+    }
+
+    h5 {
+      text-align: right;
+      font-family: fantasy;
+      font-weight: bold;
+      text-shadow: 1px 1px #000000;
+      color: $yellow;
+      margin-bottom: 1rem;
+    }
+
+    #button {
+      width: 100px;
+      font-family: 'Josefin';
+      color: white;
+      padding: 0.75rem;
+      margin: 0rem 0rem;
+      background: $highlight;
+      border: none;
+    }
+
+    #button:hover {
+      width: 100px;
+      box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+      font-weight: bold;
+
+      font-family: 'Josefin';
+      color: white;
+      padding: 0.75rem;
+      margin: 0rem 0rem;
+      background: $highlight;
+      border: none;
+    }
+  }
 }
 
 #user-show-container {

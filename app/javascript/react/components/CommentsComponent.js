@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import CommentTile from "../components/CommentTile"
 
-const CommentsContainer = props => {
+const CommentsComponent = props => {
 
   let commentList = null
   if (props.comments.length > 0) {
@@ -21,4 +21,4 @@ const CommentsContainer = props => {
   )
 }
 
-export default CommentsContainer
+export default CommentsComponent

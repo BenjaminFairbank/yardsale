@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import ItemShowComponent from '../components/ItemShowComponent'
-import CommentsContainer from "../containers/CommentsContainer"
+import CommentsComponent from "../components/CommentsComponent"
 import NewCommentForm from '../components/NewCommentForm'
 
 const ItemShowContainer = props => {
@@ -140,12 +140,15 @@ const ItemShowContainer = props => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
-
+  let commentsComponent
+  if (comments.length > 0) {
+    commentsComponent = <CommentsComponent comments={comments} currentUser={currentUser} fetchDeleteComment={fetchDeleteComment}/>
+  }
 
   return (
     <div id="item-show-container">
       <ItemShowComponent item={item} />
-      <CommentsContainer comments={comments} currentUser={currentUser} fetchDeleteComment={fetchDeleteComment}/>
+      {commentsComponent}
       <NewCommentForm fetchPostNewComment={fetchPostNewComment}/>
     </div>
   )
