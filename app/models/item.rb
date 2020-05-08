@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_many :comments
 
   validates :name,          presence: true, length: {maximum: 30}
   validates :description,   presence: true

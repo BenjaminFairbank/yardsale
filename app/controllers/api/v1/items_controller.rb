@@ -10,15 +10,13 @@ class Api::V1::ItemsController < ApplicationController
 
   def create
     item = Item.new(item_params)
-    if !current_user.nil?
-      item.user = current_user
-      item.zip_code = current_user.zip_code
-    end
+    item.user = current_user
+    item.zip_code = current_user.zip_code
 
     if item.save
       render json: item
     else
-      render json: {error: review.errors.full_messages.to_sentence}
+      render json: {error: item.errors.full_messages.to_sentence}
     end
   end
 

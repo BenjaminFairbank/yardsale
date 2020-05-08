@@ -84,6 +84,18 @@ body {
   }
 }
 
+#comments-container {
+  margin: 1.5rem;
+  padding: 1rem;
+  border-style: solid;
+
+  .comment-tile {
+    margin: 1.5rem;
+    padding: 1rem;
+    border-style: solid;
+  }
+}
+
 #user-show-container {
   padding: 1rem;
   color: $yellow;
