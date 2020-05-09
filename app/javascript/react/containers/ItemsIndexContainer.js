@@ -55,10 +55,12 @@ const ItemsIndexContainer = props => {
   }, [])
 
   return (
-    <div id="items-index-container" className="grid-container">
-      <ItemSearchComponent items={items} setDisplayedItems={setDisplayedItems} setSearch={setSearch} />
-      <ItemsTabComponent items={items} setDisplayedItems={setDisplayedItems} currentUser={currentUser} />
-      <ItemsDisplayComponent items={displayedItems} search={search} />
+    <div id="items-index-container">
+      <div className="grid-container">
+        <ItemSearchComponent items={items} setDisplayedItems={setDisplayedItems} setSearch={setSearch} />
+        <ItemsTabComponent items={items} setDisplayedItems={setDisplayedItems} currentUser={currentUser} />
+        <ItemsDisplayComponent items={displayedItems} search={search} />
+      </div>
     </div>
   )
 }

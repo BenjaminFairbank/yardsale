@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import UserItemsComponent from '../components/UserItemsComponent'
-import NewItemFormContainer from './NewItemFormContainer'
+import NewItemFormComponent from '../components/NewItemFormComponent'
 
 const UserShowContainer = props => {
 
@@ -64,6 +64,36 @@ const UserShowContainer = props => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
+  const fetchPostNewItem = (itemPayload) => {
+    fetch("/api/v1/items", {
+      credentials: "same-origin",
+      method: "POST",
+      body: JSON.stringify(itemPayload),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage)
+        throw error
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      let item = body
+      setUserItems([
+        ...userItems,
+        item
+      ])
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
   const fetchDeleteItem = (itemID) => {
     fetch(`/api/v1/items/${itemID}`, {
       credentials: "same-origin",
@@ -91,7 +121,7 @@ const UserShowContainer = props => {
 
   let newItemForm
   if (user.id === currentUser.id) {
-    newItemForm = <NewItemFormContainer userItems={userItems} setUserItems={setUserItems}/>
+    newItemForm = <NewItemFormComponent userItems={userItems} setUserItems={setUserItems} fetchPostNewItem={fetchPostNewItem}/>
   }
 
   return (
