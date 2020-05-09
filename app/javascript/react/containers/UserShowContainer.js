@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import UserItemsComponent from '../components/UserItemsComponent'
 import NewItemFormComponent from '../components/NewItemFormComponent'
+import UserProfileComponent from '../components/UserProfileComponent'
 
 const UserShowContainer = props => {
 
@@ -127,6 +128,7 @@ const UserShowContainer = props => {
   return (
     <div id="user-show-container">
       <div className="user-info">
+        <UserProfileComponent user={user} />
         <h2>{user.user_name}'s Lawn</h2>
       </div>
       <div>
