@@ -52,6 +52,7 @@ const ItemShowComponent = props => {
         <p>Posted by <Link to={`../users/${id}`}>{props.item.user.user_name}</Link>, {createdAt}</p>
         <br></br>
         <p>{props.item.description}</p>
+        <p>{props.item.zip_code}</p>
       </div>
     </div>
   )
