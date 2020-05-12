@@ -62,16 +62,18 @@ const ItemsIndexContainer = props => {
 
   useEffect(() => {
     if (currentUser.zip_code !== "") {
-
-      fetch(`api/v1/forecast?zip=${currentUser.zip_code}`)
+      fetch(`api/v1/forecast?zip=${currentUser.zip_code},us`)
       .then(response => response.json())
       .then((weatherBody) => {
         let weather = {
           city: weatherBody["name"],
-          currentTemperature: (weatherBody["main"]["temp"] - 272.15).toFixed(2)
+          description: weatherBody["weather"][0]["description"] + ",",
+          currentTemperature: parseInt((weatherBody["main"]["temp"] - 272.15)*(9/5)+32).toString() + "°F",
+          wind: (weatherBody["wind"]["speed"]*1.150779)
         }
+        debugger
         setWeatherData(weather)
-      })  
+      })
     }
   }, [currentUser])
 

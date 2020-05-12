@@ -489,3 +489,16 @@ body {
     margin: 0;
   }
 }
+
+#weather {
+  text-align: center;
+  color: white;
+  font-family: 'Josefin';
+  background: $yellow;
+  padding: 0.5rem;
+
+  p {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
