@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_05_09_212418) do
     t.bigint "user_id", null: false
     t.string "name", limit: 30, null: false
     t.string "description", null: false
-    t.string "image", default: "https://logodix.com/logo/1868156.png", null: false
+    t.string "image"
     t.integer "asking_price", null: false
     t.string "zip_code", null: false
     t.datetime "created_at", null: false

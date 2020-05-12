@@ -2,7 +2,7 @@
 @import 'colors';
 
 #nav {
-  height: 120px;
+  height: 140px;
   padding: 1rem 1.5rem 0rem 2rem;
   background-image: url(https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Grass-Grounds-Coverings-PNG-Clipart/Grass_PNG_Clipart_Picture.png?m=1507172106);
 
@@ -17,24 +17,39 @@
   }
 
   section.top-bar-section {
-    text-align: center;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 0;
+    padding-right: 1rem;
+    padding-top: 0.75rem;
 
-    ul {
-      background-color: rgba(255, 255, 255, 0.3);
-      padding: 0.8rem;
+    .nav-dev-links {
+      float: left;
+      padding-right: 1rem;
 
-      li {
-        font-size: 20px;
-        list-style: none;
-        font-family: 'Lobster';
-        font-weight: bold;
-        text-shadow: 1px 1px #000000;
-        color: $formgreen;
+      ul {
+        background-color: rgba(0, 0, 0, 0);
 
-        a {
-          color: $highlight;
+        li {
+          font-size: 20px;
+          list-style: none;
+          font-family: 'Lobster';
+          font-weight: bold;
+          text-shadow: 1px 1px #000000;
+          color: $formgreen;
+
+          a {
+            color: $highlight;
+          }
         }
       }
+    }
+
+    .profile-thumb {
+      padding-top: 0.25rem;
+      float: right;
+      width: 80px;
+      height: 80px;
     }
   }
 }

@@ -25,6 +25,15 @@ const UserShowContainer = props => {
 
   const [userItems, setUserItems] = useState(user.items)
 
+  const defaultFormData = {
+    name: "",
+    description: "",
+    image: "",
+    asking_price: "",
+  }
+
+  const [newItemFormData, setNewItemFormData] = useState(defaultFormData)
+
   const userID = props.match.params.id
 
   useEffect(() => {
@@ -65,15 +74,17 @@ const UserShowContainer = props => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
-  const fetchPostNewItem = (itemPayload) => {
+  const fetchPostNewItem = () => {
+    let formPayload = new FormData()
+    formPayload.append("name", newItemFormData.name)
+    formPayload.append("image", newItemFormData.image)
+    formPayload.append("description", newItemFormData.description)
+    formPayload.append("asking_price", newItemFormData.asking_price)
+
     fetch("/api/v1/items", {
-      credentials: "same-origin",
       method: "POST",
-      body: JSON.stringify(itemPayload),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      }
+      body: formPayload,
+      credentials: "same-origin",
     })
     .then(response => {
       if (response.ok) {
@@ -84,7 +95,9 @@ const UserShowContainer = props => {
         throw error
       }
     })
-    .then(response => response.json())
+    .then(response => {
+      response.json()
+    })
     .then(body => {
       let item = body
       setUserItems([
@@ -122,7 +135,7 @@ const UserShowContainer = props => {
 
   let newItemForm
   if (user.id === currentUser.id) {
-    newItemForm = <NewItemFormComponent userItems={userItems} setUserItems={setUserItems} fetchPostNewItem={fetchPostNewItem}/>
+    newItemForm = <NewItemFormComponent defaultFormData={defaultFormData} newItemFormData={newItemFormData} setNewItemFormData={setNewItemFormData} fetchPostNewItem={fetchPostNewItem}/>
   }
 
   return (
