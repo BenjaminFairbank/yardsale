@@ -68,8 +68,9 @@ const ItemsIndexContainer = props => {
         let weather = {
           city: weatherBody["name"],
           description: weatherBody["weather"][0]["description"] + ",",
-          currentTemperature: parseInt((weatherBody["main"]["temp"] - 272.15)*(9/5)+32).toString() + "°F",
-          wind: (weatherBody["wind"]["speed"]*1.150779)
+          currentTemperature: parseInt((weatherBody["main"]["temp"] - 272.15)*(9/5)+32).toString() + "°F,",
+          wind: "wind: " + parseInt(weatherBody["wind"]["speed"]*2.23694) + " mph",
+          windDirection: weatherBody["wind"]["deg"]
         }
         debugger
         setWeatherData(weather)
