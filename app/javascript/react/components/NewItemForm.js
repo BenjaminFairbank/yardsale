@@ -87,14 +87,12 @@ const NewItemForm = props => {
         throw error
       }
     })
-    .then(response => {
-      debugger
-      response.json()
-    })
+    .then(response => response.json())
     .then(body => {
       let item = body
-      setUserItems([
-        ...userItems,
+      debugger
+      props.setUserItems([
+        ...props.userItems,
         item
       ])
     })
@@ -132,11 +130,5 @@ const NewItemForm = props => {
     </div>
   )
 }
-
-
-
-
-// <label htmlFor="image">Let's take a look!</label>
-// <input type="text" name="image" id="image" onChange={handleChange} value={newItemFormData.image} />
 
 export default NewItemForm

@@ -95,7 +95,7 @@ const UserShowContainer = props => {
 
   let newItemForm
   if (user.id === currentUser.id) {
-    newItemForm = <NewItemFormComponent />
+    newItemForm = <NewItemFormComponent userItems={userItems} setUserItems={setUserItems}/>
   }
 
   return (
