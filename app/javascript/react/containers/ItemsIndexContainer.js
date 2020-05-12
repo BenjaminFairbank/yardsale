@@ -60,34 +60,20 @@ const ItemsIndexContainer = props => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
-  // useEffect(() => {
-  //   debugger
-  //   fetch(`api/v1/forecast?zip=${currentUser.zip_code}`)
-  //   .then(response => {
-  //     return response.json()
-  //   })
-  //   .then((weatherBody) => {
-  //     let weather = {
-  //       city: weatherBody["name"],
-  //       currentTemperature: (weatherBody["main"]["temp"] - 272.15).toFixed(2)
-  //     }
-  //     setWeatherData(weather)
-  //   })
-  // }, [])
-  if (currentUser.zip_code !== "") {
-    fetch(`api/v1/forecast?zip=${currentUser.zip_code}`)
-    .then(response => {
-      debugger
-      return response.json()
-    })
-    .then((weatherBody) => {
-      let weather = {
-        city: weatherBody["name"],
-        currentTemperature: (weatherBody["main"]["temp"] - 272.15).toFixed(2)
-      }
-      setWeatherData(weather)
-    })
-  }
+  useEffect(() => {
+    if (currentUser.zip_code !== "") {
+
+      fetch(`api/v1/forecast?zip=${currentUser.zip_code}`)
+      .then(response => response.json())
+      .then((weatherBody) => {
+        let weather = {
+          city: weatherBody["name"],
+          currentTemperature: (weatherBody["main"]["temp"] - 272.15).toFixed(2)
+        }
+        setWeatherData(weather)
+      })  
+    }
+  }, [currentUser])
 
   return (
     <div id="items-index-container">
