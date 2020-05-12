@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import ItemsDisplayComponent from "../components/ItemsDisplayComponent"
 import ItemSearchComponent from "../components/ItemSearchComponent"
 import ItemsTabComponent from "../components/ItemsTabComponent"
+import Weather from "../components/Weather"
 
 const ItemsIndexContainer = props => {
   const [items, setItems] = useState([])
@@ -15,6 +16,11 @@ const ItemsIndexContainer = props => {
     zip_code: "",
     items: [],
     comments: []
+  })
+
+  const [weatherData, setWeatherData] = useState({
+    city: '',
+    currentTemperature: ''
   })
 
   useEffect(() => {
@@ -54,9 +60,39 @@ const ItemsIndexContainer = props => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
+  // useEffect(() => {
+  //   debugger
+  //   fetch(`api/v1/forecast?zip=${currentUser.zip_code}`)
+  //   .then(response => {
+  //     return response.json()
+  //   })
+  //   .then((weatherBody) => {
+  //     let weather = {
+  //       city: weatherBody["name"],
+  //       currentTemperature: (weatherBody["main"]["temp"] - 272.15).toFixed(2)
+  //     }
+  //     setWeatherData(weather)
+  //   })
+  // }, [])
+  if (currentUser.zip_code !== "") {
+    fetch(`api/v1/forecast?zip=${currentUser.zip_code}`)
+    .then(response => {
+      debugger
+      return response.json()
+    })
+    .then((weatherBody) => {
+      let weather = {
+        city: weatherBody["name"],
+        currentTemperature: (weatherBody["main"]["temp"] - 272.15).toFixed(2)
+      }
+      setWeatherData(weather)
+    })
+  }
+
   return (
     <div id="items-index-container">
       <div className="grid-container">
+        <Weather weatherData={weatherData} />
         <ItemSearchComponent items={items} setDisplayedItems={setDisplayedItems} setSearch={setSearch} />
         <ItemsTabComponent items={items} setDisplayedItems={setDisplayedItems} currentUser={currentUser} />
         <ItemsDisplayComponent items={displayedItems} search={search} />
