@@ -12,17 +12,19 @@ const NewItemForm = props => {
     asking_price: "",
   }
 
+  const [newItemFormData, setNewItemFormData] = useState(defaultFormData)
+
   const [errors, setErrors] = useState({})
 
   const clearFormData = () => {
-    props.setNewItemFormData(props.defaultFormData)
+    setNewItemFormData(defaultFormData)
     setErrors({})
   }
 
   const handleChange = (event) => {
     event.preventDefault()
-    props.setNewItemFormData({
-      ...props.newItemFormData,
+    setNewItemFormData({
+      ...newItemFormData,
       [event.currentTarget.id]: event.currentTarget.value
     })
   }
@@ -30,7 +32,7 @@ const NewItemForm = props => {
   const onSubmitHandler = (event) => {
     event.preventDefault()
     if (validForSubmission()) {
-      props.fetchPostNewItem()
+      fetchPostNewItem()
       clearFormData()
     }
   }
@@ -39,7 +41,7 @@ const NewItemForm = props => {
     let submitErrors = {}
     const requiredFields = ["name", "description", "asking_price"]
     requiredFields.forEach(field => {
-      if (props.newItemFormData[field].trim() === "") {
+      if (newItemFormData[field].trim() === "") {
         submitErrors = {
           ...submitErrors,
           [field]: "is blank!"
@@ -51,10 +53,52 @@ const NewItemForm = props => {
   }
 
   const handleFileUpload = (acceptedFiles) => {
-    props.setNewItemFormData({
-      ...props.newItemFormData,
+    setNewItemFormData({
+      ...newItemFormData,
       image: acceptedFiles[0]
     })
+  }
+
+  const fetchPostNewItem = () => {
+    let formPayload = new FormData()
+    formPayload.append("item[name]", newItemFormData.name)
+    formPayload.append("item[image]", newItemFormData.image)
+    formPayload.append("item[description]", newItemFormData.description)
+    formPayload.append("item[asking_price]", newItemFormData.asking_price)
+
+    const csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+    fetch("/api/v1/items", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: {
+        'Accept': 'application/json', 
+        'Accept': 'image/jpeg', 
+        'X-CSRF-Token': csrfToken
+      },
+      body: formPayload,
+    })
+    .then(response => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage)
+        throw error
+      }
+    })
+    .then(response => {
+      debugger
+      response.json()
+    })
+    .then(body => {
+      let item = body
+      setUserItems([
+        ...userItems,
+        item
+      ])
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
   return (
@@ -62,13 +106,13 @@ const NewItemForm = props => {
       <form id="form" onSubmit={onSubmitHandler}>
 
         <label htmlFor="name">What is it?</label>
-        <input type="text" name="name" id="name" onChange={handleChange} value={props.newItemFormData.name} />
+        <input type="text" name="name" id="name" onChange={handleChange} value={newItemFormData.name} />
 
         <label htmlFor="description">Can you describe it a little more?</label>
-        <input type="text" name="description" id="description" onChange={handleChange} value={props.newItemFormData.description} />
+        <input type="text" name="description" id="description" onChange={handleChange} value={newItemFormData.description} />
 
         <label htmlFor="asking_price">Enter the asking price in CENTS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>(ex: enter "4000" for $40.00)</span></label>
-        <input type="text" name="asking_price" id="asking_price" onChange={handleChange} value={props.newItemFormData.asking_price} />
+        <input type="text" name="asking_price" id="asking_price" onChange={handleChange} value={newItemFormData.asking_price} />
 
         <Dropzone onDrop={handleFileUpload}>
           {({getRootProps, getInputProps}) => (
@@ -88,6 +132,9 @@ const NewItemForm = props => {
     </div>
   )
 }
+
+
+
 
 // <label htmlFor="image">Let's take a look!</label>
 // <input type="text" name="image" id="image" onChange={handleChange} value={newItemFormData.image} />

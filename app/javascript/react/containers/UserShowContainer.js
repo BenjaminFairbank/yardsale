@@ -23,16 +23,7 @@ const UserShowContainer = props => {
     comments: []
   })
 
-  const [userItems, setUserItems] = useState(user.items)
-
-  const defaultFormData = {
-    name: "",
-    description: "",
-    image: "",
-    asking_price: "",
-  }
-
-  const [newItemFormData, setNewItemFormData] = useState(defaultFormData)
+  const [userItems, setUserItems] = useState([])
 
   const userID = props.match.params.id
 
@@ -49,64 +40,33 @@ const UserShowContainer = props => {
     })
     .then(response => response.json())
     .then(body => {
-      let user = body
+      let user = body.target
       setUser(user)
       setUserItems(user.items)
+      setCurrentUser(body.current)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
-  useEffect(() => {
-    fetch(`/api/v1/current_user.json`)
-    .then(response => {
-      if (response.ok) {
-        return response
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`
-        let error = new Error(errorMessage)
-        throw(error)
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      setCurrentUser(body)
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`))
-  }, [])
+  // useEffect(() => {
+  //   fetch(`/api/v1/current_user.json`)
+  //   .then(response => {
+  //     if (response.ok) {
+  //       return response
+  //     } else {
+  //       let errorMessage = `${response.status} (${response.statusText})`
+  //       let error = new Error(errorMessage)
+  //       throw(error)
+  //     }
+  //   })
+  //   .then(response => response.json())
+  //   .then(body => {
+  //     setCurrentUser(body)
+  //   })
+  //   .catch(error => console.error(`Error in fetch: ${error.message}`))
+  // }, [])
 
-  const fetchPostNewItem = () => {
-    let formPayload = new FormData()
-    formPayload.append("name", newItemFormData.name)
-    formPayload.append("image", newItemFormData.image)
-    formPayload.append("description", newItemFormData.description)
-    formPayload.append("asking_price", newItemFormData.asking_price)
 
-    fetch("/api/v1/items", {
-      method: "POST",
-      body: formPayload,
-      credentials: "same-origin",
-    })
-    .then(response => {
-      if (response.ok) {
-        return response
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`,
-          error = new Error(errorMessage)
-        throw error
-      }
-    })
-    .then(response => {
-      response.json()
-    })
-    .then(body => {
-      let item = body
-      setUserItems([
-        ...userItems,
-        item
-      ])
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`))
-  }
 
   const fetchDeleteItem = (itemID) => {
     fetch(`/api/v1/items/${itemID}`, {
@@ -135,7 +95,7 @@ const UserShowContainer = props => {
 
   let newItemForm
   if (user.id === currentUser.id) {
-    newItemForm = <NewItemFormComponent defaultFormData={defaultFormData} newItemFormData={newItemFormData} setNewItemFormData={setNewItemFormData} fetchPostNewItem={fetchPostNewItem}/>
+    newItemForm = <NewItemFormComponent />
   }
 
   return (
@@ -145,7 +105,11 @@ const UserShowContainer = props => {
         <h2>{user.user_name}'s Lawn</h2>
       </div>
       <div>
-        <UserItemsComponent fetchDeleteItem={fetchDeleteItem} userItems={userItems} user={user} currentUser={currentUser}/>
+        <UserItemsComponent
+          userItems={userItems}
+          fetchDeleteItem={fetchDeleteItem}
+          user={user}
+          currentUser={currentUser}/>
       </div>
       <div id="new-item-form">
         {newItemForm}
