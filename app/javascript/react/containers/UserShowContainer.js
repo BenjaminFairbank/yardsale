@@ -48,26 +48,6 @@ const UserShowContainer = props => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
-  // useEffect(() => {
-  //   fetch(`/api/v1/current_user.json`)
-  //   .then(response => {
-  //     if (response.ok) {
-  //       return response
-  //     } else {
-  //       let errorMessage = `${response.status} (${response.statusText})`
-  //       let error = new Error(errorMessage)
-  //       throw(error)
-  //     }
-  //   })
-  //   .then(response => response.json())
-  //   .then(body => {
-  //     setCurrentUser(body)
-  //   })
-  //   .catch(error => console.error(`Error in fetch: ${error.message}`))
-  // }, [])
-
-
-
   const fetchDeleteItem = (itemID) => {
     fetch(`/api/v1/items/${itemID}`, {
       credentials: "same-origin",

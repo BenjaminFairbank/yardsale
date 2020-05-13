@@ -6,7 +6,6 @@ const UserItemsComponent = props => {
   let userItems = []
   if (props.userItems) {
     userItems = props.userItems.map((item) => {
-      debugger
       return (
         <UserItemTile key={item.id} item={item} user={props.user} currentUser={props.currentUser} fetchDeleteItem={props.fetchDeleteItem} />
       )

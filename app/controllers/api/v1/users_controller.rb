@@ -1,16 +1,16 @@
 class Api::V1::UsersController < ApplicationController
 
   def show
-    render json: { target: serializer_target_user, current: serializer_current_user }
+    render json: {
+      target: serialized_data(User.find(params[:id]), UserSerializer),
+      current: serialized_data(current_user, UserSerializer),
+    }
   end
 
-  binding.pry
+  private
 
-  def serializer_target_user
-    ActiveModelSerializers::SerializableResource.new(User.find(params[:id]), UserSerializer)
+  def serialized_data(data, serializer)
+    ActiveModelSerializers::SerializableResource.new(data, each_serializer: serializer)
   end
 
-  def serializer_current_user
-    ActiveModelSerializers::SerializableResource.new(current_user, CurrentUserSerializer)
-  end
 end

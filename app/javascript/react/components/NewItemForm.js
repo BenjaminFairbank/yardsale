@@ -90,7 +90,6 @@ const NewItemForm = props => {
     .then(response => response.json())
     .then(body => {
       let item = body
-      debugger
       props.setUserItems([
         ...props.userItems,
         item
