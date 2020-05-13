@@ -42,7 +42,7 @@ const ItemShowComponent = props => {
   return (
     <div id="item-show-component">
       <div className="item-show-image">
-        <img src={props.item.image}></img>
+        <img src={props.item.image.url}></img>
       </div>
       <div className="item-show-details">
         <h1>{props.item.name}</h1>
