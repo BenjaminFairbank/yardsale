@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import _ from 'lodash'
 import ErrorList from "./ErrorList"
-
+import Dropzone from 'react-dropzone'
 
 const NewItemForm = props => {
 
@@ -13,6 +13,7 @@ const NewItemForm = props => {
   }
 
   const [newItemFormData, setNewItemFormData] = useState(defaultFormData)
+
   const [errors, setErrors] = useState({})
 
   const clearFormData = () => {
@@ -31,14 +32,14 @@ const NewItemForm = props => {
   const onSubmitHandler = (event) => {
     event.preventDefault()
     if (validForSubmission()) {
-      props.fetchPostNewItem(newItemFormData)
+      fetchPostNewItem()
       clearFormData()
     }
   }
 
   const validForSubmission = () => {
     let submitErrors = {}
-    const requiredFields = ["name", "description", "image", "asking_price"]
+    const requiredFields = ["name", "description", "asking_price"]
     requiredFields.forEach(field => {
       if (newItemFormData[field].trim() === "") {
         submitErrors = {
@@ -49,6 +50,52 @@ const NewItemForm = props => {
     });
     setErrors(submitErrors)
     return _.isEmpty(submitErrors)
+  }
+
+  const handleFileUpload = (acceptedFiles) => {
+    setNewItemFormData({
+      ...newItemFormData,
+      image: acceptedFiles[0]
+    })
+  }
+
+  const fetchPostNewItem = () => {
+    let formPayload = new FormData()
+    formPayload.append("item[name]", newItemFormData.name)
+    formPayload.append("item[image]", newItemFormData.image)
+    formPayload.append("item[description]", newItemFormData.description)
+    formPayload.append("item[asking_price]", newItemFormData.asking_price)
+
+    const csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+    fetch("/api/v1/items", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: {
+        'Accept': 'application/json', 
+        'Accept': 'image/jpeg', 
+        'X-CSRF-Token': csrfToken
+      },
+      body: formPayload,
+    })
+    .then(response => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage)
+        throw error
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      let item = body
+      props.setUserItems([
+        ...props.userItems,
+        item
+      ])
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
   return (
@@ -64,8 +111,17 @@ const NewItemForm = props => {
         <label htmlFor="asking_price">Enter the asking price in CENTS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>(ex: enter "4000" for $40.00)</span></label>
         <input type="text" name="asking_price" id="asking_price" onChange={handleChange} value={newItemFormData.asking_price} />
 
-        <label htmlFor="image">Let's take a look!</label>
-        <input type="text" name="image" id="image" onChange={handleChange} value={newItemFormData.image} />
+        <label htmlFor="description">Can we see a photo of it?</label>
+        <Dropzone onDrop={handleFileUpload}>
+          {({getRootProps, getInputProps}) => (
+            <section>
+              <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                <p>Click here to upload a photo of the item or simply drop it here</p>
+              </div>
+            </section>
+          )}
+        </Dropzone>
 
         <ErrorList errors={errors} />
 

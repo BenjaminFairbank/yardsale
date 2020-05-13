@@ -5,7 +5,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
 
       t.string :name, :limit => 30, null: false
       t.string :description,        null: false
-      t.string :image,              null: false, default: "https://logodix.com/logo/1868156.png"
+      t.string :image
       t.integer :asking_price,      null: false
       t.string :zip_code,           null: false
 

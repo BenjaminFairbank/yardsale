@@ -43,8 +43,8 @@ item_34 = Item.create(name: "Fourth Item4", description: "the best items have lo
 
 comment_1 = Comment.create(body: "Wow would you look at that!", user: user_9, item: item_1)
 comment_2 = Comment.create(body: "Never seen one of those!", user: user_2, item: item_1)
-comment_3 = Comment.create(body: "amazing!", user: user_4, item: item_1)
+comment_3 = Comment.create(body: "That's really amazing!", user: user_4, item: item_1)
 
-comment_1 = Comment.create(body: "Wow would you look at that!", user: user_7, item: item_2)
-comment_2 = Comment.create(body: "Never seen one of those!", user: user_5, item: item_2)
-comment_3 = Comment.create(body: "amazing!", user: user_8, item: item_2)
+comment_11 = Comment.create(body: "Wow would you look at that!", user: user_7, item: item_2)
+comment_22 = Comment.create(body: "Never seen one of those!", user: user_5, item: item_2)
+comment_33 = Comment.create(body: "That's really amazing!", user: user_8, item: item_2)

@@ -20,7 +20,7 @@ const UserItemFlipCard = props => {
       <Link to={`../items/${id}`}>
         <div className="flip-card-inner">
           <div className="flip-card-front">
-            <img src={props.item.image}></img>
+            <img src={props.item.image.url}></img>
           </div>
           <div className="flip-card-back">
             <div className="card-item-name">

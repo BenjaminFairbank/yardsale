@@ -12,6 +12,7 @@ class Api::V1::ItemsController < ApplicationController
     item = Item.new(item_params)
     item.user = current_user
     item.zip_code = current_user.zip_code
+    item["image"] = item_params["image"]
 
     if item.save
       render json: item
