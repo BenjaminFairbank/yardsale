@@ -20,8 +20,9 @@
     text-align: left;
     background-color: rgba(255, 255, 255, 0.3);
     padding: 0;
-    padding-right: 1rem;
+    padding-right: 0.75rem;
     padding-top: 0.75rem;
+    padding-bottom: 0.5rem;
 
     .nav-dev-links {
       float: left;
@@ -29,7 +30,7 @@
 
       ul {
         background-color: rgba(0, 0, 0, 0);
-
+        margin-top: 0.5rem;
         li {
           font-size: 20px;
           list-style: none;
@@ -46,7 +47,7 @@
     }
 
     .profile-thumb {
-      padding-top: 0.25rem;
+      padding-bottom: 0.1rem;
       float: right;
       width: 80px;
       height: 80px;
