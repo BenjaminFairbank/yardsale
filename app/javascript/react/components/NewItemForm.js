@@ -111,12 +111,13 @@ const NewItemForm = props => {
         <label htmlFor="asking_price">Enter the asking price in CENTS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>(ex: enter "4000" for $40.00)</span></label>
         <input type="text" name="asking_price" id="asking_price" onChange={handleChange} value={newItemFormData.asking_price} />
 
+        <label htmlFor="description">Can we see a photo of it?</label>
         <Dropzone onDrop={handleFileUpload}>
           {({getRootProps, getInputProps}) => (
             <section>
               <div {...getRootProps()}>
                 <input {...getInputProps()} />
-                <p>Drag 'n' drop some files here, or click to select files</p>
+                <p>Click here to upload a photo of the item or simply drop it here</p>
               </div>
             </section>
           )}

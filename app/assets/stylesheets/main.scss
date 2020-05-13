@@ -342,6 +342,14 @@ body {
   padding: 2rem 3rem;
   width: 600px;
 
+  p {
+    text-align: center;
+    color: white;
+    background: $yellow;
+    padding: 0.5rem;
+    font-family: "Josefin"
+  }
+
   h1 {
     text-align: center;
     font-family: 'Lobster';
