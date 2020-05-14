@@ -43,8 +43,18 @@ const ItemSearchComponent = props => {
   return (
     <div id="item-search-component">
       <form id="item-search-form" onSubmit={onSubmitHandler} >
-        <input type="text" name="search" id="search" onChange={handleChange} value={searchFormData.search} placeholder="You never know what you might find!" />
+
+        <input
+          type="text"
+          name="search"
+          id="search"
+          onChange={handleChange}
+          value={searchFormData.search}
+          placeholder="You never know what you might find!"
+        />
+
         <input id="button" type="submit" value="Search the Yard" />
+        
       </form>
     </div>
   )

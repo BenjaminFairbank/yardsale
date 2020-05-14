@@ -103,13 +103,31 @@ const NewItemForm = props => {
       <form id="form" onSubmit={onSubmitHandler}>
 
         <label htmlFor="name">What is it?</label>
-        <input type="text" name="name" id="name" onChange={handleChange} value={newItemFormData.name} />
+        <input
+          type="text"
+          name="name"
+          id="name"
+          onChange={handleChange}
+          value={newItemFormData.name}
+        />
 
         <label htmlFor="description">Can you describe it a little more?</label>
-        <input type="text" name="description" id="description" onChange={handleChange} value={newItemFormData.description} />
+        <input
+          type="text"
+          name="description"
+          id="description"
+          onChange={handleChange}
+          value={newItemFormData.description}
+        />
 
         <label htmlFor="asking_price">Enter the asking price in CENTS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>(ex: enter "4000" for $40.00)</span></label>
-        <input type="text" name="asking_price" id="asking_price" onChange={handleChange} value={newItemFormData.asking_price} />
+        <input
+          type="text"
+          name="asking_price"
+          id="asking_price"
+          onChange={handleChange}
+          value={newItemFormData.asking_price}
+        />
 
         <label htmlFor="description">Can we see a photo of it?</label>
         <Dropzone onDrop={handleFileUpload}>
@@ -125,7 +143,11 @@ const NewItemForm = props => {
 
         <ErrorList errors={errors} />
 
-        <input id="button" type="submit" value="Put the new item out on your lawn!" />
+        <input
+          id="button"
+          type="submit"
+          value="Put the new item out on your lawn!"
+        />
       </form>
     </div>
   )

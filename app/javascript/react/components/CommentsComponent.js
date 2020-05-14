@@ -8,7 +8,12 @@ const CommentsComponent = props => {
   if (props.comments.length > 0) {
     commentList = props.comments.map((comment) => {
       return (
-        <CommentTile key={comment.id} comment={comment} currentUser={props.currentUser} fetchDeleteComment={props.fetchDeleteComment} />
+        <CommentTile
+          key={comment.id}
+          comment={comment}
+          currentUser={props.currentUser}
+          fetchDeleteComment={props.fetchDeleteComment}
+        />
       )
     })
   }

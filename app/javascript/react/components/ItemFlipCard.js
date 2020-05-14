@@ -5,12 +5,14 @@ const ItemFlipCard = props => {
   const id = props.item.id
 
   let askingPrice = "$" + parseFloat(props.item.asking_price/100).toFixed(2)
+
   if (props.item.asking_price > 99999) {
     let price = parseInt(props.item.asking_price/100)
     let aPArray = price.toString().split('')
     aPArray.splice( -3, 0, ',' )
     askingPrice = "$" + aPArray.join('')
   }
+
   if (props.item.asking_price === 0) {
     askingPrice = "FREE!"
   }
