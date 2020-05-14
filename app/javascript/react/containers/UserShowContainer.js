@@ -6,24 +6,9 @@ import UserProfileComponent from '../components/UserProfileComponent'
 
 const UserShowContainer = props => {
 
-  const [user, setUser] = useState({
-    id: "",
-    email: "",
-    user_name: "",
-    zip_code: "",
-    items: []
-  })
-
-  const [currentUser, setCurrentUser] = useState({
-    id: "",
-    email: "",
-    user_name: "",
-    zip_code: "",
-    items: [],
-    comments: []
-  })
-
+  const [user, setUser] = useState({})
   const [userItems, setUserItems] = useState([])
+  const [currentUser, setCurrentUser] = useState({})
 
   const userID = props.match.params.id
 
@@ -40,9 +25,8 @@ const UserShowContainer = props => {
     })
     .then(response => response.json())
     .then(body => {
-      let user = body.target
-      setUser(user)
-      setUserItems(user.items)
+      setUser(body.target)
+      setUserItems(body.target.items)
       setCurrentUser(body.current)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
