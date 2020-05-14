@@ -16,8 +16,8 @@ const UserProfileComponent = props => {
 
       <div className="user-show-details">
         <h1>{props.user.user_name}</h1>
-        <h5>{props.user.blurb}</h5>
         <h5>{props.user.zip_code}</h5>
+        <h5>{props.user.blurb}</h5>
       </div>
 
     </div>
