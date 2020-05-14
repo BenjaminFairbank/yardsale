@@ -53,11 +53,22 @@ const NewCommentForm = props => {
 
       <form id="form" onSubmit={onSubmitHandler}>
 
-        <input type="text" name="body" id="body" onChange={handleChange} value={newCommentFormData.body} />
+        <input
+          type="text"
+          name="body"
+          id="body"
+          onChange={handleChange}
+          value={newCommentFormData.body}
+        />
 
         <ErrorList errors={errors} />
 
-        <input id="button" type="submit" value="Tell 'em how you REALLY feel!" />
+        <input
+          id="button"
+          type="submit"
+          value="Tell 'em how you REALLY feel!"
+        />
+      
       </form>
     </div>
   )

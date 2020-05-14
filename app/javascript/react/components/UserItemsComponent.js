@@ -7,19 +7,25 @@ const UserItemsComponent = props => {
   if (props.userItems) {
     userItems = props.userItems.map((item) => {
       return (
-        <UserItemTile key={item.id} item={item} user={props.user} currentUser={props.currentUser} fetchDeleteItem={props.fetchDeleteItem} />
+        <UserItemTile
+          key={item.id}
+          item={item}
+          user={props.user}
+          currentUser={props.currentUser}
+          fetchDeleteItem={props.fetchDeleteItem}
+        />
       )
     })
   }
 
   let title
   if (props.user.id === props.currentUser.id) {
-    title = `You have no items!`
+    title = `You haven't posted any items!`
     if (userItems !== []) {
       title = `You have posted ${userItems.length} items:`
     }
   } else {
-    title = `${props.user.user_name} has no items`
+    title = `${props.user.user_name} hasn't posted any items`
     if (userItems !== []) {
       title = `${props.user.user_name} has posted ${userItems.length} items:`
     }

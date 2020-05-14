@@ -6,6 +6,7 @@ import ItemsTabComponent from "../components/ItemsTabComponent"
 import Weather from "../components/Weather"
 
 const ItemsIndexContainer = props => {
+
   const [currentUser, setCurrentUser] = useState({})
   const [weatherData, setWeatherData] = useState({})
   const [search, setSearch] = useState({search: ""})
@@ -47,9 +48,17 @@ const ItemsIndexContainer = props => {
     <div id="items-index-container">
       <div className="grid-container">
         <Weather weatherData={weatherData} />
-        <ItemSearchComponent items={items} setDisplayedItems={setDisplayedItems} setSearch={setSearch} />
-        <ItemsTabComponent items={items} setDisplayedItems={setDisplayedItems} currentUser={currentUser} />
-        <ItemsDisplayComponent items={displayedItems} search={search} />
+        <ItemSearchComponent
+          setSearch={setSearch}
+          items={items}
+          setDisplayedItems={setDisplayedItems}
+        />
+        <ItemsTabComponent
+          currentUser={currentUser}
+          items={items}
+          setDisplayedItems={setDisplayedItems}
+        />
+        <ItemsDisplayComponent search={search} items={displayedItems} />
       </div>
     </div>
   )

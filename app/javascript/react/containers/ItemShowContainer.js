@@ -7,7 +7,7 @@ import NewCommentForm from '../components/NewCommentForm'
 const ItemShowContainer = props => {
 
   const [comments, setComments] = useState([])
-
+  const [currentUser, setCurrentUser] = useState({})
   const [item, setItem] = useState({
     name: "",
     description: "",
@@ -20,32 +20,6 @@ const ItemShowContainer = props => {
     }
   })
 
-  const [currentUser, setCurrentUser] = useState({
-    id: "",
-    email: "",
-    user_name: "",
-    zip_code: "",
-    items: [],
-    comments: []
-  })
-
-  useEffect(() => {
-    fetch(`/api/v1/current_user.json`)
-    .then(response => {
-      if (response.ok) {
-        return response
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`
-        let error = new Error(errorMessage)
-        throw(error)
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      setCurrentUser(body)
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`))
-  }, [])
 
   const itemID = props.match.params.id
 
@@ -62,25 +36,9 @@ const ItemShowContainer = props => {
     })
     .then(response => response.json())
     .then(body => {
-      setItem(body)
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`))
-  }, [])
-
-  useEffect(() => {
-    fetch(`/api/v1/items/${itemID}/comments.json`)
-    .then(response => {
-      if (response.ok) {
-        return response
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`
-        let error = new Error(errorMessage)
-        throw(error)
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      setComments(body)
+      setItem(body.item)
+      setCurrentUser(body.current)
+      setComments(body.comments)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
@@ -142,14 +100,18 @@ const ItemShowContainer = props => {
 
   let commentsComponent
   if (comments.length > 0) {
-    commentsComponent = <CommentsComponent comments={comments} currentUser={currentUser} fetchDeleteComment={fetchDeleteComment}/>
+    commentsComponent = <CommentsComponent
+      comments={comments}
+      currentUser={currentUser}
+      fetchDeleteComment={fetchDeleteComment}
+    />
   }
 
   return (
     <div id="item-show-container">
       <ItemShowComponent item={item} />
       {commentsComponent}
-      <NewCommentForm fetchPostNewComment={fetchPostNewComment}/>
+      <NewCommentForm fetchPostNewComment={fetchPostNewComment} />
     </div>
   )
 }

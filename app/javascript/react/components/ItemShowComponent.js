@@ -4,20 +4,25 @@ import { Link } from 'react-router-dom'
 const ItemShowComponent = props => {
 
   const timestampConverter = (timestamp) => {
+
     const time = new Date(timestamp)
     let hour = time.getHours()
     let timeOfDay = "AM"
+    let min = time.getMinutes()
+
     if (time.getHours() > 12) {
       hour = time.getHours() - 12
       timeOfDay = "PM"
     }
+
     if (time.getHours() === 0 ) {
       hour = 12
     }
-    let min = time.getMinutes()
+
     if (time.getMinutes() < 10) {
       min = '0' + time.getMinutes()
     }
+    
     const timeString = time.toDateString() + " " + hour + ":" + min + " " + timeOfDay
     return timeString
   }
@@ -28,8 +33,6 @@ const ItemShowComponent = props => {
   if (createdAt !== updatedAt) {
     let ifUpdated = "Updated at " + updatedAt
   }
-
-  const id = props.item.user.id
 
   let askingPrice = parseFloat(props.item.asking_price/100).toFixed(2)
   if (props.item.asking_price > 99999) {
@@ -49,7 +52,7 @@ const ItemShowComponent = props => {
         <br></br>
         <p>Asking Price:&nbsp;&nbsp; <span>$&nbsp;{askingPrice}</span></p>
         <br></br>
-        <p>Posted by <Link to={`../users/${id}`}>{props.item.user.user_name}</Link>, {createdAt}</p>
+        <p>Posted by <Link to={`../users/${props.item.user.id}`}>{props.item.user.user_name}</Link>, {createdAt}</p>
         <br></br>
         <p>{props.item.description}</p>
         <p>{props.item.zip_code}</p>
