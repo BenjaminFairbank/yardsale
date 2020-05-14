@@ -17,9 +17,7 @@ Rails.application.routes.draw do
         resources :comments, only: [:index, :create]
       end
       resources :users, only: [:show]
-      resources :current_user, only: [:index]
       resources :comments, only: [:destroy]
-      resources :forecast, only: [:index]
     end
   end
 end
