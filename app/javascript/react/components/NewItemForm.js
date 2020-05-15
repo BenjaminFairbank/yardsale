@@ -112,7 +112,7 @@ const NewItemForm = props => {
         />
 
         <label htmlFor="description">Can you describe it a little more?</label>
-        <input
+        <textarea
           type="text"
           name="description"
           id="description"

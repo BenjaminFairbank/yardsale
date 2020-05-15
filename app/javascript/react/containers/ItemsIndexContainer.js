@@ -47,17 +47,19 @@ const ItemsIndexContainer = props => {
   return (
     <div id="items-index-container">
       <div className="grid-container">
-        <Weather weatherData={weatherData} />
-        <ItemSearchComponent
-          setSearch={setSearch}
-          items={items}
-          setDisplayedItems={setDisplayedItems}
-        />
-        <ItemsTabComponent
-          currentUser={currentUser}
-          items={items}
-          setDisplayedItems={setDisplayedItems}
-        />
+        <div id="power-box">
+          <Weather weatherData={weatherData} />
+          <ItemSearchComponent
+            setSearch={setSearch}
+            items={items}
+            setDisplayedItems={setDisplayedItems}
+          />
+          <ItemsTabComponent
+            currentUser={currentUser}
+            items={items}
+            setDisplayedItems={setDisplayedItems}
+          />
+        </div>
         <ItemsDisplayComponent search={search} items={displayedItems} />
       </div>
     </div>
