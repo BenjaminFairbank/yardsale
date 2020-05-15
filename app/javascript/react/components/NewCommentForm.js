@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import _ from 'lodash'
 import ErrorList from "./ErrorList"
 
@@ -48,29 +48,32 @@ const NewCommentForm = props => {
   }
 
   return (
-    <div id="new-comment-form">
-      <h1>Leave a comment</h1>
-
-      <form id="form" onSubmit={onSubmitHandler}>
-
-        <input
-          type="text"
-          name="body"
-          id="body"
-          onChange={handleChange}
-          value={newCommentFormData.body}
-        />
+    <>
+      <div id="new-comment-form">
+        {props.commentsComponent}
+        <h1>Leave a comment</h1>
 
         <ErrorList errors={errors} />
 
-        <input
-          id="button"
-          type="submit"
-          value="Tell 'em how you REALLY feel!"
-        />
-      
-      </form>
-    </div>
+        <form id="form" onSubmit={onSubmitHandler}>
+
+          <input
+            type="text"
+            name="body"
+            id="body"
+            onChange={handleChange}
+            value={newCommentFormData.body}
+          />
+
+          <input
+            id="button"
+            type="submit"
+            value="Tell 'em how you REALLY feel!"
+          />
+
+        </form>
+      </div>
+    </>
   )
 }
 

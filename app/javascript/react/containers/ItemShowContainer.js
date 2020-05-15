@@ -110,8 +110,7 @@ const ItemShowContainer = props => {
   return (
     <div id="item-show-container">
       <ItemShowComponent item={item} />
-      {commentsComponent}
-      <NewCommentForm fetchPostNewComment={fetchPostNewComment} />
+      <NewCommentForm commentsComponent={commentsComponent} fetchPostNewComment={fetchPostNewComment} />
     </div>
   )
 }

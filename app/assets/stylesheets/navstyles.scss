@@ -2,27 +2,30 @@
 @import 'colors';
 
 #nav {
-  height: 140px;
+  height: 150px;
   padding: 1rem 1.5rem 0rem 2rem;
-  background-image: url(https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Grass-Grounds-Coverings-PNG-Clipart/Grass_PNG_Clipart_Picture.png?m=1507172106);
-
+  background-color: $junglegreen;
+  // background-image: url(https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Grass-Grounds-Coverings-PNG-Clipart/Grass_PNG_Clipart_Picture.png?m=1507172106);
   h1 {
+    margin-left: 5%;
     a {
-      color: $highlight;
-      font-family: 'Lobster';
+      color: $bittersweet;
+      font-family: 'Cutive';
       font-weight: bold;
       font-size: 60px;
-      text-shadow: 4px 4px #000000;
     }
   }
 
   section.top-bar-section {
+    margin-bottom: 20px;
     text-align: left;
-    background-color: rgba(255, 255, 255, 0.3);
+    // background-color: rgba(255, 255, 255, 0.3);
+    background-color: $darkslategreen;
     padding: 0;
     padding-right: 0.75rem;
-    padding-top: 0.75rem;
+    padding-top: 1.25rem;
     padding-bottom: 0.5rem;
+    border-radius: 15px;
 
     .nav-dev-links {
       float: left;
@@ -34,20 +37,23 @@
         li {
           font-size: 20px;
           list-style: none;
-          font-family: 'Lobster';
+          font-family: 'Cutive';
           font-weight: bold;
-          text-shadow: 1px 1px #000000;
-          color: $formgreen;
+          color: $khaki;
+          margin-top: 10px;
 
           a {
-            color: $highlight;
+            color: $crayolared;
           }
         }
       }
     }
 
     .profile-thumb {
+      border-radius: 15px;
+      overflow: hidden;
       padding-bottom: 0.1rem;
+      margin-right: 0.75rem;
       float: right;
       width: 80px;
       height: 80px;

@@ -15,7 +15,7 @@ const UserItemTile = props => {
       hour = time.getHours() - 12
       timeOfDay = "PM"
     }
-    
+
     if (time.getHours() === 0 ) {
       hour = 12
     }
@@ -34,17 +34,19 @@ const UserItemTile = props => {
 
   const onClickHandler = (event) => {
     event.preventDefault()
-    props.fetchDeleteItem(itemID)
+    if (confirm("Are you sure you want to delete this posted item?")) {
+      props.fetchDeleteItem(itemID)
+    }
   }
 
   let deleteButton
   if (props.user.id === props.currentUser.id) {
-    deleteButton = <input
+    deleteButton = <div id="item-delete-button"><input
       id="button"
       type="button"
       onClick={onClickHandler}
-      value="Get off my lawn!"
-    />
+      value="Get it off my lawn!"
+    /></div>
   }
 
   return (

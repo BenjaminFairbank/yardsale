@@ -2,11 +2,15 @@
 @import 'fonts';
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
+  border-radius: 25px;
+  overflow: hidden;
   margin: auto;
-  background-color: transparent;
+  // background-color: transparent;
+  background-color: $junglegreen;
   width: 300px;
   height: 300px;
   // border: 1px solid #f1f1f1;
+  border: 3px solid $junglegreen;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
@@ -46,8 +50,8 @@
 
 /* Style the back side */
 .flip-card-back {
-  background-color: $formgreen;
-  color: $yellow;
+  background-color: $junglegreen;
+  color: $bittersweet;
   transform: rotateY(180deg);
   position: relative;
 
@@ -58,7 +62,6 @@
     h5 {
       font-family: 'Josefin';
       font-weight: bold;
-      text-shadow: 2px 2px #000000;
       font-size: 25px;
     }
   }
@@ -68,9 +71,9 @@
     position: absolute;
     top: 30%;
     h1 {
-      color: $highlight;
-      text-shadow: 4px 4px #000000;
-      font-family: 'Lobster';
+      color: $crayolared;
+
+      font-family: 'Cutive';
       font-size: 70px;
     }
   }
@@ -78,7 +81,6 @@
   .card-item-posted {
     font-family: 'Josefin';
     font-weight: bold;
-    text-shadow: 1px 1px #000000;
     width: 100%;
     position: absolute;
     bottom: 0.5rem;
