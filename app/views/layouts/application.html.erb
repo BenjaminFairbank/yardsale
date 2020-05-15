@@ -24,7 +24,7 @@
       </div>
       <%- if current_user -%>
       <div class="profile-thumb">
-        <img src=<%= current_user.profile_photo %>>
+        <%= link_to image_tag(current_user.profile_photo.url), "/users/#{current_user.id}"%>
       </div>
       <%- end -%>
     </section>

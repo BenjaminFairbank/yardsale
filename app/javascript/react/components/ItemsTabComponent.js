@@ -32,9 +32,9 @@ const ItemsTabComponent = props => {
   return (
     <div id="item-tab-component">
       <div className="expanded button-group">
-        <a onClick={setItemsToAll} id="button" className="button">All</a>
-        <a onClick={setItemsToLocal} id="button" className="button">Local</a>
-        <a onClick={setItemsToFree} id="button" className="button">Free</a>
+        <a onClick={setItemsToAll} id="button1" className="button">All</a>
+        <a onClick={setItemsToLocal} id="button2" className="button">Local</a>
+        <a onClick={setItemsToFree} id="button3" className="button">Free</a>
       </div>
     </div>
   )
