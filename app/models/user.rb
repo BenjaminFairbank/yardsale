@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :user_name, presence: true, uniqueness: true
   validates :zip_code, presence: true
+  validates :profile_photo, presence: true
 
   has_many :items
   has_many :comments

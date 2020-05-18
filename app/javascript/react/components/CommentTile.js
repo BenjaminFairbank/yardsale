@@ -34,7 +34,7 @@ const CommentTile = props => {
     if (time.getMinutes() < 10) {
       min = '0' + time.getMinutes()
     }
-    
+
     const timeString = time.toDateString() + " " + hour + ":" + min + " " + timeOfDay
     return timeString
   }
@@ -43,11 +43,17 @@ const CommentTile = props => {
 
   const id = props.comment.user.id
 
+  let email = ""
+  if ( props.comment.item.user_id === props.currentUser.id ) {
+    email = <h5><span>{`${props.comment.user.email}`}</span></h5>
+  }
+
   return (
     <div className="comment-tile">
       <h3><Link to={`../users/${id}`}>{props.comment.user.user_name}</Link>:</h3>
       <h4>&nbsp;&nbsp;&nbsp;{props.comment.body}</h4>
       <h5>{timeString}</h5>
+      {email}
       {deleteButton}
     </div>
   )

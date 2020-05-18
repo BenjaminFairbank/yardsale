@@ -51,7 +51,7 @@
 /* Style the back side */
 .flip-card-back {
   background-color: $junglegreen;
-  color: $bittersweet;
+  color: $darkslategreen;
   transform: rotateY(180deg);
   position: relative;
 
@@ -72,9 +72,13 @@
     top: 30%;
     h1 {
       color: $crayolared;
-
       font-family: 'Cutive';
-      font-size: 70px;
+      font-size: 60px;
+    }
+    p {
+      color: $bittersweet;
+      font-family: 'Cutive';
+      font-weight: bold;
     }
   }
 

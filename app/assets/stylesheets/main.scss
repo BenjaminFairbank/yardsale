@@ -50,6 +50,7 @@ body {
   position: relative;
 
   .item-show-image {
+    margin-top: 1rem;
     padding: 1.5rem;
     display:inline-block;
     width: 450px;
@@ -62,6 +63,7 @@ body {
     display: block;
 
     img {
+      border: 5px solid $junglegreen;
       border-radius: 50px;
       overflow: hidden;
       text-align: center;
@@ -71,6 +73,7 @@ body {
   }
 
   .item-show-details {
+    margin-top: 1rem;
     padding: 1.5rem;
     display:inline-block;
     width: 450px;
@@ -79,25 +82,37 @@ body {
     width: 50%;
     top: 0;
     right: 0;
+    text-align: center;
 
     h1 {
       font-family: 'Cutive';
+      color: $bittersweet;
+      margin-bottom: 0;
+    }
+
+    h6 {
+      font-family: 'Cutive';
       color: $junglegreen;
+      margin-bottom: 0;
+    }
+
+    span {
+      color: $crayolared;
+      font-size: 70px;
+      font-family: "Cutive"
     }
 
     p {
+      font-size: 25px;
       font-weight: bold;
       color: $junglegreen;
-      font-family: fantasy;
-
-      span {
-        color: $crayolared;
-        font-size: 50px;
-      }
+      font-family: "Josefin";
+      margin-bottom: 0;
     }
 
     a {
       color: $bittersweet;
+      font-family: "Cutive"
     }
 
     a:hover {
@@ -132,6 +147,12 @@ body {
     font-weight: bold;
     color: $junglegreen;
     margin: 1rem 0rem;
+  }
+
+  p {
+    text-align: center;
+    font-family: "Josefin";
+    color: $darkslategreen;
   }
 
   #button {
@@ -195,16 +216,17 @@ body {
   .comment-tile {
     border-radius: 15px;
     width: 700px;
-    background: $darkslategreen;
+    background: $junglegreen;
     margin: 0;
-    padding: 1rem 1.5rem;
+    margin-top: 1.5rem;
+    padding: 1.5rem;
 
     h3 {
       text-align: left;
       font-family: 'Cutive';
       font-weight: bold;
-      color: $bittersweet;
-      margin-bottom: 3rem;
+      color: $junglegreen;
+      margin-bottom: 1.5rem;
       font-size: 28px;
     }
 
@@ -213,7 +235,7 @@ body {
     }
 
     a:hover {
-      color: $crayolared;
+      color: $bittersweet;
       font-weight: 1600;
     }
 
@@ -221,16 +243,21 @@ body {
       text-align: left;
       font-family: 'Josefin';
       font-weight: bold;
-      color: $bittersweet;
+      color: $darkslategreen;
       margin-bottom: 1rem;
     }
 
     h5 {
       text-align: right;
-      font-family: fantasy;
+      font-family: "Josefin";
       font-weight: bold;
-      color: $bittersweet;
+      color: $darkslategreen;
       margin-bottom: 1rem;
+    }
+
+    span {
+      font-family: "Josefin";
+      color: $bittersweet;
     }
 
     #button {
@@ -264,6 +291,8 @@ body {
   color: $bittersweet;
 
   .user-info {
+    text-align: center;
+
     h2 {
       font-family: 'Josefin';
       font-weight: bold;
@@ -314,6 +343,11 @@ body {
         color: $bittersweet;
       }
 
+      h5 {
+        font-family: 'Josefin';
+        color: $bittersweet;
+      }
+
       p {
         font-weight: bold;
         color: $junglegreen;
@@ -342,7 +376,7 @@ body {
   }
 
   #user-items-component {
-
+    text-align: center;
     #tile-field {
       padding-top: 1rem;
     }

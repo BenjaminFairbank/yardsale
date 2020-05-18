@@ -2,7 +2,6 @@
   <h2>Create Account</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field">
       <%= f.label :email %>
@@ -20,7 +19,7 @@
     </div>
 
     <div class="field">
-      <%= f.label :blurb, "Tell us about you" %>
+      <%= f.label :blurb, "What would you like other users to know about you when they visit your profile?" %>
       <%= f.text_area :blurb %>
     </div>
 
@@ -38,13 +37,14 @@
     </div>
 
     <div class="field">
-      <%= f.label :profile_photo, "Upload a profile picture" %>
+      <%= f.label :profile_photo, "Click here to upload a profile picture", :class => "file"%>
       <%= f.file_field :profile_photo %>
     </div>
 
+    <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="actions">
-      <%= f.submit "Create Your New Account", :id => 'button' %>
+      <%= f.submit "Create your new account", :id => 'button' %>
     </div>
   <% end %>
 
