@@ -22,7 +22,7 @@ const ItemShowComponent = props => {
     if (time.getMinutes() < 10) {
       min = '0' + time.getMinutes()
     }
-    
+
     const timeString = time.toDateString() + " " + hour + ":" + min + " " + timeOfDay
     return timeString
   }
@@ -49,13 +49,13 @@ const ItemShowComponent = props => {
       </div>
       <div className="item-show-details">
         <h1>{props.item.name}</h1>
-        <br></br>
-        <p>Asking Price:&nbsp;&nbsp; <span>$&nbsp;{askingPrice}</span></p>
-        <br></br>
-        <p>Posted by <Link to={`../users/${props.item.user.id}`}>{props.item.user.user_name}</Link>, {createdAt}</p>
-        <br></br>
-        <p>{props.item.description}</p>
         <p>{props.item.zip_code}</p>
+        <span>${askingPrice}</span>
+        <p>{props.item.description}</p>
+        <br></br>
+        <h6>Posted by:</h6>
+        <Link to={`../users/${props.item.user.id}`}>{props.item.user.user_name}</Link>
+        <h6>{createdAt}</h6>
       </div>
     </div>
   )

@@ -52,6 +52,7 @@ const NewCommentForm = props => {
       <div id="new-comment-form">
         {props.commentsComponent}
         <h1>Leave a comment</h1>
+        <p>If you a leave a comment, the item's owner will be able to see your email address, <br /> and may contact you if they like what you have to say.</p>
 
         <ErrorList errors={errors} />
 

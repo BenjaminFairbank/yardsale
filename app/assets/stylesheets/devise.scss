@@ -6,33 +6,80 @@
   margin: 2rem auto;
   padding: 2rem 3rem;
   width: 450px;
+  border-radius: 25px;
 
   textarea {
     max-height: 200px;
     resize: vertical;
+    border-radius: 15px;
   }
 
   h2 {
     text-align: center;
     font-family: 'Cutive';
     font-weight: bold;
-    text-shadow: 2px 2px #000000;
-    color: $bittersweet;
+    color: $junglegreen;
+  }
+
+  h3 {
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Cutive';
+    font-weight: 1600;
+    color: $darkslategreen;
+  }
+
+  li {
+    text-align: center;
+    list-style: none;
+    font-family: fantasy;
+    font-weight: bold;
+    color: $crayolared;
+  }
+
+  li:nth-child(n)::before {
+    content: "❌ ";
   }
 
   label {
     font-family: 'Josefin';
     font-weight: bold;
-    text-shadow: 1px 1px #000000;
     color: $darkslategreen;
   }
 
   em {
     color: $crayolared;
-    font-family: fantasy;
+    font-family: "Josefin";
     font-weight: bold;
-    text-shadow: 1px 1px #000000;
     font-size: 15px;
+  }
+
+  input {
+    border-radius: 15px;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+
+  .file {
+    text-align: center;
+    color: white;
+    background: $bittersweet;
+    padding: 0.5rem;
+    border-radius: 15px;
+    font-weight: normal;
+  }
+
+  .file:hover {
+    font-weight: bold;
+  }
+
+  #user_profile_photo {
+    border-radius: 15px;
+    padding: 0.5rem;
+    background: $junglegreen;
+    font-family: "Josefin";
   }
 
   #button {
@@ -43,12 +90,13 @@
     width: 100%;
     background: $crayolared;
     border: none;
+    border-radius: 15px;
   }
 
   #button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     font-weight: bold;
-
+    border-radius: 15px;
     font-family: 'Josefin';
     color: white;
     padding: 0.75rem;
@@ -59,22 +107,22 @@
   }
 
   #devise-links {
+    padding: 0.5rem;
     text-align: center;
-
+    border-radius: 15px;
+    background-color: $darkslategreen;
+    border: 5px solid $junglegreen;
     a {
-      color: $bittersweet;
-      font-family: fantasy;
+      margin-top: 2rem;
+      padding: 0.5rem;
+      color: $junglegreen;
+      font-family: "Josefin";
       font-weight: bold;
-      text-shadow: 1px 1px #000000;
       font-size: 15px;
     }
 
     a:hover {
       color: $bittersweet;
-      font-family: fantasy;
-      font-weight: 1600;
-      text-shadow: 1.5px 1.5px #000000;
-      font-size: 15px;
     }
   }
 }

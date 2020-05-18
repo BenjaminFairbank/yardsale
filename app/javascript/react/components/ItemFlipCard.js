@@ -30,6 +30,7 @@ const ItemFlipCard = props => {
             </div>
             <div className="card-item-price">
               <h1>{askingPrice}</h1>
+              <p>{props.item.zip_code}</p>
             </div>
             <div className="card-item-posted">
               <p>Posted {props.timeString}</p>
