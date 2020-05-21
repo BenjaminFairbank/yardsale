@@ -64,7 +64,7 @@ const NewItemForm = props => {
     formPayload.append("item[name]", newItemFormData.name)
     formPayload.append("item[image]", newItemFormData.image)
     formPayload.append("item[description]", newItemFormData.description)
-    formPayload.append("item[asking_price]", newItemFormData.asking_price)
+    formPayload.append("item[asking_price]", parseInt(newItemFormData.asking_price*100))
 
     const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
@@ -120,7 +120,7 @@ const NewItemForm = props => {
           value={newItemFormData.description}
         />
 
-        <label htmlFor="asking_price">Enter the asking price in CENTS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>(ex: enter "4000" for $40.00)</span></label>
+      <label htmlFor="asking_price">What do you want for it? ($USD)</label>
         <input
           type="text"
           name="asking_price"
