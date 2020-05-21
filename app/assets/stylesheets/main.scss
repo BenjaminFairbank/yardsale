@@ -406,7 +406,7 @@ body {
   p {
     text-align: center;
     color: white;
-    background: $bittersweet;
+    background: $junglegreen;
     padding: 0.5rem;
     font-family: "Josefin";
     margin-bottom: 0;
@@ -426,7 +426,7 @@ body {
   label {
     font-family: 'Josefin';
     font-weight: bold;
-    color: $junglegreen;
+    color: $darkslategreen;
   }
 
   em {
@@ -440,7 +440,7 @@ body {
     font-family: 'Josefin';
     color: white;
     padding: 0.75rem;
-    margin-top: 1.75rem;
+    margin-top: 1rem;
     width: 100%;
     background: $crayolared;
     border: none;
@@ -448,7 +448,7 @@ body {
 
   #button:hover {
     font-weight: bold;
-    margin-top: 1.75rem;
+    margin-top: 1rem;
     font-family: 'Josefin';
     color: white;
     padding: 0.75rem;
@@ -470,6 +470,8 @@ body {
       }
 
       .alert {
+        margin-top: 1rem;
+        margin-bottom: 0rem;
         background: $bittersweet;
         border: none;
 
