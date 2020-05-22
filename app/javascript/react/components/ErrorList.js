@@ -15,6 +15,7 @@ const ErrorList = props => {
     })
     return (
       <div className="callout alert">
+        <h3>{errantFields.length} errors prohibited this item from being saved:</h3>
         <ul>{listItems}</ul>
       </div>
     )

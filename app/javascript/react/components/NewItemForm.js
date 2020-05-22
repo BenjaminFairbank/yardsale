@@ -39,7 +39,7 @@ const NewItemForm = props => {
 
   const validForSubmission = () => {
     let submitErrors = {}
-    const requiredFields = ["name", "description", "asking_price"]
+    const requiredFields = ["name", "description", "asking_price", "image"]
     requiredFields.forEach(field => {
       if (newItemFormData[field].trim() === "") {
         submitErrors = {
