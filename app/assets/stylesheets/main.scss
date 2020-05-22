@@ -287,65 +287,63 @@ body {
 }
 
 #user-show-container {
-  padding: 1rem;
   color: $bittersweet;
 
   .user-info {
     text-align: center;
 
     h2 {
-      font-family: 'Josefin';
+      font-family: 'Cutive';
       font-weight: bold;
       font-size: 30px;
     }
   }
 
+  h3 {
+    font-family: 'Josefin';
+    font-weight: bold;
+    font-size: 20px;
+    color: $junglegreen;
+  }
+
+  #user-items-component {
+    text-align: center;
+    #tile-field {
+      padding-top: 1rem;
+    }
+  }
+
   #user-profile-component {
-    width: 100%;
-    height: 495px;
-    overflow: hidden;
-    position: relative;
+    margin: 1.5rem;
 
     .user-show-image {
-      padding: 1.5rem;
-      display:inline-block;
-      width: 450px;
-      height: 450px;
-      position: absolute;
-      width: 50%;
-      top: 0;
-      left: 0;
       text-align: center;
-      display: block;
 
-      img {
+      #img {
         border-radius: 50px;
         border: 5px solid $junglegreen;
         overflow: hidden;
-        text-align: center;
-        width: 430px;
-        height: 430px;
       }
     }
 
     .user-show-details {
-      padding: 1.5rem;
-      display:inline-block;
-      width: 450px;
-      height: 450px;
-      position: absolute;
-      width: 50%;
-      top: 0;
-      right: 0;
+      text-align: center;
+
+      #profile {
+        margin: 1.5rem;
+        padding: 1rem;
+      }
 
       h1 {
         font-family: 'Cutive';
         color: $bittersweet;
+        font-size: 35px;
       }
 
       h5 {
         font-family: 'Josefin';
-        color: $bittersweet;
+        color: $junglegreen;
+        font-weight: bold;
       }
 
       p {
@@ -366,19 +364,6 @@ body {
       a:hover {
         font-weight: bold;
       }
-    }
-  }
-
-  h3 {
-    font-family: 'Josefin';
-    font-weight: bold;
-    font-size: 20px;
-  }
-
-  #user-items-component {
-    text-align: center;
-    #tile-field {
-      padding-top: 1rem;
     }
   }
 }

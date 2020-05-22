@@ -20,21 +20,21 @@ const UserItemsComponent = props => {
 
   let title
   if (props.user.id === props.currentUser.id) {
-    title = `You haven't posted any items!`
+    title = <h3>You have no items posted at the moment</h3>
     if (userItems !== []) {
-      title = `You have posted ${userItems.length} items:`
+      title = <h3>You have {userItems.length} items posted on your lawn:</h3>
     }
   } else {
-    title = `${props.user.user_name} hasn't posted any items`
+    title = <h3>{props.user.user_name} has no items on their lawn at the moment</h3>
     if (userItems !== []) {
-      title = `${props.user.user_name} has posted ${userItems.length} items:`
+      title = <h3>{props.user.user_name} has {userItems.length} items posted on their lawn:</h3>
     }
   }
 
   return (
     <div id="user-items-component">
       <div className="user-items-title">
-        <h3>{title}</h3>
+        {title}
       </div>
       <div id="tile-field" className="grid-x grid-margin-x grid-margin-y">
         {userItems}
