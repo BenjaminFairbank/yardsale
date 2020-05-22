@@ -12,4 +12,5 @@ class User < ApplicationRecord
   has_many :comments
 
   mount_uploader :profile_photo, ProfilePhotoUploader
+  validates_presence_of :profile_photo
 end

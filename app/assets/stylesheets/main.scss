@@ -472,8 +472,17 @@ body {
       .alert {
         margin-top: 1rem;
         margin-bottom: 0rem;
-        background: $bittersweet;
+        background: $khaki;
+        text-align: center;
         border: none;
+
+        h3 {
+          margin-top: 0rem;
+          font-size: 20px;
+          text-align: center;
+          font-family: 'Cutive';
+          color: $darkslategreen;
+        }
 
         li {
           list-style: none;
