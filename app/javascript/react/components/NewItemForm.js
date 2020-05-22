@@ -48,6 +48,30 @@ const NewItemForm = props => {
         }
       }
     });
+    if (newItemFormData["name"].length > 20) {
+      submitErrors = {
+        ...submitErrors,
+        ["name"]: "must be 20 characters or less!"
+      }
+    }
+    if (newItemFormData["description"].length > 200) {
+      submitErrors = {
+        ...submitErrors,
+        ["description"]: "must be 200 characters or less!"
+      }
+    }
+    if (isNaN(newItemFormData["asking_price"])) {
+      submitErrors = {
+        ...submitErrors,
+        ["asking_price"]: "must be a number!"
+      }
+    }
+    if (newItemFormData["asking_price"] > 10000000) {
+      submitErrors = {
+        ...submitErrors,
+        ["asking_price"]: "must be $ 10 million or less!"
+      }
+    }
     setErrors(submitErrors)
     return _.isEmpty(submitErrors)
   }
@@ -87,7 +111,9 @@ const NewItemForm = props => {
         throw error
       }
     })
-    .then(response => response.json())
+    .then(response => {
+      return response.json()
+    })
     .then(body => {
       let item = body
       props.setUserItems([
