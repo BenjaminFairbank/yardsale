@@ -34,12 +34,22 @@ const ItemShowComponent = props => {
     let ifUpdated = "Updated at " + updatedAt
   }
 
-  let askingPrice = parseFloat(props.item.asking_price/100).toFixed(2)
-  if (props.item.asking_price > 99999) {
-    let price = askingPrice
+  let askingPrice = "FREE!"
+  if (props.item.asking_price > 0 && props.item.asking_price < 100000) {
+    askingPrice = "$" + parseFloat(props.item.asking_price/100).toFixed(2)
+  }
+  if (props.item.asking_price >= 100000) {
+    let price = parseInt(props.item.asking_price/100)
+    let aPArray = price.toString().split('')
+    aPArray.splice( -3, 0, ',' )
+    askingPrice = "$" + aPArray.join('')
+  }
+  if (props.item.asking_price >= 100000000) {
+    let price = parseInt(props.item.asking_price/100)
     let aPArray = price.toString().split('')
     aPArray.splice( -6, 0, ',' )
-    askingPrice = aPArray.join('')
+    aPArray.splice( -3, 0, ',' )
+    askingPrice = "$" + aPArray.join('')
   }
 
   return (
@@ -50,7 +60,7 @@ const ItemShowComponent = props => {
       <div className="item-show-details">
         <h1>{props.item.name}</h1>
         <p>{props.item.zip_code}</p>
-        <span>${askingPrice}</span>
+        <span>{askingPrice}</span>
         <p>{props.item.description}</p>
         <br></br>
         <h6>Posted by:</h6>
