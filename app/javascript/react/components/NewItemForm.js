@@ -39,7 +39,7 @@ const NewItemForm = props => {
 
   const validForSubmission = () => {
     let submitErrors = {}
-    const requiredFields = ["name", "description", "asking_price", "image"]
+    const requiredFields = ["name", "description", "asking_price"]
     requiredFields.forEach(field => {
       if (newItemFormData[field].trim() === "") {
         submitErrors = {
@@ -70,6 +70,12 @@ const NewItemForm = props => {
       submitErrors = {
         ...submitErrors,
         ["asking_price"]: "must be $ 10 million or less!"
+      }
+    }
+    if (newItemFormData["image"] === "") {
+      submitErrors = {
+        ...submitErrors,
+        ["photo"]: "must be uploaded"
       }
     }
     setErrors(submitErrors)

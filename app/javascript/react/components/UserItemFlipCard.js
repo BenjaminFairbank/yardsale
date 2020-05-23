@@ -24,12 +24,6 @@ const UserItemFlipCard = props => {
     let aPArray = price.toString().split('')
     askingPrice = "$" + aPArray.join('') + " mil"
   }
-  if (props.item.asking_price >= 100000000000) {
-    let price = parseInt(props.item.asking_price/100000000000)
-    let aPArray = price.toString().split('')
-    askingPrice = "$" + aPArray.join('') + " bil"
-  }
-
 
   return (
     <div id="item-flip-card" className="flip-card">
