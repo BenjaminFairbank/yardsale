@@ -15,15 +15,15 @@ feature 'user signs out', %Q{
 
     visit new_user_session_path
 
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in 'Enter your email:', with: user.email
+    fill_in 'Enter your password:', with: user.password
 
-    click_button 'Log in'
+    click_button 'Log in to YardSale'
 
     expect(page).to have_content('Signed in successfully')
 
     click_link 'Sign Out'
-    expect(page).to have_content('Signed out successfully')
+    expect(page).to have_content('You need to sign in or sign up before continuing.')
   end
 
   scenario 'unauthenticated user attempts to sign out' do
