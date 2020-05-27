@@ -13,9 +13,15 @@ const ErrorList = props => {
         </li>
       )
     })
+
+    let pluralError = "errors"
+    if (errantFields.length === 1) {
+      pluralError = "error"
+    }
+    
     return (
       <div className="callout alert">
-        <h3>{errantFields.length} errors prohibited this item from being saved:</h3>
+        <h3>{errantFields.length} {pluralError} prohibited this item from being saved:</h3>
         <ul>{listItems}</ul>
       </div>
     )

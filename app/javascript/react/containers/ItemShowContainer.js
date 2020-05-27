@@ -44,7 +44,7 @@ const ItemShowContainer = props => {
   }, [])
 
   const fetchPostNewComment = (commentPayload) => {
-    fetch(`/api/v1/items/${itemID}/comments`, {
+    fetch(`/api/v1/comments`, {
       credentials: "same-origin",
       method: "POST",
       body: JSON.stringify(commentPayload),
@@ -110,7 +110,12 @@ const ItemShowContainer = props => {
   return (
     <div id="item-show-container">
       <ItemShowComponent item={item} />
-      <NewCommentForm commentsComponent={commentsComponent} fetchPostNewComment={fetchPostNewComment} />
+      <NewCommentForm
+        currentUser={currentUser}
+        item={item}
+        commentsComponent={commentsComponent}
+        fetchPostNewComment={fetchPostNewComment}
+      />
     </div>
   )
 }

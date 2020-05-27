@@ -13,11 +13,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :items, only: [:index, :show, :create, :destroy] do
-        resources :comments, only: [:index, :create]
-      end
+      resources :items, only: [:index, :show, :create, :destroy]
       resources :users, only: [:show]
-      resources :comments, only: [:destroy]
+      resources :comments, only: [:index, :create, :destroy]
     end
   end
 end
