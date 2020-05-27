@@ -64,50 +64,50 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
   describe "GET#show" do
 
     before(:example) do
-      @user1 = FactoryBot.create(:user)
-      @item1 = FactoryBot.create(:item_with_comments)
+      @user = FactoryBot.create(:user)
+      @item = FactoryBot.create(:item_with_comments)
     end
 
     it "should not show the item if the user is not logged in" do
-      get :show, params: {id: @item1.id}
+      get :show, params: {id: @item.id}
       expect(response.status).to eq(302)
       expect(response).to redirect_to(new_user_session_path)
     end
 
     it "should allow signed in user to view the list of items" do
-      sign_in(@user1)
-      get :show, params: {id: @item1.id}
+      sign_in(@user)
+      get :show, params: {id: @item.id}
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq ("application/json")
     end
 
     it "returns the item" do
-      sign_in(@user1)
-      get :show, params: {id: @item1.id}
+      sign_in(@user)
+      get :show, params: {id: @item.id}
 
       returned_json = JSON.parse(response.body)
 
-      expect(returned_json["item"]["name"]).to eq @item1.name
-      expect(returned_json["item"]["description"]).to eq @item1.description
-      expect(returned_json["item"]["asking_price"]).to eq @item1.asking_price
+      expect(returned_json["item"]["name"]).to eq @item.name
+      expect(returned_json["item"]["description"]).to eq @item.description
+      expect(returned_json["item"]["asking_price"]).to eq @item.asking_price
     end
 
     it "returns the current user" do
-      sign_in(@user1)
-      get :show, params: {id: @item1.id}
+      sign_in(@user)
+      get :show, params: {id: @item.id}
 
       returned_json = JSON.parse(response.body)
 
-      expect(returned_json["current"]["email"]).to eq @user1.email
-      expect(returned_json["current"]["user_name"]).to eq @user1.user_name
-      expect(returned_json["current"]["zip_code"]).to eq @user1.zip_code
-      expect(returned_json["current"]["email"]).to eq @user1.email
+      expect(returned_json["current"]["email"]).to eq @user.email
+      expect(returned_json["current"]["user_name"]).to eq @user.user_name
+      expect(returned_json["current"]["zip_code"]).to eq @user.zip_code
+      expect(returned_json["current"]["email"]).to eq @user.email
     end
 
     it "returns the item's comments" do
-      sign_in(@user1)
-      get :show, params: {id: @item1.id}
+      sign_in(@user)
+      get :show, params: {id: @item.id}
 
       returned_json = JSON.parse(response.body)
 
@@ -118,7 +118,7 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
   describe "POST#create" do
 
     before(:example) do
-      @user1 = FactoryBot.create(:user)
+      @user = FactoryBot.create(:user)
 
       @post_json = {
         item: {
@@ -130,7 +130,7 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       }
     end
 
-    it "should not show the item if the user is not logged in" do
+    it "should not create the item if the user is not logged in" do
 
       post :create, params: @post_json, format: :json
       expect(response.status).to eq(401)
@@ -141,13 +141,13 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
 
       prev_count = Item.count
 
-      sign_in(@user1)
+      sign_in(@user)
       post :create, params: @post_json, format: :json
       expect(Item.count).to eq(prev_count + 1)
     end
 
-    it "returns the json of the newly posted game" do
-      sign_in(@user1)
+    it "returns the json of the newly posted item" do
+      sign_in(@user)
       post :create, params: @post_json
       returned_json = JSON.parse(response.body)
       expect(response.status).to eq 200
@@ -172,7 +172,7 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       }
 
       prev_count = Item.count
-      sign_in(@user1)
+      sign_in(@user)
       post(:create, params: post_json)
       returned_json = JSON.parse(response.body)
 
@@ -181,6 +181,43 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
 
       expect(returned_json["error"]).to eq "Name can't be blank, Description can't be blank, Asking price can't be blank, Asking price is not a number, and Image can't be blank"
       expect(Item.count).to eq(prev_count)
+    end
+  end
+
+  describe "DELETE#destroy" do
+
+    before(:example) do
+      user = FactoryBot.create(:user)
+      @item = FactoryBot.create(:item)
+      user.items << @item
+      @user = user
+    end
+
+    it "should not delete the item if the user is not logged in" do
+      delete :destroy, params: {id: @item.id}, format: :json
+      expect(response.status).to eq(401)
+      expect(JSON.parse(response.body)["error"]).to eq("You need to sign in or sign up before continuing.")
+    end
+
+    it "deletes the the item" do
+      sign_in(@user)
+      prev_count = Item.count
+      delete :destroy, params: {id: @item.id}, format: :json
+      expect(Item.count).to eq(prev_count - 1)
+    end
+
+    it "returns an updated list of the users items" do
+      prev_count = @user.items.length
+
+      sign_in(@user)
+      delete :destroy, params: {id: @item.id}, format: :json
+
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+
+      expect(returned_json.length).to eq(prev_count - 1)
     end
   end
 end

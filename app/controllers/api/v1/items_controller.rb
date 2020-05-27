@@ -40,7 +40,7 @@ class Api::V1::ItemsController < ApplicationController
     item = Item.find(params[:id])
     user = item.user
     item.delete
-    render json: user
+    render json: user.items
   end
 
   private
