@@ -5,7 +5,9 @@ import ErrorList from "./ErrorList"
 const NewCommentForm = props => {
 
   const defaultFormData = {
-    body: ""
+    body: "",
+    user_id: "",
+    item_id: ""
   }
 
   const [newCommentFormData, setNewCommentFormData] = useState(defaultFormData)
@@ -20,7 +22,9 @@ const NewCommentForm = props => {
     event.preventDefault()
     setNewCommentFormData({
       ...newCommentFormData,
-      [event.currentTarget.id]: event.currentTarget.value
+      [event.currentTarget.id]: event.currentTarget.value,
+      ["user_id"]: props.currentUser.id,
+      ["item_id"]: props.item.id
     })
   }
 
@@ -34,15 +38,12 @@ const NewCommentForm = props => {
 
   const validForSubmission = () => {
     let submitErrors = {}
-    const requiredFields = ["body"]
-    requiredFields.forEach(field => {
-      if (newCommentFormData[field].trim() === "") {
-        submitErrors = {
-          ...submitErrors,
-          [field]: "is blank!"
-        }
+    if (newCommentFormData["body"].trim() === "") {
+      submitErrors = {
+        ...submitErrors,
+        ["comment"]: "can't be blank!"
       }
-    });
+    }
     setErrors(submitErrors)
     return _.isEmpty(submitErrors)
   }

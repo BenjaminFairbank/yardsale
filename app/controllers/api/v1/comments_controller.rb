@@ -6,11 +6,8 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def create
-    item = Item.find(params[:item_id])
     comment = Comment.new(comment_params)
-    comment.user = current_user
-    comment.item = item
-
+    
     if comment.save
       render json: comment
     else
@@ -28,6 +25,6 @@ class Api::V1::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body, :user_id, :item_id)
   end
 end
