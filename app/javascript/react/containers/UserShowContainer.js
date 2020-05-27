@@ -52,7 +52,7 @@ const UserShowContainer = props => {
     })
     .then(response => response.json())
     .then(body => {
-      setUserItems(body.items)
+      setUserItems(body)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
