@@ -1,6 +1,7 @@
 require 'factory_bot'
 
 FactoryBot.define do
+
   factory :user do
     sequence(:email) {|n| "user#{n}@example.com" }
     sequence(:user_name) { |n| "user#{n}" }
@@ -10,7 +11,6 @@ FactoryBot.define do
     profile_photo { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/images/photo.png'), 'image/png') }
 
     factory :user_with_items do
-
       transient do
         items_count { 5 }
       end
@@ -31,7 +31,6 @@ FactoryBot.define do
     image { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/images/photo.png'), 'image/png') }
 
     factory :item_with_comments do
-
       transient do
         comments_count { 5 }
       end

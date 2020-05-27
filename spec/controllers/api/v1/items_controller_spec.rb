@@ -114,4 +114,73 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       expect(returned_json["comments"].length).to eq 5
     end
   end
+
+  describe "POST#create" do
+
+    before(:example) do
+      @user1 = FactoryBot.create(:user)
+
+      @post_json = {
+        item: {
+          name: "I'm a robot.",
+          description: "This is the most boring description I have ever wrote but It's almost just about long enought to simulate the real thing.  There we go.",
+          asking_price: 5000,
+          image: Rack::Test::UploadedFile.new(Rails.root.join('spec/support/images/photo.png'), 'image/png'),
+        }
+      }
+    end
+
+    it "should not show the item if the user is not logged in" do
+
+      post :create, params: @post_json, format: :json
+      expect(response.status).to eq(401)
+      expect(JSON.parse(response.body)["error"]).to eq("You need to sign in or sign up before continuing.")
+    end
+
+    it "posts a new item upon successful completion of the form" do
+
+      prev_count = Item.count
+
+      sign_in(@user1)
+      post :create, params: @post_json, format: :json
+      expect(Item.count).to eq(prev_count + 1)
+    end
+
+    it "returns the json of the newly posted game" do
+      sign_in(@user1)
+      post :create, params: @post_json
+      returned_json = JSON.parse(response.body)
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+
+      expect(returned_json).to be_kind_of(Hash)
+      expect(returned_json).to_not be_kind_of(Array)
+      expect(returned_json["name"]).to eq "I'm a robot."
+      expect(returned_json["description"]).to eq "This is the most boring description I have ever wrote but It's almost just about long enought to simulate the real thing.  There we go."
+      expect(returned_json["asking_price"]).to eq 5000
+      expect(returned_json["image"]["url"]).to eq "/uploads/item/image/22/photo.png"
+    end
+
+    it "gives errors when the fields are incorrectly filled in" do
+      post_json = {
+        item: {
+          name: "",
+          description: "",
+          asking_price: "",
+          image: ""
+        }
+      }
+
+      prev_count = Item.count
+      sign_in(@user1)
+      post(:create, params: post_json)
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+
+      expect(returned_json["error"]).to eq "Name can't be blank, Description can't be blank, Asking price can't be blank, Asking price is not a number, and Image can't be blank"
+      expect(Item.count).to eq(prev_count)
+    end
+  end
 end
