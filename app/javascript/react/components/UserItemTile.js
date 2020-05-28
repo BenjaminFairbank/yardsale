@@ -40,7 +40,7 @@ const UserItemTile = props => {
   }
 
   let deleteButton
-  if (props.user.id === props.currentUser.id) {
+  if (props.user.id === props.currentUser.id || props.currentUser.role === "admin") {
     deleteButton = <div id="item-delete-button"><input
       id="button"
       type="button"

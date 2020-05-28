@@ -11,7 +11,7 @@ const CommentTile = props => {
   }
 
   let deleteButton
-  if (props.comment.user_id === props.currentUser.id) {
+  if (props.comment.user_id === props.currentUser.id || props.currentUser.role === "admin") {
     deleteButton = <input id="button" type="button" onClick={onClickHandler} value="Unsay" />
   }
 
