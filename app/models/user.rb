@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :user_name, presence: true, uniqueness: true
+  validates :role, presence: true
   validates :zip_code, presence: true
   validates :profile_photo, presence: true
 
@@ -13,4 +14,8 @@ class User < ApplicationRecord
 
   mount_uploader :profile_photo, ProfilePhotoUploader
   validates_presence_of :profile_photo
+
+  def admin?
+    role == "admin"
+  end
 end
