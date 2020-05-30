@@ -131,9 +131,9 @@ const NewItemForm = props => {
   }
 
   return (
-    <div id="new-item-form">
-      <form id="form" onSubmit={onSubmitHandler}>
+    <form className="grid-x" id="form" onSubmit={onSubmitHandler}>
 
+      <div className="input-box cell small-12 medium-6 large-6">
         <label htmlFor="name">What is it?</label>
         <input
           type="text"
@@ -151,8 +151,10 @@ const NewItemForm = props => {
           onChange={handleChange}
           value={newItemFormData.description}
         />
+      </div>
 
-      <label htmlFor="asking_price">What do you want for it? ($USD)</label>
+      <div className="input-box cell small-12 medium-6 large-6">
+        <label htmlFor="asking_price">What do you want for it? ($USD)</label>
         <input
           type="text"
           name="asking_price"
@@ -167,7 +169,7 @@ const NewItemForm = props => {
             <section>
               <div {...getRootProps()}>
                 <input {...getInputProps()} />
-                <p>Click here to upload a photo of the item or simply drop it here</p>
+                <p>Click or drop here to upload a photo</p>
               </div>
             </section>
           )}
@@ -180,8 +182,9 @@ const NewItemForm = props => {
           type="submit"
           value="Put the new item out on your lawn!"
         />
-      </form>
-    </div>
+      </div>
+
+    </form>
   )
 }
 

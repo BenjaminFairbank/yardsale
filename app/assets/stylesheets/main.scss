@@ -37,7 +37,6 @@ body {
   #power-box {
     margin-top: 30px;
     border-radius: 20px;
-    border: 3px solid $junglegreen;
     overflow: hidden;
     padding-bottom: 0;
   }
@@ -377,89 +376,97 @@ body {
   }
 }
 
-#new-item-form-container {
+#new-item-form {
   background: $khaki;
-  margin: 2rem auto;
-  padding: 2rem 3rem;
-  width: 600px;
-  border-radius: 20px;
+  margin-bottom: 0;
 
-  input {
-    border-radius: 10px;
-  }
-
-  textarea {
-    border-radius: 10px;
-  }
-
-  div {
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-  p {
-    text-align: center;
-    color: white;
-    background: $junglegreen;
-    padding: 0.5rem;
-    font-family: "Josefin";
-    margin-bottom: 0;
-  }
-
-  p:hover {
-    font-weight: bold;
-  }
-
-  h1 {
-    text-align: center;
-    font-family: 'Cutive';
-    font-weight: bold;
-    color: $junglegreen;
-  }
-
-  label {
-    font-family: 'Josefin';
-    font-weight: bold;
-    color: $darkslategreen;
-  }
-
-  em {
-    color: $crayolared;
-    font-family: fantasy;
-    font-weight: bold;
-    font-size: 15px;
-  }
-
-  #button {
-    font-family: 'Josefin';
-    color: white;
-    padding: 0.75rem;
-    margin-top: 1rem;
+  #new-item-form-container {
+    background: $khaki;
+    margin: 2rem auto;
+    padding: 2rem 3rem;
     width: 100%;
-    background: $crayolared;
-    border: none;
-  }
+    border-radius: 20px;
 
-  #button:hover {
-    font-weight: bold;
-    margin-top: 1rem;
-    font-family: 'Josefin';
-    color: white;
-    padding: 0.75rem;
-    width: 100%;
-    background: $crayolared;
-    border: none;
-  }
+    input {
+      border-radius: 10px;
+    }
 
-  #new-item-form {
+    textarea {
+      border-radius: 10px;
+    }
+
+    div {
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    p {
+      text-align: center;
+      color: white;
+      background: $junglegreen;
+      padding: 0.5rem;
+      font-family: "Josefin";
+      margin-bottom: 0;
+    }
+
+    p:hover {
+      font-weight: bold;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: 'Cutive';
+      font-weight: bold;
+      color: $junglegreen;
+    }
+
+    label {
+      font-family: 'Josefin';
+      font-weight: bold;
+      color: $darkslategreen;
+    }
+
+    em {
+      color: $crayolared;
+      font-family: fantasy;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    #button {
+      font-family: 'Josefin';
+      color: white;
+      padding: 0.75rem;
+      margin-top: 1rem;
+      width: 100%;
+      background: $crayolared;
+      border: none;
+    }
+
+    #button:hover {
+      font-weight: bold;
+      margin-top: 1rem;
+      font-family: 'Josefin';
+      color: white;
+      padding: 0.75rem;
+      width: 100%;
+      background: $crayolared;
+      border: none;
+    }
 
     #form {
+
+      .input-box {
+        padding:0.75rem;
+      }
+
       span {
         text-align: right;
       }
 
       textarea {
         resize: vertical;
+        min-height: 100px;
         max-height: 200px;
       }
 
@@ -487,7 +494,6 @@ body {
 
         li:nth-child(n)::before {
           content: "❌ ";
-
         }
       }
     }
