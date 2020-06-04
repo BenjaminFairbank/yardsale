@@ -52,8 +52,8 @@ const NewCommentForm = props => {
     <>
       <div id="new-comment-form">
         {props.commentsComponent}
-        <h1>Leave a comment</h1>
-        <p>If you a leave a comment, the item's owner will be able to see your email address, <br /> and may contact you if they like what you have to say.</p>
+        <h1><span>If you are interested...</span><br />Leave a comment!</h1>
+        <p>The item's owner will see your email address below your comment,<br />and <span>may contact you</span> if they are interested in making an exchange.</p>
 
         <ErrorList errors={errors} />
 
@@ -70,7 +70,7 @@ const NewCommentForm = props => {
           <input
             id="button"
             type="submit"
-            value="Tell 'em how you REALLY feel!"
+            value="Add your comment"
           />
 
         </form>
