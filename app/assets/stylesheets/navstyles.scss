@@ -41,17 +41,21 @@
           list-style: none;
           font-family: 'Cutive';
           font-weight: bold;
-          color: $khaki;
           margin-top: 10px;
 
           a {
             color: $crayolared;
+          }
+
+          a:hover {
+            color: $junglegreen;
           }
         }
       }
     }
 
     .profile-thumb {
+      border: 2px solid $junglegreen;
       border-radius: 15px;
       overflow: hidden;
       padding-bottom: 0.1rem;
