@@ -56,7 +56,9 @@ body {
       #button1 {
         margin-top: 2px;
         border: 1px solid $junglegreen;
-        border-radius: 20px 20px 0 0;
+        border-bottom: 1px solid $darkslategreen;
+        border-left: 0;
+        border-radius: 25px 25px 0 0;
         font-size: 20px;
         color: white;
         font-family: 'Josefin';
@@ -74,7 +76,8 @@ body {
       #button2 {
         margin-top: 2px;
         border: 1px solid $junglegreen;
-        border-radius: 20px 20px 0 0;
+        border-bottom: 1px solid $darkslategreen;
+        border-radius: 25px 25px 0 0;
         font-size: 20px;
         color: white;
         font-family: 'Josefin';
@@ -92,7 +95,9 @@ body {
       #button3 {
         margin-top: 2px;
         border: 1px solid $junglegreen;
-        border-radius: 20px 20px 0 0;
+        border-bottom: 1px solid $darkslategreen;
+        border-right: 0;
+        border-radius: 25px 25px 0 0;
         font-size: 20px;
         color: white;
         font-family: 'Josefin';
@@ -128,7 +133,7 @@ body {
           margin: 0;
           width: 100%;
           border: none;
-          border-radius: 0 0 20px 20px;
+          border-radius: 0 0 25px 25px;
           background: $crayolared;
         }
 
