@@ -10,9 +10,14 @@ const CommentTile = props => {
     props.fetchDeleteComment(commentID)
   }
 
+  let usersItemsIds = []
+  props.currentUser.items.forEach((item) => {
+    usersItemsIds.push(item.id)
+  })
+
   let deleteButton
-  if (props.comment.user_id === props.currentUser.id || props.currentUser.role === "admin") {
-    deleteButton = <input id="button" type="button" onClick={onClickHandler} value="Unsay" />
+  if (props.comment.user_id === props.currentUser.id || props.currentUser.role === "admin" || usersItemsIds.includes(props.comment.item.id)) {
+    deleteButton = <input id="button" type="button" onClick={onClickHandler} value="Delete Comment" />
   }
 
   const timestampConverter = (timestamp) => {

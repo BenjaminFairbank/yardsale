@@ -53,11 +53,13 @@ const ItemShowComponent = props => {
   }
 
   return (
-    <div id="item-show-component">
-      <div className="item-show-image">
+    <div id="item-show-component" className="grid-x">
+
+      <div className="item-show-image cell small-12 medium-6 large-6">
         <img src={props.item.image.url}></img>
       </div>
-      <div className="item-show-details">
+
+      <div className="item-show-details cell small-12 medium-6 large-6">
         <h1>{props.item.name}</h1>
         <p>{props.item.zip_code}</p>
         <span>{askingPrice}</span>
@@ -67,6 +69,7 @@ const ItemShowComponent = props => {
         <Link to={`../users/${props.item.user.id}`}>{props.item.user.user_name}</Link>
         <h6>{createdAt}</h6>
       </div>
+      
     </div>
   )
 }
