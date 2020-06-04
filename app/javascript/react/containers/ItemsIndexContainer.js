@@ -49,13 +49,13 @@ const ItemsIndexContainer = props => {
       <div className="grid-container">
         <div id="power-box">
           <Weather weatherData={weatherData} />
-          <ItemSearchComponent
-            setSearch={setSearch}
+          <ItemsTabComponent
+            currentUser={currentUser}
             items={items}
             setDisplayedItems={setDisplayedItems}
           />
-          <ItemsTabComponent
-            currentUser={currentUser}
+          <ItemSearchComponent
+            setSearch={setSearch}
             items={items}
             setDisplayedItems={setDisplayedItems}
           />

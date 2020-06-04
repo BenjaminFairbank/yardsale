@@ -54,7 +54,7 @@ const ItemSearchComponent = props => {
         />
 
         <input id="button" type="submit" value="Search the Yard" />
-        
+
       </form>
     </div>
   )
