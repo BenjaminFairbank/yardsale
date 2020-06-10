@@ -54,9 +54,14 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
 
       returned_json = JSON.parse(response.body)
 
-      expect(returned_json["weather"].length).to eq 13
-      expect(returned_json["weather"]["name"]).to eq "Boston"
-      expect(returned_json["weather"]["sys"]["country"]).to eq "US"
+      expect(returned_json["weather"]).to have_key("name")
+      expect(returned_json["weather"]["sys"]).to have_key("country")
+      expect(returned_json["weather"]["weather"][0]).to have_key("description")
+      expect(returned_json["weather"]["main"]).to have_key("temp")
+      expect(returned_json["weather"]["main"]).to have_key("humidity")
+      expect(returned_json["weather"]["wind"]).to have_key("speed")
+      expect(returned_json["weather"]["wind"]).to have_key("deg")
+      expect(returned_json["weather"]["clouds"]).to have_key("all")
     end
   end
 
