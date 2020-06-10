@@ -75,7 +75,7 @@ const NewItemForm = props => {
     if (newItemFormData["image"] === "") {
       submitErrors = {
         ...submitErrors,
-        ["photo"]: "must be uploaded"
+        ["photo"]: "must be uploaded!"
       }
     }
     setErrors(submitErrors)
