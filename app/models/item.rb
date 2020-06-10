@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   validates :name,          presence: true, length: { maximum: 20 }
   validates :description,   presence: true, length: { maximum: 200 }
