@@ -12,26 +12,21 @@
     <div class="cell small-12 medium-7 large-8">
       <h1><a href="/">YardSale</a></h1>
     </div>
+    <%- if current_user -%>
     <div class="cell small-12 medium-5 large-4">
       <section class="top-bar-section">
         <div class="nav-dev-links">
           <ul class="right">
-            <%- if current_user -%>
             <li><%= link_to 'My Lawn', "/users/#{current_user.id}"%></li>
             <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-            <%- else -%>
-            <li><%= link_to 'Sign In', new_user_session_path %></li>
-            <li><%= link_to 'Create Account', new_user_registration_path %></li>
-            <%- end -%>
           </ul>
         </div>
-        <%- if current_user -%>
         <div class="profile-thumb">
           <%= link_to image_tag(current_user.profile_photo.url), "/users/#{current_user.id}"%>
         </div>
-        <%- end -%>
       </section>
     </div>
+    <%- end -%>
   </nav>
 
   <%- flash.each do |key, value| -%>

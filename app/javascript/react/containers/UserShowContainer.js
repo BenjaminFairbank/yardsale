@@ -74,7 +74,7 @@ const UserShowContainer = props => {
   return (
     <div id="user-show-container">
       <div className="user-info">
-        <UserProfileComponent user={user} />
+        <UserProfileComponent user={user} currentUser={currentUser} />
         {adminLink}
         <h2>{user.user_name}'s Lawn</h2>
       </div>

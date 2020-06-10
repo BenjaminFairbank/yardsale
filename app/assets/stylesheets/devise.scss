@@ -3,13 +3,56 @@
 
 #devise-log-in {
   background: $khaki;
-  margin: 2rem auto;
   padding: 2rem 3rem;
-  width: 450px;
-  border-radius: 25px;
+  width: 100%;
+
+  .button_to {
+    text-align: center;
+
+    input {
+      background: $crayolared;
+      border: 0;
+      padding: 1rem;
+      color: white;
+      font-family: 'Josefin';
+    }
+
+    input:hover {
+      font-weight: bold;
+      color: $crayolared;
+      background: $bittersweet;
+    }
+  }
+
+  p {
+    color: $crayolared;
+    text-align: center;
+    font-family: 'Josefin';
+    font-size: 20px;
+  }
+
+  i {
+    font-family: 'Cutive';
+    color: $crayolared;
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+  .current-password-edit-page {
+    margin-bottom: 1.7rem;
+  }
+
+  #error_explanation {
+    margin: auto;
+  }
+
+  .cell {
+    padding: 0 1rem;
+  }
 
   textarea {
-    max-height: 200px;
+    min-height: 85px;
+    max-height: 100px;
     resize: vertical;
     border-radius: 15px;
   }
@@ -113,6 +156,8 @@
     border-radius: 15px;
     background-color: $darkslategreen;
     border: 5px solid $junglegreen;
+    margin: 1.5rem 1rem 1rem 1rem;
+
     a {
       margin-top: 2rem;
       padding: 0.5rem;
