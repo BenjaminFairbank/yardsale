@@ -7,6 +7,11 @@ const UserProfileComponent = props => {
     img = <img id="img" src={props.user.profile_photo.url}></img>
   }
 
+  let editLink = ""
+  if (props.user.id === props.currentUser.id) {
+    editLink = <a href="/users/edit" className="edit-link">Edit profile</a>
+  }
+
   return (
     <div id="user-profile-component" className="grid-x">
 
@@ -20,6 +25,7 @@ const UserProfileComponent = props => {
           <h5>{props.user.zip_code}</h5>
           <h5>{props.user.blurb}</h5>
         </div>
+        {editLink}
       </div>
 
     </div>

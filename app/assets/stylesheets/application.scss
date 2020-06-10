@@ -16,9 +16,12 @@
 
  */
 
- @import 'main';
+ @import 'colors';
+ @import 'fonts';
  @import 'devise';
  @import 'navstyles';
  @import 'flipcard';
- @import 'colors';
- @import 'fonts';
+ @import 'main';
+ @import 'items-index';
+ @import 'item-show';
+ @import 'user-show';
