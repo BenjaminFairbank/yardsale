@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 
 import UserItemsComponent from '../components/UserItemsComponent'
 import NewItemFormComponent from '../components/NewItemFormComponent'
@@ -66,19 +65,16 @@ const UserShowContainer = props => {
     />
   }
 
-  let adminLink
-  if (currentUser.role === "admin") {
-    adminLink = <Link to="/admin">ADMIN'S DECK</Link>
-  }
-
   return (
     <div id="user-show-container">
       <div className="user-info">
-        <UserProfileComponent user={user} currentUser={currentUser} />
-        {adminLink}
-        <h2>{user.user_name}'s Lawn</h2>
+        <UserProfileComponent
+          user={user}
+          currentUser={currentUser}
+        />
       </div>
       <div>
+        <h2>{user.user_name}'s Lawn</h2>
         <UserItemsComponent
           userItems={userItems}
           fetchDeleteItem={fetchDeleteItem}

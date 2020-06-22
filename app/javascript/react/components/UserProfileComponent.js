@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import { Link } from 'react-router-dom'
 
 const UserProfileComponent = props => {
 
@@ -12,6 +13,11 @@ const UserProfileComponent = props => {
     editLink = <a href="/users/edit" className="edit-link">Edit profile</a>
   }
 
+  let adminLink
+  if (props.currentUser.role === "admin") {
+    adminLink = <><br /><Link to="/admin" className="admin-link">ADMIN'S DECK</Link></>
+  }
+
   return (
     <div id="user-profile-component" className="grid-x">
 
@@ -20,12 +26,18 @@ const UserProfileComponent = props => {
       </div>
 
       <div className="user-show-details cell small-12 medium-6 large-6">
+
         <div id="profile">
           <h1>{props.user.user_name}</h1>
           <h5>{props.user.zip_code}</h5>
           <h5>{props.user.blurb}</h5>
         </div>
-        {editLink}
+
+        <div className="profile-links">
+          {editLink}
+          {adminLink}
+        </div>
+
       </div>
 
     </div>
