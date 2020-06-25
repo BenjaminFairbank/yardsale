@@ -10,6 +10,7 @@ const ItemsIndexContainer = props => {
   const [currentUser, setCurrentUser] = useState({})
   const [weatherData, setWeatherData] = useState({})
   const [search, setSearch] = useState({search: ""})
+  const [searchMessage, setSearchMessage] = useState(false)
   const [items, setItems] = useState([])
   const [displayedItems, setDisplayedItems] = useState([])
 
@@ -58,9 +59,14 @@ const ItemsIndexContainer = props => {
             setSearch={setSearch}
             items={items}
             setDisplayedItems={setDisplayedItems}
+            setSearchMessage={setSearchMessage}
           />
         </div>
-        <ItemsDisplayComponent search={search} items={displayedItems} />
+        <ItemsDisplayComponent
+          search={search}
+          items={displayedItems}
+          searchMessage={searchMessage}
+        />
       </div>
     </div>
   )
