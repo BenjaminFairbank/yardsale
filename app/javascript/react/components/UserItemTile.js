@@ -39,13 +39,20 @@ const UserItemTile = props => {
     }
   }
 
+  let deleteButtonLabel = ""
+  if (props.user.id === props.currentUser.id) {
+    deleteButtonLabel = "Get it off my lawn!"
+  } else if (props.currentUser.role === "admin") {
+    deleteButtonLabel = `Delete ${props.user.user_name}'s Item`
+  }
+
   let deleteButton
   if (props.user.id === props.currentUser.id || props.currentUser.role === "admin") {
     deleteButton = <div id="item-delete-button"><input
       id="button"
       type="button"
       onClick={onClickHandler}
-      value="Get it off my lawn!"
+      value={deleteButtonLabel}
     /></div>
   }
 

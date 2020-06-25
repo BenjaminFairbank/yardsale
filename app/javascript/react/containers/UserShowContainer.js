@@ -9,6 +9,7 @@ const UserShowContainer = props => {
   const [user, setUser] = useState({})
   const [userItems, setUserItems] = useState([])
   const [currentUser, setCurrentUser] = useState({})
+  const [deleteError, setDeleteError] = useState("")
 
   const userID = props.match.params.id
 
@@ -52,7 +53,11 @@ const UserShowContainer = props => {
     })
     .then(response => response.json())
     .then(body => {
-      setUserItems(body)
+      if (body.error) {
+        setDeleteError(body.error)
+      } else {
+        setUserItems(body)
+      }
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
@@ -78,8 +83,10 @@ const UserShowContainer = props => {
         <UserItemsComponent
           userItems={userItems}
           fetchDeleteItem={fetchDeleteItem}
+          deleteError={deleteError}
           user={user}
-          currentUser={currentUser}/>
+          currentUser={currentUser}
+        />
       </div>
       <div id="new-item-form">
         {newItemForm}
