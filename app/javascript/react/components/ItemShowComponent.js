@@ -60,16 +60,23 @@ const ItemShowComponent = props => {
       </div>
 
       <div className="item-show-details cell small-12 medium-6 large-6">
-        <h1>{props.item.name}</h1>
-        <p>{props.item.zip_code}</p>
-        <span>{askingPrice}</span>
-        <p>{props.item.description}</p>
-        <br></br>
-        <h6>Posted by:</h6>
-        <Link to={`../users/${props.item.user.id}`}>{props.item.user.user_name}</Link>
-        <h6>{createdAt}</h6>
+
+        <div>
+          <h1>{props.item.name}</h1>
+          <p>{props.item.zip_code}</p>
+          <span>{askingPrice}</span>
+          <p>{props.item.description}</p>
+          <br />
+        </div>
+
+        <div>
+          <h6>Posted by:</h6>
+          <Link to={`../users/${props.item.user.id}`}>{props.item.user.user_name}</Link>
+          <h6>{createdAt}</h6>
+        </div>
+
       </div>
-      
+
     </div>
   )
 }
