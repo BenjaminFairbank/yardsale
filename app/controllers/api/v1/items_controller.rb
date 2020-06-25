@@ -40,8 +40,13 @@ class Api::V1::ItemsController < ApplicationController
   def destroy
     item = Item.find(params[:id])
     user = item.user
-    item.delete
-    render json: user.items
+
+    if user.id === current_user.id || current_user.admin?
+      item.delete
+      render json: user.items
+    else
+      render json: {error: "You are not authorized to delete this item!"}
+    end
   end
 
   protected
