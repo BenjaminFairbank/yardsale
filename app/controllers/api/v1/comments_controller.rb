@@ -19,8 +19,15 @@ class Api::V1::CommentsController < ApplicationController
   def destroy
     comment = Comment.find(params[:id])
     item = comment.item
-    comment.delete
-    render json: item.comments
+    author = comment.user
+    item_owner = item.user
+
+    if author.id === current_user.id || item_owner.id === current_user.id || current_user.admin?
+      comment.delete
+      render json: item.comments
+    else
+      render json: {error: "You are not authorized to delete this comment!"}
+    end
   end
 
   protected

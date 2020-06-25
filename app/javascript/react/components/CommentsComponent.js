@@ -21,6 +21,7 @@ const CommentsComponent = props => {
   return (
     <div id="comments-container">
       <h1>Comments</h1>
+      <h3>{props.deleteError}</h3>
       {commentList}
     </div>
   )

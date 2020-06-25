@@ -7,6 +7,7 @@ import NewCommentForm from '../components/NewCommentForm'
 const ItemShowContainer = props => {
 
   const [comments, setComments] = useState([])
+  const [deleteError, setDeleteError] = useState("")
   const [currentUser, setCurrentUser] = useState({})
   const [item, setItem] = useState({
     name: "",
@@ -93,7 +94,11 @@ const ItemShowContainer = props => {
     })
     .then(response => response.json())
     .then(body => {
-      setComments(body)
+      if (body.error) {
+        setDeleteError(body.error)
+      } else {
+        setComments(body)
+      }
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
@@ -104,6 +109,7 @@ const ItemShowContainer = props => {
       comments={comments}
       currentUser={currentUser}
       fetchDeleteComment={fetchDeleteComment}
+      deleteError={deleteError}
     />
   }
 
