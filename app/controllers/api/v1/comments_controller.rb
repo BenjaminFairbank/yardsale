@@ -1,5 +1,4 @@
 class Api::V1::CommentsController < ApplicationController
-  # before_action :authorize_user, except: [:index, :show]
 
   def index
     item = Item.find(params[:item_id])
@@ -34,12 +33,5 @@ class Api::V1::CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:body, :user_id, :item_id)
-  end
-
-  def authorize_user
-    if !user_signed_in || !current_user.admin?
-      flash[:notice] = "You do not have access to this page."
-      redirect_to new_user_session_path
-    end
   end
 end
