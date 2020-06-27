@@ -13,7 +13,7 @@ const UserProfileComponent = props => {
   if (props.user.id === props.currentUser.id) {
     editLink = <a href="/users/edit" className="edit-link">Edit profile</a>
     if (props.currentUser.role === "admin") {
-      adminLink = <><br /><Link to="/admin" className="admin-link">ADMIN'S DECK</Link></>
+      adminLink = <><br /><a href="/admins" className="admin-link">VIP SECTION</a></>
     }
   }
 
