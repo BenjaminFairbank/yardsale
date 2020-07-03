@@ -1,0 +1,48 @@
+@import 'fonts';
+@import 'colors';
+
+#admin-page {
+  background: $khaki;
+  padding: 2rem;
+
+  h1 {
+    color: $crayolared;
+    text-align: center;
+    font-family: 'Lobster';
+    margin-bottom: 2rem;
+  }
+
+  .users {
+    margin: 0 3rem;
+
+    .user {
+      background: $darkslategreen;
+      border: 3px solid $junglegreen;
+      border-radius: 12px;
+      padding: 1rem 1rem 3.3rem 1rem;
+      margin: 1rem 0;
+
+      .user-name {
+        float: left;
+
+        h4 {
+          padding-top: 0.25rem;
+          color: $bittersweet;
+          font-family: 'Cutive';
+        }
+      }
+
+      .user-delete {
+        float: right;
+
+        .button {
+          height: 1rem;
+          padding-bottom: 1.5rem;
+          background: $crayolared;
+          border-radius: 5px;
+          font-family: "Josefin";
+        }
+      }
+    }
+  }
+}
