@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   get '/items/:id', to: 'homes#index'
   get '/users/:id', to: 'homes#index'
 
-  resources :users, only: [:index, :destroy]
+  namespace :admin do
+    resources :users, only: [:index, :show, :destroy]
+    resources :items, only: [:destroy]
+    resources :comments, only: [:destroy]
+  end
 
   namespace :api do
     namespace :v1 do
