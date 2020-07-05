@@ -1,0 +1,40 @@
+<div id=admin-page>
+  <h1>Admin's page</h1>
+
+  <div class="users">
+    <% @users.each do |user| %>
+
+      <div class="user">
+
+        <div class="user-name">
+          <h4>
+            <a href=<%= "../users/#{user.id}" %>>
+              <%= user.user_name %>
+            </a>
+          </h4>
+        </div>
+
+        <div class="buttons">
+          <div class="user-content">
+            <%= link_to "Review User Content",
+              admin_user_path(:id => user.id),
+              :method => :get,
+              :class=> "button"
+            %>
+          </div>
+
+          <div class="user-delete">
+            <%= button_to "Delete User Account",
+              admin_user_path(:id => user.id),
+              :method => :delete,
+              :class=> "button"
+            %>
+          </div>
+        </div>
+
+      </div>
+
+    <% end %>
+  </div>
+
+</div>

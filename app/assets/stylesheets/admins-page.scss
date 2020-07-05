@@ -27,20 +27,55 @@
 
         h4 {
           padding-top: 0.25rem;
-          color: $bittersweet;
           font-family: 'Cutive';
+
+          a {
+            color: $bittersweet;
+          }
+
+          a:hover {
+            font-weight: bold;
+            color: $junglegreen;
+          }
         }
       }
 
-      .user-delete {
+      .buttons {
         float: right;
 
-        .button {
-          height: 1rem;
-          padding-bottom: 1.5rem;
-          background: $crayolared;
-          border-radius: 5px;
-          font-family: "Josefin";
+        .user-content {
+          float: left;
+
+          .button {
+            height: 1rem;
+            padding-bottom: 1.5rem;
+            background: $bittersweet;
+            border-radius: 5px;
+            font-family: "Josefin";
+          }
+
+          .button:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            font-weight: bold;
+          }
+        }
+
+        .user-delete {
+          float: right;
+
+          .button {
+            margin-left: 1rem;
+            height: 1rem;
+            padding-bottom: 1.5rem;
+            background: $crayolared;
+            border-radius: 5px;
+            font-family: "Josefin";
+          }
+
+          .button:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            font-weight: bold;
+          }
         }
       }
     }

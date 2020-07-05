@@ -36,6 +36,7 @@
 .flip-card-front {
   background-color: #bbb;
   color: black;
+  
   img {
     width: 300px;
     height: 300px;
@@ -52,6 +53,7 @@
     width: 100%;
     position: absolute;
     top: 1.25rem;
+
     h5 {
       font-family: 'Josefin';
       font-weight: bold;
@@ -63,11 +65,13 @@
     width: 100%;
     position: absolute;
     top: 30%;
+
     h1 {
       color: $crayolared;
       font-family: 'Cutive';
       font-size: 60px;
     }
+
     p {
       color: $bittersweet;
       font-family: 'Cutive';
