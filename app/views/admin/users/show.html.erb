@@ -7,12 +7,12 @@
 
       <div class="item">
         <div class="pic+name">
-          <a href=<%= "../../items/#{item.id}" %>>
+          <a href=<%= "/items/#{item.id}" %>>
             <img src=<%= item.image %>></img>
           </a>
 
           <h3>
-            <a href=<%= "../../items/#{item.id}" %>><%= item.name %></a>
+            <a href=<%= "/items/#{item.id}" %>><%= item.name %></a>
           </h3>
 
           <div class="item-delete">
@@ -26,7 +26,7 @@
 
         <div class="description">
           <h4>
-            <a href=<%= "../../items/#{item.id}" %>><%= item.description %></a>
+            <a href=<%= "/items/#{item.id}" %>><%= item.description %></a>
           </h4>
         </div>
       </div>
@@ -37,7 +37,7 @@
   <div class="user-comments">
     <% @user.comments.each do |comment| %>
       <div class="comment">
-        <h3>On <a href=<%= "../../users/#{comment.item.user.id}" %>><%= comment.item.user.user_name %></a>'s item: '<a href=<%= "../../items/#{comment.item.id}" %>><%= comment.item.name %></a>' ...</h3>
+        <h3>On <a href=<%= "/users/#{comment.item.user.id}" %>><%= comment.item.user.user_name %></a>'s item: '<a href=<%= "../../items/#{comment.item.id}" %>><%= comment.item.name %></a>' ...</h3>
 
         <div class="comment-delete">
           <%= button_to "Delete Comment",
@@ -48,7 +48,7 @@
         </div>
 
         <h4>
-          <a href=<%= "../../items/#{comment.item.id}" %>>
+          <a href=<%= "/items/#{comment.item.id}" %>>
             "<%= comment.body %>"
           </a>
         </h4>
