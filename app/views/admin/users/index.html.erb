@@ -6,6 +6,14 @@
 
       <div class="user">
 
+        <div class="user-thumbnail">
+          <h4>
+            <a href=<%= "/users/#{user.id}" %>>
+              <img src=<%= user.profile_photo %>></img>
+            </a>
+          </h4>
+        </div>
+
         <div class="user-name">
           <h4>
             <a href=<%= "/users/#{user.id}" %>>
