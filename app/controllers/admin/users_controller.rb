@@ -12,6 +12,17 @@ class Admin::UsersController < ApplicationController
     render :show
   end
 
+  def update
+    user = User.find(params[:id])
+    if !user.admin?
+      user.update_attribute :role, "admin"
+    else
+      user.update_attribute :role, "member"
+    end
+    @users = User.all
+    render :index
+  end
+
   def destroy
     user = User.find(params[:id])
     user.delete
