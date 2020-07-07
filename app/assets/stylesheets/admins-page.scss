@@ -43,10 +43,45 @@
       .buttons {
         float: right;
 
+        .user-toggle-admin {
+          float: left;
+
+          .button {
+            height: 1rem;
+            padding-bottom: 1.5rem;
+            background: $junglegreen;
+            border-radius: 5px;
+            font-family: "Josefin";
+          }
+
+          .button:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            font-weight: bold;
+          }
+        }
+
+        .user-toggle-member {
+          float: left;
+
+          .button {
+            height: 1rem;
+            padding-bottom: 1.5rem;
+            background: $crayolared;
+            border-radius: 5px;
+            font-family: "Josefin";
+          }
+
+          .button:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            font-weight: bold;
+          }
+        }
+
         .user-content {
           float: left;
 
           .button {
+            margin-left: 1rem;
             height: 1rem;
             padding-bottom: 1.5rem;
             background: $bittersweet;
