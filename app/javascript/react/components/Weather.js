@@ -3,7 +3,7 @@ import React from 'react'
 const Weather = props => {
 
   let weatherOutput = <p>Loading local weather data...</p>
-  
+
   if ( props.weatherData.responseCode ) {
     if ( props.weatherData.responseCode === 200 ) {
       let wD = ''
@@ -29,6 +29,10 @@ const Weather = props => {
     } else {
       weatherOutput = <p>The OpenWeatherMap API failed to provide weather data for your zip code: {props.weatherData.errorMessage}</p>
     }
+  }
+
+  if ( props.weatherData.error ) {
+    weatherOutput = <p>{props.weatherData.error}</p>
   }
 
   return (

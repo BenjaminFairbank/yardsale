@@ -4,10 +4,7 @@ import ItemTile from "./ItemTile"
 
 const ItemsDisplayComponent = props => {
 
-  let itemsToDisplay = <h2>Loading items...</h2>
-  if( props.searchMessage ) {
-    itemsToDisplay = <h2>Whoops! &nbsp; No results for "{props.search.search}"</h2>
-  }
+  let itemsToDisplay = <h2> {props.searchMessage} </h2>
 
   if (props.items.length > 0) {
     const itemMap = props.items.map(item => {

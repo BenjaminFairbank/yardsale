@@ -37,9 +37,8 @@ const ItemSearchComponent = props => {
       }
     });
     props.setDisplayedItems(foundItems)
-    props.setSearch(searchFormData)
     if (foundItems.length === 0) {
-      props.setSearchMessage(true)
+      props.setSearchMessage("Whoops!" + "\xa0\xa0\xa0" + `No results for "${searchFormData.search}"`)
     }
   }
 
