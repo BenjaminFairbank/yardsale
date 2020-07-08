@@ -47,8 +47,15 @@ const ItemsIndexContainer = props => {
       setCurrentUser(body.current)
       setItems(body.items)
       setDisplayedItems(body.items)
+      if (body.items.length === 0 ) {
+        setSearchMessage("Whoops" + "\xa0\xa0\xa0" + "There are no items posted at this time.")
+      }
     })
-    .catch(error => console.error(`Error in fetch: ${error.message}`))
+    .catch(error => {
+      console.error(`Error in fetch: ${error.message}`)
+      setSearchMessage("Whoops!" + "\xa0\xa0\xa0" + "There was a problem fetching our inventory of items." + "\xa0\xa0\xa0" + "Check your internet connection, try reloading the page, or contact the site administator via email at benfairbank26@gmail.com."  + "\xa0\xa0\xa0" + "We apologize for the inconvenience.")
+      setWeatherData({ error: "There was a problem fetching local weather data."})
+    })
   }, [])
 
   return (
