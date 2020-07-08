@@ -16,6 +16,7 @@ const ItemsTabComponent = props => {
       }
     });
     props.setDisplayedItems(itemsToDisplay)
+    props.setSearchMessage("Whoops!" + "\xa0\xa0\xa0" + `There are no items posted in your area (${props.currentUser.zip_code}) at this time.`)
   }
 
   const setItemsToFree = event => {
@@ -27,6 +28,8 @@ const ItemsTabComponent = props => {
       }
     });
     props.setDisplayedItems(itemsToDisplay)
+    props.setSearchMessage("Whoops!" + "\xa0\xa0\xa0" + "There are no free items posted at this time.")
+
   }
 
   return (
