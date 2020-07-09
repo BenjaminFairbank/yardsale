@@ -55,6 +55,7 @@ const CommentTile = props => {
 
   return (
     <div className="comment-tile">
+      <Link to={`../users/${id}`}><img src={props.comment.user.profile_photo.url}></img></Link>
       <h3><Link to={`../users/${id}`}>{props.comment.user.user_name}</Link>:</h3>
       <h4>&nbsp;&nbsp;&nbsp;{props.comment.body}</h4>
       <h5>{timeString}</h5>
