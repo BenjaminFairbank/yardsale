@@ -186,22 +186,36 @@
     padding: 1.5rem;
     border: 5px solid $junglegreen;
 
+    a {
+      img {
+        float: left;
+        height: 50px;
+        width: 50px;
+        border-radius: 10px;
+        border: 2px solid $junglegreen;
+        margin-right: 1rem;
+      }
+
+      img:hover {
+        border: 2px solid $crayolared;
+      }
+    }
+
     h3 {
       text-align: left;
       font-family: 'Cutive';
-      font-weight: bold;
       color: $junglegreen;
+      margin-top: 0.75rem;
       margin-bottom: 1.5rem;
       font-size: 28px;
-    }
 
-    a {
-      color: $bittersweet;
-    }
+      a {
+        color: $bittersweet;
+      }
 
-    a:hover {
-      color: $bittersweet;
-      font-weight: 1600;
+      a:hover {
+        font-weight: bold;
+      }
     }
 
     h4 {
