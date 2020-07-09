@@ -19,7 +19,7 @@
       background: $darkslategreen;
       border: 3px solid $junglegreen;
       border-radius: 12px;
-      padding: 1rem 1.5rem 4.5rem 1.5rem;
+      padding: 1rem 1.5rem 4rem 1rem;
       margin: 1rem 0;
 
       .user-thumbnail {
@@ -39,7 +39,7 @@
 
       .user-name {
         float: left;
-        margin-top: 0.6rem;
+        margin-top: 0.5rem;
 
         h4 {
           padding-top: 0.25rem;
@@ -58,7 +58,7 @@
 
       .buttons {
         float: right;
-        margin-top: 0.4rem;
+        margin-top: 0.3rem;
 
         .user-toggle-admin {
           float: left;
