@@ -7,18 +7,14 @@
       <div class="user">
 
         <div class="user-thumbnail">
-          <h4>
-            <a href=<%= "/users/#{user.id}" %>>
-              <img src=<%= user.profile_photo %>></img>
-            </a>
-          </h4>
+          <a href=<%= "/users/#{user.id}" %>>
+            <img src=<%= user.profile_photo %>></img>
+          </a>
         </div>
 
         <div class="user-name">
           <h4>
-            <a href=<%= "/users/#{user.id}" %>>
-              <%= user.user_name %>
-            </a>
+            <a href=<%= "/users/#{user.id}" %>><%= user.user_name %></a>
           </h4>
         </div>
 
@@ -34,7 +30,7 @@
             </div>
           <% else %>
             <div class="user-toggle-member">
-              <%= button_to "Downgrade to member",
+              <%= button_to "Downgrade admin",
                 admin_user_path(:id => user.id),
                 :method => :patch,
                 :class=> "button"
@@ -57,6 +53,7 @@
               :class=> "button"
             %>
           </div>
+          
         </div>
 
       </div>
