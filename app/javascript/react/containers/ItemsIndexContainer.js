@@ -9,6 +9,7 @@ const ItemsIndexContainer = props => {
 
   const [currentUser, setCurrentUser] = useState({})
   const [weatherData, setWeatherData] = useState({})
+  const [displayWeather, setDisplayWeather] = useState(true)
   const [searchMessage, setSearchMessage] = useState("Loading items...")
   const [items, setItems] = useState([])
   const [displayedItems, setDisplayedItems] = useState([])
@@ -58,11 +59,16 @@ const ItemsIndexContainer = props => {
     })
   }, [])
 
+  let weatherComponent
+  if (displayWeather) {
+    weatherComponent = <Weather weatherData={weatherData} setDisplayWeather={setDisplayWeather} />
+  }
+
   return (
     <div id="items-index-container">
       <div className="grid-container">
         <div id="power-box">
-          <Weather weatherData={weatherData} />
+          {weatherComponent}
           <ItemsTabComponent
             currentUser={currentUser}
             items={items}
