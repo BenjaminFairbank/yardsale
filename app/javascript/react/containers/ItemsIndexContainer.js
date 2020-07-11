@@ -31,7 +31,8 @@ const ItemsIndexContainer = props => {
       if ( body.weather.cod === 200 ) {
         weather = {
           responseCode: body.weather.cod,
-          description: " · " + body.weather["weather"][0]["description"],
+          main: body.weather["weather"][0]["main"],
+          description: ":\xa0\xa0" + body.weather["weather"][0]["description"],
           currentTemperature: parseInt((body.weather["main"]["temp"] - 272.15)*(9/5)+32).toString() + "°F · ",
           wind: parseInt(body.weather["wind"]["speed"]*2.23694) + "mph · ",
           humidity: "humidity " + body.weather["main"]["humidity"] + "% · ",
@@ -63,7 +64,7 @@ const ItemsIndexContainer = props => {
   if (displayWeather) {
     weatherComponent = <Weather weatherData={weatherData} setDisplayWeather={setDisplayWeather} />
   }
-
+  
   return (
     <div id="items-index-container">
       <div className="grid-container">

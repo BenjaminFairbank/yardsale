@@ -23,18 +23,33 @@
       background: $junglegreen;
       padding: 0.5rem;
 
+      h6 {
+        font-family: 'Cutive';
+        font-weight: bold;
+        margin-bottom: 0;
+
+        span {
+          font-size: 30px;
+        }
+      }
+
       p {
         margin-bottom: 0;
         padding-bottom: 0;
 
+
         .hide-weather {
-          margin-left: 0.5rem;
-          margin-bottom: 0.3rem;
-          padding: 0.25rem 0 0 0.15rem;
-          border: solid 1px $crayolared;
-          border-radius: 3px;
+          margin-left: 0.75rem;
+          margin-bottom: 0.25rem;
+          padding: 0.45rem 0.3rem 0.1rem 0.3rem;
           text-align: center;
           background-color: rgba(0, 0, 0, 0);
+          font-size: 25px;
+        }
+
+        .hide-weather:hover {
+          border: solid 1px $crayolared;
+          border-radius: 5px;
         }
       }
     }
