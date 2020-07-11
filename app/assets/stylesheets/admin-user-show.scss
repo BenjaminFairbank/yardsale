@@ -26,6 +26,21 @@
     color: $junglegreen;
     font-family: 'Cutive';
     margin-bottom: 0;
+    font-weight: bold;
+  }
+
+  h6 {
+    text-align: center;
+
+    a {
+      color: $crayolared;
+      font-family: 'Cutive';
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
   }
 
   .user-profile {
@@ -86,15 +101,8 @@
       text-indent: 2rem;
 
       h4 {
+        color: $junglegreen;
         font-family: 'Josefin';
-
-        a {
-          color: $junglegreen;
-        }
-
-        a:hover {
-          color: $bittersweet;
-        }
       }
     }
   }
@@ -158,15 +166,8 @@
       text-indent: 2rem;
 
       h4 {
+        color: $junglegreen;
         font-family: 'Josefin';
-
-        a {
-          color: $junglegreen;
-        }
-
-        a:hover {
-          color: $bittersweet;
-        }
       }
     }
   }
