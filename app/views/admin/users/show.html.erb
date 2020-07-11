@@ -2,6 +2,42 @@
 
   <h1><a href=<%= "../../users/#{@user.id}" %>><%= @user.user_name %></a>'s Content</h1>
 
+  <br />
+
+  <h2>Profile:</h2>
+
+  <div class="user-profile">
+    <div class="profile">
+      <div class="pic+name">
+        <a href=<%= "/users/#{@user.id}" %>>
+          <img src=<%= @user.profile_photo %>></img>
+        </a>
+
+        <h3>
+          <a href=<%= "/users/#{@user.id}" %>><%= @user.user_name %> - <%= @user.email %></a>
+        </h3>
+
+        <div class="user-delete">
+          <%= button_to "Delete User",
+            admin_user_path(:id => @user.id),
+            :method => :delete,
+            :class=> "button"
+          %>
+        </div>
+      </div>
+
+      <div class="blurb">
+        <h4>
+          <a href=<%= "/users/#{@user.id}" %>><%= @user.blurb %></a>
+        </h4>
+      </div>
+    </div>
+  </div>
+
+  <br />
+
+  <h2>Posted Items:</h2>
+
   <div class="user-items">
     <% @user.items.each do |item| %>
 
@@ -33,7 +69,11 @@
 
     <% end %>
   </div>
+
   <br />
+
+  <h2>Comments:</h2>
+
   <div class="user-comments">
     <% @user.comments.each do |comment| %>
       <div class="comment">
