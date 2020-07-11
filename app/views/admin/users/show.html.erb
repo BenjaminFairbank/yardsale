@@ -27,75 +27,81 @@
       </div>
 
       <div class="blurb">
-        <h4>
-          <a href=<%= "/users/#{@user.id}" %>><%= @user.blurb %></a>
-        </h4>
+        <h4><%= @user.blurb %></h4>
       </div>
     </div>
   </div>
 
+  <h6><a href="/admin/users">Return to main admin's page</a></h6>
+
   <br />
 
-  <h2>Posted Items:</h2>
+  <% if @user.items.length > 0 %>
+    <h2>Items:</h2>
 
-  <div class="user-items">
-    <% @user.items.each do |item| %>
+    <div class="user-items">
+      <% @user.items.each do |item| %>
 
-      <div class="item">
-        <div class="pic+name">
-          <a href=<%= "/items/#{item.id}" %>>
-            <img src=<%= item.image %>></img>
-          </a>
+        <div class="item">
+          <div class="pic+name">
+            <a href=<%= "/items/#{item.id}" %>>
+              <img src=<%= item.image %>></img>
+            </a>
 
-          <h3>
-            <a href=<%= "/items/#{item.id}" %>><%= item.name %></a>
-          </h3>
+            <h3>
+              <a href=<%= "/items/#{item.id}" %>><%= item.name %></a>
+            </h3>
 
-          <div class="item-delete">
-            <%= button_to "Delete Item",
-              admin_item_path(:id => item.id),
-              :method => :delete,
-              :class=> "button"
-            %>
+            <div class="item-delete">
+              <%= button_to "Delete Item",
+                admin_item_path(:id => item.id),
+                :method => :delete,
+                :class=> "button"
+              %>
+            </div>
+          </div>
+
+          <div class="description">
+            <h4><%= item.description %></h4>
           </div>
         </div>
 
-        <div class="description">
-          <h4>
-            <a href=<%= "/items/#{item.id}" %>><%= item.description %></a>
-          </h4>
-        </div>
-      </div>
+      <% end %>
+    </div>
 
-    <% end %>
-  </div>
+    <h6><a href="/admin/users">Return to main admin's page</a></h6>
+  <% end %>
 
   <br />
 
-  <h2>Comments:</h2>
+  <% if @user.comments.length > 0 %>
+    <h2>Comments:</h2>
 
-  <div class="user-comments">
-    <% @user.comments.each do |comment| %>
-      <div class="comment">
-        <h3>On <a href=<%= "/users/#{comment.item.user.id}" %>><%= comment.item.user.user_name %></a>'s item: '<a href=<%= "../../items/#{comment.item.id}" %>><%= comment.item.name %></a>' ...</h3>
+    <div class="user-comments">
+      <% @user.comments.each do |comment| %>
+        <div class="comment">
+          <h3>On <a href=<%= "/users/#{comment.item.user.id}" %>><%= comment.item.user.user_name %></a>'s item: '<a href=<%= "../../items/#{comment.item.id}" %>><%= comment.item.name %></a>' ...</h3>
 
-        <div class="comment-delete">
-          <%= button_to "Delete Comment",
-          admin_comment_path(:id => comment.id),
-          :method => :delete,
-          :class=> "button"
-          %>
+          <div class="comment-delete">
+            <%= button_to "Delete Comment",
+            admin_comment_path(:id => comment.id),
+            :method => :delete,
+            :class=> "button"
+            %>
+          </div>
+
+          <h4>
+            <a href=<%= "/items/#{comment.item.id}" %>>
+              "<%= comment.body %>"
+            </a>
+          </h4>
+
         </div>
 
-        <h4>
-          <a href=<%= "/items/#{comment.item.id}" %>>
-            "<%= comment.body %>"
-          </a>
-        </h4>
+      <% end %>
+    </div>
 
-      </div>
-
-    <% end %>
-  </div>
+    <h6><a href="/admin/users">Return to main admin's page</a></h6>
+  <% end %>
 
 </div>
