@@ -7,9 +7,21 @@ const Weather = props => {
     props.setDisplayWeather(false)
   }
 
+  let weatherGreeting = ""
   let weatherOutput
+
   if ( props.weatherData.responseCode ) {
     if ( props.weatherData.responseCode === 200 ) {
+
+      if (props.weatherData.main === "Rain") {
+        weatherGreeting = <h6>It's wet out there! &nbsp; Aren't you glad you're shopping online? &nbsp; <span>☔</span></h6>
+      } else if (props.weatherData.main === "Clear") {
+        weatherGreeting = <h6>Beautiful day! &nbsp; Perfect day to meet up and exchange items! &nbsp; <span>☀</span></h6>
+      } else if (props.weatherData.main === "Clouds") {
+        weatherGreeting = <h6>Nothing brightens up a cloudy day like finding the perfect item! &nbsp; <span>⛅</span></h6>
+      } else if (props.weatherData.main === "Snow") {
+        weatherGreeting = <h6>Brrrr! <span>🥶</span> Maybe just stay home and do your shopping online! &nbsp; <span>❄</span></h6>
+      }
 
       const wDInDegrees = props.weatherData.windDirection
       let wDCompass = ''
@@ -32,19 +44,19 @@ const Weather = props => {
         wDCompass = "wind " + 'NW'
       }
 
-      weatherOutput = <p>Local Weather{props.weatherData.description} {props.weatherData.currentTemperature} {props.weatherData.humidity} {wDCompass} {props.weatherData.wind} {props.weatherData.cloudCover}</p>
+      weatherOutput = <p>Local Weather{props.weatherData.description} {props.weatherData.currentTemperature} {props.weatherData.humidity} {wDCompass} {props.weatherData.wind} {props.weatherData.cloudCover}<input className="button hide-weather" type="button" onClick={hideWeather} value="❎"/></p>
     } else {
-      weatherOutput = <p>The OpenWeatherMap API failed to provide weather data for your zip code: {props.weatherData.errorMessage}<input className="button hide-weather" type="button" onClick={hideWeather} value="❌"/></p>
+      weatherOutput = <p>The OpenWeatherMap API failed to provide weather data for your zip code: {props.weatherData.errorMessage}<input className="button hide-weather" type="button" onClick={hideWeather} value="❎"/></p>
     }
   } else if ( props.weatherData.error ) {
-    weatherOutput = <p>{props.weatherData.error}<input className="button hide-weather" type="button" onClick={hideWeather} value="❌"/></p>
+    weatherOutput = <p>{props.weatherData.error}<input className="button hide-weather" type="button" onClick={hideWeather} value="❎"/></p>
   } else {
     weatherOutput = <p>Loading local weather data...</p>
   }
 
-
   return (
     <div id="weather">
+      {weatherGreeting}
       {weatherOutput}
     </div>
   )
