@@ -7,7 +7,7 @@ const Weather = props => {
     props.setDisplayWeather(false)
   }
 
-  let weatherGreeting = ""
+  let weatherGreeting
   let weatherOutput
 
   if ( props.weatherData.responseCode ) {
@@ -20,7 +20,9 @@ const Weather = props => {
       } else if (props.weatherData.main === "Clouds") {
         weatherGreeting = <h6>Nothing brightens up a cloudy day like finding the perfect item! &nbsp; <span>⛅</span></h6>
       } else if (props.weatherData.main === "Snow") {
-        weatherGreeting = <h6>Brrrr! <span>🥶</span> Maybe just stay home and do your shopping online! &nbsp; <span>❄</span></h6>
+        weatherGreeting = <h6>Brrrr! &nbsp; <span>🥶</span> &nbsp; Maybe just stay home and do your shopping online! &nbsp; <span>❄</span></h6>
+      } else {
+        weatherGreeting = <h6>Welcome to YardSale! &nbsp; Browse items in your local area and beyond!</h6>
       }
 
       const wDInDegrees = props.weatherData.windDirection
