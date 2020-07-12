@@ -16,7 +16,7 @@ const Weather = props => {
       if (props.weatherData.main === "Rain") {
         weatherGreeting = <h6>It's wet out there! &nbsp; Aren't you glad you're shopping online? &nbsp; <span>☔</span></h6>
       } else if (props.weatherData.main === "Clear") {
-        weatherGreeting = <h6>Beautiful day! &nbsp; Perfect day to meet up and exchange items! &nbsp; <span>☀</span></h6>
+        weatherGreeting = <h6>Beautiful day! &nbsp; Perfect day to meet up and exchange items! &nbsp; <span>🌞</span></h6>
       } else if (props.weatherData.main === "Clouds") {
         weatherGreeting = <h6>Nothing brightens up a cloudy day like finding the perfect item! &nbsp; <span>⛅</span></h6>
       } else if (props.weatherData.main === "Snow") {
