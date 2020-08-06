@@ -14,28 +14,35 @@ const ItemSearchComponent = props => {
   const onSubmitHandler = event => {
     event.preventDefault()
     let foundItems = []
-    props.items.forEach((item) => {
-      const values = Object.values(item)
-      let tipOff = 0
-      values.forEach((value) => {
-        if (typeof value === "string") {
-          if (value.toLowerCase().includes(searchFormData.search.trim().toLowerCase())) {
-            tipOff = 1
+    let terms = searchFormData.search.trim().toLowerCase().split(' ')
+
+    terms.forEach((term) => {
+
+      props.items.forEach((item) => {
+        const values = Object.values(item)
+        let tipOff = false
+        values.forEach((value) => {
+          if (typeof value === "string") {
+            if ( value.toLowerCase().includes(term) ) {
+              tipOff = true
+            }
+          } else {
+            if ( value.length > 0 ) {
+              value.forEach((comment) => {
+                if ( comment.body.toLowerCase().includes(term) ) {
+                  tipOff = true
+                }
+              });
+            }
           }
-        } else {
-          if ( value.length > 0 ) {
-            value.forEach((comment) => {
-              if (comment.body.toLowerCase().includes(searchFormData.search.trim().toLowerCase())) {
-                tipOff = 1
-              }
-            });
-          }
+        });
+        if ( tipOff && !foundItems.includes(item)) {
+          foundItems.push(item)
         }
       });
-      if (tipOff > 0) {
-        foundItems.push(item)
-      }
+
     });
+
     props.setDisplayedItems(foundItems)
     if (foundItems.length === 0) {
       props.setSearchMessage("Whoops!" + "\xa0\xa0\xa0" + `No results for "${searchFormData.search}"`)
