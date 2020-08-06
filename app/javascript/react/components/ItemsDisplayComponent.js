@@ -12,7 +12,7 @@ const ItemsDisplayComponent = props => {
         <ItemTile key={item.id} item={item} />
       )
     })
-    itemsToDisplay = itemMap.reverse()
+    itemsToDisplay = itemMap
   }
 
 
