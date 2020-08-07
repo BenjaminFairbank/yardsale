@@ -83,17 +83,6 @@
         font-weight: bold;
       }
 
-      p {
-        font-weight: bold;
-        color: $junglegreen;
-        font-family: fantasy;
-
-        span {
-          color: $crayolared;
-          font-size: 50px;
-        }
-      }
-
       a {
         color: $bittersweet;
       }
@@ -155,13 +144,6 @@
       color: $darkslategreen;
     }
 
-    em {
-      color: $crayolared;
-      font-family: fantasy;
-      font-weight: bold;
-      font-size: 15px;
-    }
-
     #button {
       font-family: 'Josefin';
       color: white;
@@ -176,8 +158,34 @@
       font-weight: bold;
     }
 
-    #form {
+    .alert {
+      margin-top: 1rem;
+      margin-bottom: 0rem;
+      background: $khaki;
+      text-align: center;
+      border: none;
 
+      h3 {
+        margin-top: 0rem;
+        font-size: 20px;
+        text-align: center;
+        font-family: 'Cutive';
+        color: $darkslategreen;
+      }
+
+      li {
+        list-style: none;
+        font-family: 'Josefin';
+        font-weight: bold;
+        color: $crayolared;
+      }
+
+      li:nth-child(n)::before {
+        content: "❌ ";
+      }
+    }
+
+    #form {
       .input-box {
         padding:0.75rem;
       }
@@ -190,33 +198,6 @@
         resize: vertical;
         min-height: 100px;
         max-height: 200px;
-      }
-
-      .alert {
-        margin-top: 1rem;
-        margin-bottom: 0rem;
-        background: $khaki;
-        text-align: center;
-        border: none;
-
-        h3 {
-          margin-top: 0rem;
-          font-size: 20px;
-          text-align: center;
-          font-family: 'Cutive';
-          color: $darkslategreen;
-        }
-
-        li {
-          list-style: none;
-          font-family: fantasy;
-          font-weight: bold;
-          color: $crayolared;
-        }
-
-        li:nth-child(n)::before {
-          content: "❌ ";
-        }
       }
     }
   }
