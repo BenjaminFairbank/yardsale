@@ -10,7 +10,6 @@
         <% email_check = "❗" if !@user.email? && resource.errors.any? || @user.errors[:email].length > 0 %>
         <%= f.label :email, "Email #{email_check}" %>
         <%= f.email_field :email, autofocus: true %>
-        <%= f.hidden_field :email_change %>
       </div>
 
       <div class="field">
@@ -18,7 +17,6 @@
         <% zip_code_check = "❗" if !@user.zip_code? && resource.errors.any? || @user.errors[:zip_code].length > 0 %>
         <%= f.label :zip_code, "Zip code #{zip_code_check}" %>
         <%= f.text_field :zip_code %>
-        <%= f.hidden_field :zip_code_change %>
       </div>
 
       <div class="field">
@@ -41,7 +39,6 @@
         <% user_name_check = "❗" if !@user.user_name? && resource.errors.any? || @user.errors[:user_name].length > 0 %>
         <%= f.label :user_name, "User name #{user_name_check}" %>
         <%= f.text_field :user_name %>
-        <%= f.hidden_field :user_name_change %>
       </div>
 
       <div class="field">
@@ -49,7 +46,6 @@
         <% blurb_check = "❗" if !@user.blurb? && resource.errors.any? %>
         <%= f.label :blurb, "Write a blurb for your profile #{blurb_check}" %>
         <%= f.text_area :blurb %>
-        <%= f.hidden_field :blurb_change %>
       </div>
 
       <div class="field">

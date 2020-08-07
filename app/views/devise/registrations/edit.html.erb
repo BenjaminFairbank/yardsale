@@ -2,27 +2,34 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "grid-x" }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="cell small-12 medium-6 large-6">
 
     <div class="field">
-      <%= f.label :email %><br />
+      <% email_check = "✅" if @user.email? && @user.errors[:email].length == 0 %>
+      <% email_check = "❗" if !@user.email? && resource.errors.any? || @user.errors[:email].length > 0 %>
+      <%= f.label :email, "Email #{email_check}" %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
     <div class="field">
-      <%= f.label :user_name %><br />
+      <% user_name_check = "✅" if @user.user_name? && @user.errors[:user_name].length == 0 %>
+      <% user_name_check = "❗" if !@user.user_name? && resource.errors.any? || @user.errors[:user_name].length > 0 %>
+      <%= f.label :user_name, "User name #{user_name_check}" %><br />
       <%= f.text_field :user_name%>
     </div>
 
     <div class="field">
-      <%= f.label :zip_code %><br />
+      <% zip_code_check = "✅" if @user.zip_code? && @user.errors[:zip_code].length == 0 %>
+      <% zip_code_check = "❗" if !@user.zip_code? && resource.errors.any? || @user.errors[:zip_code].length > 0 %>
+      <%= f.label :zip_code, "Zip code #{zip_code_check}" %><br />
       <%= f.text_field :zip_code%>
     </div>
 
     <div class="field">
-      <%= f.label :blurb, "Update your blurb" %>
+      <% blurb_check = "✅" if @user.blurb? %>
+      <% blurb_check = "❗" if !@user.blurb? && resource.errors.any? %>
+      <%= f.label :blurb, "Update your blurb #{blurb_check}" %>
       <%= f.text_area :blurb %>
     </div>
 
@@ -30,28 +37,30 @@
 
   <div class="cell small-12 medium-6 large-6">
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
-
     <div class="field">
-      <%= f.label :password, "Edit password" %> <i>(leave these fields blank for no change)</i><br />
+      <% password_check = "❗" if @user.errors[:password].length > 0 || @user.errors[:password_confirmation].length > 0 %>
+      <%= f.label :password, "Edit password #{password_check}" %> <i>(leave these fields blank for no change)</i><br />
       <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation, "Confirm new password" %><br />
+      <% password_confirmation_check = "❗" if @user.errors[:password].length > 0 || @user.errors[:password_confirmation].length > 0 %>
+      <%= f.label :password_confirmation, "Confirm new password #{password_confirmation_check}" %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
     <div class="field current-password-edit-page">
-      <%= f.label :current_password %> <i>(NEEDED to confirm your changes)</i><br />
+      <% current_password_check = "❗" if resource.errors.any? %>
+      <%= f.label :current_password, "Current password #{current_password_check}" %> <i>(NEEDED to confirm your changes)</i><br />
       <%= f.password_field :current_password, autocomplete: "current-password" %>
     </div>
 
     <div class="field">
-      <%= f.label :profile_photo, "Change your profile picture", :class => "file"%>
+      <% profile_photo_check = "✅" if @user.profile_photo? %>
+      <% profile_photo_check = "❗" if !@user.profile_photo? && resource.errors.any? %>
+      <%= f.label :profile_photo, "📎 Click here to upload a new profile picture #{profile_photo_check}", :class => "file"%>
       <%= f.file_field :profile_photo %>
+      <%= f.hidden_field :profile_photo_cache %>
     </div>
 
     <div class="actions">
@@ -60,6 +69,12 @@
 
   </div>
 <% end %>
+
+<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+<% end %>
+
+<%= render "devise/shared/error_messages", resource: resource %>
 
 <h3>Cancel my account</h3>
 
