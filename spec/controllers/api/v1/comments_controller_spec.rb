@@ -22,7 +22,7 @@ RSpec.describe Api::V1::CommentsController, type: :controller do
 
       post :create, params: @post_json, format: :json
       expect(response.status).to eq(401)
-      expect(JSON.parse(response.body)["error"]).to eq("You need to sign in or sign up before continuing.")
+      expect(JSON.parse(response.body)["error"]).to eq("")
     end
 
     it "persists a new comment upon successful completion of the form" do
@@ -84,7 +84,7 @@ RSpec.describe Api::V1::CommentsController, type: :controller do
     it "should not delete the item if the user is not logged in" do
       delete :destroy, params: {id: @comment.id}, format: :json
       expect(response.status).to eq(401)
-      expect(JSON.parse(response.body)["error"]).to eq("You need to sign in or sign up before continuing.")
+      expect(JSON.parse(response.body)["error"]).to eq("")
     end
 
     it "deletes the the item" do

@@ -14,7 +14,8 @@ feature "profile photo" do
 
     click_button "Create your new account"
 
-    expect(page).to have_content("Welcome! You have signed up successfully.")
+    expect(page).to have_content('My Lawn')
+    expect(page).to have_content('Sign Out')
     expect(page).to have_css("img[src*='photo.png']")
   end
 end
