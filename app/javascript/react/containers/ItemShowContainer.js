@@ -21,7 +21,6 @@ const ItemShowContainer = props => {
     }
   })
 
-
   const itemID = props.match.params.id
 
   useEffect(() => {
