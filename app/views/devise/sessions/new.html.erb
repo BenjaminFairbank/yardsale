@@ -36,7 +36,10 @@
 
       <div id="dev-info">
         <h6>Report all bugs and inappropriate content to YardSale's developer and administrator:</h6>
-        <%= mail_to "benfairbank26@gmail.com", 'Benjamin Fairbank' %>
+        <%= mail_to "benfairbank26@gmail.com", 'Benjamin Fairbank',
+          subject: "About YardSale: I would like to report an issue.",
+          body: "Dear Mr. Fairbank,\n\n(Please describe the issue in detail as best you can.  Thank you for your feedback!)"
+        %>
       </div>
 
     </div>
