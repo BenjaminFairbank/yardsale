@@ -58,7 +58,7 @@
     <div class="field">
       <% profile_photo_check = "✅" if @user.profile_photo? %>
       <% profile_photo_check = "❗" if !@user.profile_photo? && resource.errors.any? %>
-      <%= f.label :profile_photo, "📎 Click here to upload a new profile picture #{profile_photo_check}", :class => "file"%>
+      <%= f.label :profile_photo, "📎 Update profile picture #{profile_photo_check}", :class => "file"%>
       <%= f.file_field :profile_photo %>
       <%= f.hidden_field :profile_photo_cache %>
     </div>
