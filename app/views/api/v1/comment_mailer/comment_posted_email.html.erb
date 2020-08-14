@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @item_owner.user_name %>:</h1>
+    <p>
+      <%= @commenter.user_name %> has commented "<%= @new_comment %>" on your posted item "<%= @item.name %>".<br>
+    </p>
+    <p>
+      Check it out on your YardSale posting: <%= @url %><br>
+    </p>
+    <p>
+      Email <%= @commenter.user_name %> about a possible exchange at <%= @commenter.email %>.<br>
+    </p>
+    <p>Happy exchanges!</p>
+  </body>
+</html>
