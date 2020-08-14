@@ -9,6 +9,9 @@ class Api::V1::CommentsController < ApplicationController
     comment = Comment.new(comment_params)
 
     if comment.save
+      if comment.item.user != current_user
+        Api::V1::CommentMailer.with(commenter: current_user, new_comment: comment.body, item: comment.item, item_owner: comment.item.user ).comment_posted_email.deliver_later
+      end
       render json: comment
     else
       render json: {error: comment.errors.full_messages.to_sentence}
