@@ -3,17 +3,34 @@
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
-  <body>
-    <h1><%= @item_owner.user_name %>:</h1>
-    <p>
-      <%= @commenter.user_name %> has commented "<%= @new_comment %>" on your posted item "<%= @item.name %>".<br>
-    </p>
-    <p>
-      Check it out on your YardSale posting: <%= @url %><br>
-    </p>
-    <p>
-      Email <%= @commenter.user_name %> about a possible exchange at <%= @commenter.email %>.<br>
-    </p>
-    <p>Happy exchanges!</p>
+  <body style="background: #254441; margin: 0; padding: 0;">
+    <div style="background: #43AA8B; width: 100%; margin: 0; padding: 0.5rem 2rem;">
+      <h1 style="color: #EF3054; font-family: Comic Sans MS, Comic Sans, cursive; font-weight: 1600;">
+        Hello from <a href="https://y-s.herokuapp.com" style="color: #FF6F59; text-decoration: none; font-family: Marker Felt, fantasy;">YardSale</a> <%= @item_owner.user_name %>
+      </h1>
+    </div>
+    <div style="color: #43AA8B; font-family: Gill Sans, sans-serif; margin: 2rem; padding-bottom: 2rem; font-style: italic;">
+      <h1 style="margin-bottom: 3rem;">
+        There's a new comment on your posted item!
+      </h1>
+
+      <h3 style="text-indent: 1.5rem; margin-bottom: 2rem;">
+        On your item <a href=<%= @item_url %> style="color: #B2B09B; text-decoration: none;"><%= @item.name %></a>, <a href=<%= @commenter_url %> style="color: #B2B09B; text-decoration: none;"><%= @commenter.user_name %></a> commented:
+      </h3>
+
+      <h2 style="color: #FF6F59; text-indent: 2.5rem; margin-bottom: 2.5rem;">
+        "<%= @new_comment %>"
+      </h2>
+
+      <h3 style="text-indent: 1.5rem; margin-bottom: 1rem;">
+        Visit your posted item on <a href="https://y-s.herokuapp.com" style="color: #FF6F59; text-decoration: none;">YardSale</a> to check it out by clicking <a href=<%= @item_url %> style="color: #EF3054; text-decoration: none;">HERE</a>.
+      </h3>
+      <h3 style="text-indent: 1.5rem; margin-bottom: 3.5rem;">
+        Email <a href=<%= @commenter_url %> style="color: #B2B09B; text-decoration: none;"><%= @commenter.user_name %></a> about a possible exchange by clicking <%= mail_to @commenter.email, "HERE", subject: "About my YardSale item \"#{@item.name}\"...", body: "Hi #{@commenter.user_name},\n\nI saw your comment on my post #{@item.name}...", style: "color: #EF3054; text-decoration: none;" %>.
+      </h3>
+      <h1>
+        Happy exchanges!
+      </h1>
+    </div>
   </body>
 </html>

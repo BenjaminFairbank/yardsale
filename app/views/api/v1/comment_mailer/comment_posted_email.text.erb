@@ -1,0 +1,20 @@
+Hello from YardSale <%= @item_owner.user_name %>!
+
+=====================================================
+
+There's a new comment on your posted item!
+
+
+<%= @commenter.user_name %> commented:
+
+  "<%= @new_comment %>"
+
+on your posted item "<%= @item.name %>".
+
+
+Check it out on your YardSale posting: <%= @item_url %>
+
+Email <%= @commenter.user_name %> about a possible exchange at <%= @commenter.email %>.
+
+
+Happy exchanges!
