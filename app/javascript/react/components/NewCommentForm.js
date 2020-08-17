@@ -52,8 +52,14 @@ const NewCommentForm = props => {
     <>
       <div id="new-comment-form">
         {props.commentsComponent}
-        <h1><span>If you are interested...</span><br />Leave a comment!</h1>
-        <p>The item's owner will see your email address below your comment,<br />and <span>may contact you</span> if they are interested in making an exchange.</p>
+        <h1>
+          <span>If you are interested...</span><br />
+          Leave a comment!
+        </h1>
+        <p>The item's owner will be notified via email and<br />
+          can see your email address below your comment.<br />
+          <span>They may contact you in regards to an exchange!</span>
+        </p>
 
         <ErrorList errors={errors} />
 

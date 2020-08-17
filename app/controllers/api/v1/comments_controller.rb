@@ -10,7 +10,12 @@ class Api::V1::CommentsController < ApplicationController
 
     if comment.save
       if comment.item.user != current_user
-        Api::V1::CommentMailer.with(commenter: current_user, new_comment: comment.body, item: comment.item, item_owner: comment.item.user ).comment_posted_email.deliver_later
+        Api::V1::CommentMailer.with(
+          commenter: current_user,
+          new_comment: comment.body,
+          item: comment.item,
+          item_owner: comment.item.user
+        ).comment_posted_email.deliver_later
       end
       render json: comment
     else
