@@ -14,18 +14,18 @@
         There's a new comment on your posted item!
       </h1>
 
-      <h3 style="text-indent: 1.5rem; margin-bottom: 2rem;">
+      <h3 style="margin-left: 1.5rem; margin-bottom: 2rem;">
         On your item <a href=<%= @item_url %> style="color: #B2B09B; text-decoration: none;"><%= @item.name %></a>, <a href=<%= @commenter_url %> style="color: #B2B09B; text-decoration: none;"><%= @commenter.user_name %></a> commented:
       </h3>
 
-      <h2 style="color: #FF6F59; text-indent: 2.5rem; margin-bottom: 2.5rem;">
+      <h2 style="color: #FF6F59; margin-left: 2.5rem; margin-bottom: 2.5rem;">
         "<%= @new_comment %>"
       </h2>
 
-      <h3 style="text-indent: 1.5rem; margin-bottom: 1rem;">
+      <h3 style="margin-left: 1.5rem; margin-bottom: 1rem;">
         Visit your posted item on <a href="https://y-s.herokuapp.com" style="color: #FF6F59; text-decoration: none;">YardSale</a> to check it out by clicking <a href=<%= @item_url %> style="color: #EF3054; text-decoration: none;">HERE</a>.
       </h3>
-      <h3 style="text-indent: 1.5rem; margin-bottom: 3.5rem;">
+      <h3 style="margin-left: 1.5rem; margin-bottom: 3.5rem;">
         Email <a href=<%= @commenter_url %> style="color: #B2B09B; text-decoration: none;"><%= @commenter.user_name %></a> about a possible exchange by clicking <%= mail_to @commenter.email, "HERE", subject: "About my YardSale item \"#{@item.name}\"...", body: "Hi #{@commenter.user_name},\n\nI saw your comment on my post #{@item.name}...", style: "color: #EF3054; text-decoration: none;" %>.
       </h3>
       <h1>
