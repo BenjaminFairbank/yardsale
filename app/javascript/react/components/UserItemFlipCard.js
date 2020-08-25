@@ -27,7 +27,7 @@ const UserItemFlipCard = props => {
 
   return (
     <div id="item-flip-card" className="flip-card">
-      <Link to={`../items/${id}`}>
+      <Link to={`/items/${id}`}>
         <div className="flip-card-inner">
           <div className="flip-card-front">
             <img src={props.item.image.url}></img>

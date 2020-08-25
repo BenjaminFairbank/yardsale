@@ -52,11 +52,21 @@ const ItemShowComponent = props => {
     askingPrice = "$" + aPArray.join('')
   }
 
+  let img = ""
+  if (props.item.image) {
+    img = <img src={props.item.image.url}></img>
+  }
+
+  let link = ""
+  if (props.item.user) {
+    link = <Link to={`../users/${props.item.user.id}`}>{props.item.user.user_name}</Link>
+  }
+
   return (
     <div id="item-show-component" className="grid-x">
 
       <div className="item-show-image cell small-12 medium-6 large-6">
-        <img src={props.item.image.url}></img>
+        {img}
       </div>
 
       <div className="item-show-details cell small-12 medium-6 large-6">
@@ -71,7 +81,7 @@ const ItemShowComponent = props => {
 
         <div>
           <h6>Posted by:</h6>
-          <Link to={`../users/${props.item.user.id}`}>{props.item.user.user_name}</Link>
+          {link}
           <h6>{createdAt}</h6>
         </div>
 

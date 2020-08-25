@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
 
-  before_action :authenticate_user!, :authorize_user
+  before_action :authorize_user
 
   def index
     @users = User.all
