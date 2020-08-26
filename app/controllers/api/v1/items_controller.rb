@@ -36,20 +36,6 @@ class Api::V1::ItemsController < ApplicationController
     end
   end
 
-  def update
-    item = Item.find(params[:id])
-
-    if item_params["image"]
-      item["image"] = item_params["image"]
-    end
-
-    if item.update(item_params)
-      render json: item
-    else
-      render json: {error: item.errors.full_messages.to_sentence}
-    end
-  end
-
   def destroy
     item = Item.find(params[:id])
     user = item.user

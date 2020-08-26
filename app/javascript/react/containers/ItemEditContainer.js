@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import _ from 'lodash'
 import ErrorList from "../components/ErrorList"
 import Dropzone from 'react-dropzone'
@@ -74,11 +74,6 @@ const ItemEditContainer = props => {
         }
       }
     });
-  }
-
-  const clearFormData = () => {
-    setEditItemFormData(defaultFormData)
-    setErrors({})
   }
 
   const handleChange = (event) => {
@@ -166,7 +161,7 @@ const ItemEditContainer = props => {
 
     const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-    fetch(`/api/v1/items/${itemID}`, {
+    fetch(`/api/v1/special_access/items/${itemID}`, {
       method: 'PATCH',
       credentials: "same-origin",
       headers: {
@@ -187,76 +182,101 @@ const ItemEditContainer = props => {
     })
     .then(response => response.json())
     .then(body => {
-      let item = body
-      setItem(item)
+      setItem(body.item)
+      if (body.error) {
+        setErrors({['UNAUTHORIZED: ']: body.error})
+      }
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
-  return (
-    <div id="item-edit-container">
-      <ItemShowComponent item={item} />
-      <div id="new-item-form">
-        <div id="new-item-form-container">
-          <h1>Edit this item</h1>
+  const allowed = () => {
+    let allow = false
+    currentUser.items.forEach((item) => {
+      if (item.id.toString() === itemID) {
+        allow = true
+      }
+    });
+    return allow
+  }
 
-          <ErrorList errors={errors} />
+  let page = ''
+  if (currentUser.id) {
+    if (allowed()) {
+      page =
+        <div id="item-edit-container">
+          <ItemShowComponent item={item} />
+          <div id="new-item-form">
+            <div id="new-item-form-container">
+              <h1>Edit this item</h1>
 
-          <form className="grid-x" id="form" onSubmit={onSubmitHandler}>
+              <ErrorList errors={errors} />
 
-            <div className="input-box cell small-12 medium-6 large-6">
-              <label htmlFor="name">Item {fieldErrorIndicators.name}</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                onChange={handleChange}
-                value={editItemFormData.name}
-              />
+              <form className="grid-x" id="form" onSubmit={onSubmitHandler}>
 
-            <label htmlFor="description">Description {fieldErrorIndicators.description}</label>
-              <textarea
-                type="text"
-                name="description"
-                id="description"
-                onChange={handleChange}
-                value={editItemFormData.description}
-              />
+                <div className="input-box cell small-12 medium-6 large-6">
+                  <label htmlFor="name">Item {fieldErrorIndicators.name}</label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    onChange={handleChange}
+                    value={editItemFormData.name}
+                  />
+
+                <label htmlFor="description">Description {fieldErrorIndicators.description}</label>
+                  <textarea
+                    type="text"
+                    name="description"
+                    id="description"
+                    onChange={handleChange}
+                    value={editItemFormData.description}
+                  />
+                </div>
+
+                <div className="input-box cell small-12 medium-6 large-6">
+                  <label htmlFor="asking_price">Asking Price ($USD) {fieldErrorIndicators.asking_price}</label>
+                  <input
+                    type="text"
+                    name="asking_price"
+                    id="asking_price"
+                    onChange={handleChange}
+                    value={editItemFormData.asking_price}
+                  />
+
+                  <label htmlFor="description">Image {fieldErrorIndicators.image}</label>
+                  <Dropzone onDrop={handleFileUpload}>
+                    {({getRootProps, getInputProps}) => (
+                      <section>
+                        <div {...getRootProps()}>
+                          <input {...getInputProps()} />
+                          <p>📎 Upload image (click/drop) {imageDropIndicator}</p>
+                        </div>
+                      </section>
+                    )}
+                  </Dropzone>
+
+                  <input
+                    id="button"
+                    type="submit"
+                    value="Update your item!"
+                  />
+                </div>
+
+              </form>
             </div>
-
-            <div className="input-box cell small-12 medium-6 large-6">
-              <label htmlFor="asking_price">Asking Price ($USD) {fieldErrorIndicators.asking_price}</label>
-              <input
-                type="text"
-                name="asking_price"
-                id="asking_price"
-                onChange={handleChange}
-                value={editItemFormData.asking_price}
-              />
-
-              <label htmlFor="description">Image {fieldErrorIndicators.image}</label>
-              <Dropzone onDrop={handleFileUpload}>
-                {({getRootProps, getInputProps}) => (
-                  <section>
-                    <div {...getRootProps()}>
-                      <input {...getInputProps()} />
-                      <p>📎 Upload image (click/drop) {imageDropIndicator}</p>
-                    </div>
-                  </section>
-                )}
-              </Dropzone>
-
-              <input
-                id="button"
-                type="submit"
-                value="Update your item!"
-              />
-            </div>
-
-          </form>
+          </div>
         </div>
-      </div>
-    </div>
+    } else {
+      page =
+        <div id="unauthorized-edit">
+          <h1>YOU ARE NOT AUTHORIZED !<br /> THIS IS NOT YOUR ITEM !</h1>
+        </div>
+    }
+  }
+
+  return (
+    <>{page}</>
   )
 }
 
