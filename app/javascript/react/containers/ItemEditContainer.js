@@ -4,6 +4,7 @@ import ErrorList from "../components/ErrorList"
 import Dropzone from 'react-dropzone'
 
 import ItemShowComponent from '../components/ItemShowComponent'
+import ExitEditLinks from '../components/ExitEditLinks'
 
 const ItemEditContainer = props => {
 
@@ -206,6 +207,7 @@ const ItemEditContainer = props => {
       page =
         <div id="item-edit-container">
           <ItemShowComponent item={item} />
+          <ExitEditLinks itemId={item.id} userId={currentUser.id} />
           <div id="new-item-form">
             <div id="new-item-form-container">
               <h1>Edit this item</h1>
@@ -269,9 +271,12 @@ const ItemEditContainer = props => {
         </div>
     } else {
       page =
-        <div id="unauthorized-edit">
-          <h1>YOU ARE NOT AUTHORIZED !<br /> THIS IS NOT YOUR ITEM !</h1>
-        </div>
+        <>
+          <div id="unauthorized-edit">
+            <h1>YOU ARE NOT AUTHORIZED !<br /> THIS IS NOT YOUR ITEM !</h1>
+          </div>
+          <ExitEditLinks itemId={item.id} userId={currentUser.id} />
+        </>
     }
   }
 

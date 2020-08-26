@@ -197,7 +197,7 @@ const NewItemFormComponent = props => {
                 <section>
                   <div {...getRootProps()}>
                     <input {...getInputProps()} />
-                    <p>📎 Click or drop here to upload a photo {imageDropIndicator}</p>
+                    <p>📎 Upload image (click/drop) {imageDropIndicator}</p>
                   </div>
                 </section>
               )}
@@ -206,7 +206,7 @@ const NewItemFormComponent = props => {
             <input
               id="button"
               type="submit"
-              value="Put the new item out on your lawn!"
+              value="Post new item to My Lawn!"
             />
           </div>
 

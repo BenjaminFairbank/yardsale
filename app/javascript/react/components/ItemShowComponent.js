@@ -59,7 +59,7 @@ const ItemShowComponent = props => {
 
   let link = ""
   if (props.item.user) {
-    link = <Link to={`../users/${props.item.user.id}`}>{props.item.user.user_name}</Link>
+    link = <Link to={`/users/${props.item.user.id}`}>{props.item.user.user_name}</Link>
   }
 
   return (
