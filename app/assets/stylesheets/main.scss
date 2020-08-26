@@ -47,3 +47,56 @@ body {
     margin: 2rem;
   }
 }
+
+#exit-edit-links {
+  text-align: center;
+  font-size: 25px;
+
+  a {
+    font-family: 'Josefin';
+    color: $crayolared;
+    margin: 1rem;
+    font-weight: bold;
+  }
+
+  a:hover {
+    color: $junglegreen;
+    font-weight: bolder;
+  }
+}
+
+#edit-or-delete-links {
+  text-align: center;
+  font-size: 25px;
+
+  .edit {
+    padding: 0.6rem;
+
+    a {
+      font-family: 'Josefin';
+      color: $crayolared;
+      font-weight: bold;
+    }
+
+    a:hover {
+      color: $junglegreen;
+      font-weight: bolder;
+    }
+  }
+
+  .delete {
+    input {
+      font-family: 'Josefin';
+      color: $crayolared;
+      margin: 1rem;
+      font-weight: bold;
+      background: none;
+      border: none;
+    }
+
+    input:hover {
+      color: $junglegreen;
+      font-weight: bolder;
+    }
+  }
+}
