@@ -161,7 +161,7 @@ const ItemEditContainer = props => {
 
     const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-    fetch(`/api/v1/special_access/items/${itemID}`, {
+    fetch(`/api/v1/items/${itemID}`, {
       method: 'PATCH',
       credentials: "same-origin",
       headers: {
