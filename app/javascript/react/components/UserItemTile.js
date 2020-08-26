@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import UserItemFlipCard from "./UserItemFlipCard"
 
@@ -46,6 +47,11 @@ const UserItemTile = props => {
     deleteButtonLabel = `Delete ${props.user.user_name}'s Item`
   }
 
+  let editButton
+  if (props.user.id === props.currentUser.id) {
+    editButton = <div id="item-edit-button"><Link to={`/items/${itemID}/edit`}><p>Edit my posted item</p></Link></div>
+  }
+
   let deleteButton
   if (props.user.id === props.currentUser.id || props.currentUser.role === "admin") {
     deleteButton = <div id="item-delete-button"><input
@@ -59,6 +65,7 @@ const UserItemTile = props => {
   return (
     <div id="item-tile" className="cell small-12 medium-6 large-4">
       <UserItemFlipCard item={props.item} timeString={timeString} />
+      {editButton}
       {deleteButton}
     </div>
   )

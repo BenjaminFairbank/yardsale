@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
 
-  before_action :authenticate_user!, :authorize_user
+  before_action :authorize_user
 
   def destroy
     item = Item.find(params[:id])

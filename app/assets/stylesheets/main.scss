@@ -37,3 +37,13 @@ body {
     font-weight: bold;
   }
 }
+
+#unauthorized-edit {
+  h1 {
+    color: $crayolared;
+    font-family: 'Josefin';
+    font-weight: bolder;
+    text-align: center;
+    margin: 2rem;
+  }
+}

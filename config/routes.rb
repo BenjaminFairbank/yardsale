@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/items', to: 'homes#index'
   get '/items/:id', to: 'homes#index'
   get '/users/:id', to: 'homes#index'
+  get '/items/:id/edit', to: 'homes#index'
 
   namespace :admin do
     resources :users, only: [:index, :show, :update, :destroy]
@@ -19,9 +20,13 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :items, only: [:index, :show, :create, :destroy]
       resources :users, only: [:show]
       resources :comments, only: [:index, :create, :destroy]
+      resources :items, only: [:index, :show, :create, :destroy]
+
+      namespace :special_access do
+        resources :items, only: [:update]
+      end
     end
   end
 end

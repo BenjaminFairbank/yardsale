@@ -88,9 +88,7 @@ const UserShowContainer = props => {
           currentUser={currentUser}
         />
       </div>
-      <div id="new-item-form">
-        {newItemForm}
-      </div>
+      {newItemForm}
     </div>
   )
 }

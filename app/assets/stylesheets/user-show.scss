@@ -25,8 +25,33 @@
 
   #user-items-component {
     text-align: center;
+    
     #tile-field {
       padding-top: 1rem;
+
+      #item-edit-button {
+        width: 300px;
+        margin: auto;
+        border-radius: 15px;
+
+        a {
+          p {
+            margin: auto;
+            margin-top: 1rem;
+            border-radius: 15px;
+            width: 300px;
+            font-family: 'Josefin';
+            padding: 0.562rem;
+            background: $bittersweet;
+            color: white;
+          }
+        }
+      }
+
+      #item-edit-button:hover {
+        font-weight: bold;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+      }
     }
   }
 

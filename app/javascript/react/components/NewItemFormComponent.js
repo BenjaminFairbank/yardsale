@@ -11,8 +11,8 @@ const NewItemFormComponent = props => {
     image: "",
     asking_price: "",
   }
-  const fieldList = Object.keys(defaultFormData)
 
+  const fieldList = Object.keys(defaultFormData)
   const [newItemFormData, setNewItemFormData] = useState(defaultFormData)
   const [imageDropIndicator, setImageDropIndicator] = useState("")
   const [errors, setErrors] = useState({})
@@ -141,9 +141,7 @@ const NewItemFormComponent = props => {
         throw error
       }
     })
-    .then(response => {
-      return response.json()
-    })
+    .then(response => response.json())
     .then(body => {
       let item = body
       props.setUserItems([
@@ -155,63 +153,65 @@ const NewItemFormComponent = props => {
   }
 
   return (
-    <div id="new-item-form-container">
-      <h1>Post a new item</h1>
+    <div id="new-item-form">
+      <div id="new-item-form-container">
+        <h1>Post a new item</h1>
 
-      <ErrorList errors={errors} />
+        <ErrorList errors={errors} />
 
-      <form className="grid-x" id="form" onSubmit={onSubmitHandler}>
+        <form className="grid-x" id="form" onSubmit={onSubmitHandler}>
 
-        <div className="input-box cell small-12 medium-6 large-6">
-          <label htmlFor="name">What is it? {fieldErrorIndicators.name}</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            onChange={handleChange}
-            value={newItemFormData.name}
-          />
+          <div className="input-box cell small-12 medium-6 large-6">
+            <label htmlFor="name">What is it? {fieldErrorIndicators.name}</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              onChange={handleChange}
+              value={newItemFormData.name}
+            />
 
-        <label htmlFor="description">Can you describe it a little more? {fieldErrorIndicators.description}</label>
-          <textarea
-            type="text"
-            name="description"
-            id="description"
-            onChange={handleChange}
-            value={newItemFormData.description}
-          />
-        </div>
+          <label htmlFor="description">Can you describe it a little more? {fieldErrorIndicators.description}</label>
+            <textarea
+              type="text"
+              name="description"
+              id="description"
+              onChange={handleChange}
+              value={newItemFormData.description}
+            />
+          </div>
 
-        <div className="input-box cell small-12 medium-6 large-6">
-          <label htmlFor="asking_price">What do you want for it? ($USD) {fieldErrorIndicators.asking_price}</label>
-          <input
-            type="text"
-            name="asking_price"
-            id="asking_price"
-            onChange={handleChange}
-            value={newItemFormData.asking_price}
-          />
+          <div className="input-box cell small-12 medium-6 large-6">
+            <label htmlFor="asking_price">What do you want for it? ($USD) {fieldErrorIndicators.asking_price}</label>
+            <input
+              type="text"
+              name="asking_price"
+              id="asking_price"
+              onChange={handleChange}
+              value={newItemFormData.asking_price}
+            />
 
-          <label htmlFor="description">Can we see a photo of it? {fieldErrorIndicators.image}</label>
-          <Dropzone onDrop={handleFileUpload}>
-            {({getRootProps, getInputProps}) => (
-              <section>
-                <div {...getRootProps()}>
-                  <input {...getInputProps()} />
-                  <p>📎 Click or drop here to upload a photo {imageDropIndicator}</p>
-                </div>
-              </section>
-            )}
-          </Dropzone>
+            <label htmlFor="description">Can we see a photo of it? {fieldErrorIndicators.image}</label>
+            <Dropzone onDrop={handleFileUpload}>
+              {({getRootProps, getInputProps}) => (
+                <section>
+                  <div {...getRootProps()}>
+                    <input {...getInputProps()} />
+                    <p>📎 Click or drop here to upload a photo {imageDropIndicator}</p>
+                  </div>
+                </section>
+              )}
+            </Dropzone>
 
-          <input
-            id="button"
-            type="submit"
-            value="Put the new item out on your lawn!"
-          />
-        </div>
+            <input
+              id="button"
+              type="submit"
+              value="Put the new item out on your lawn!"
+            />
+          </div>
 
-      </form>
+        </form>
+      </div>
     </div>
   )
 }
