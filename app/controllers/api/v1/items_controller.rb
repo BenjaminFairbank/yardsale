@@ -38,8 +38,9 @@ class Api::V1::ItemsController < ApplicationController
 
   def update
     item = Item.find(params[:id])
+    user = item.user
 
-    if !current_user.items.include?(item)
+    if user.id != current_user.id
       render json: {
         item: serialized_data(item, ItemSerializer),
         error: "You are not allowed to edit this item!"
@@ -63,7 +64,7 @@ class Api::V1::ItemsController < ApplicationController
     item = Item.find(params[:id])
     user = item.user
 
-    if user.id === current_user.id || current_user.admin?
+    if user.id == current_user.id || current_user.admin?
       item.delete
       render json: user.items
     else
