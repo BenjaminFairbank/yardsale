@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ItemTile from "./ItemTile"
+import ItemTile from './ItemTile'
 
 const ItemsDisplayComponent = props => {
 

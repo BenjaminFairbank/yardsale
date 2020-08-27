@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
-import ItemsDisplayComponent from "../components/ItemsDisplayComponent"
-import ItemSearchComponent from "../components/ItemSearchComponent"
-import ItemsTabComponent from "../components/ItemsTabComponent"
-import Weather from "../components/Weather"
+import ItemsDisplayComponent from '../components/ItemsDisplayComponent'
+import ItemSearchComponent from '../components/ItemSearchComponent'
+import ItemsTabComponent from '../components/ItemsTabComponent'
+import Weather from '../components/Weather'
 
 const ItemsIndexContainer = props => {
 
@@ -64,7 +64,7 @@ const ItemsIndexContainer = props => {
   if (displayWeather) {
     weatherComponent = <Weather weatherData={weatherData} setDisplayWeather={setDisplayWeather} />
   }
-  
+
   return (
     <div id="items-index-container">
       <div className="grid-container">

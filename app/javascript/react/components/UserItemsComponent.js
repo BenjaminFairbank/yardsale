@@ -1,5 +1,6 @@
 import React from 'react'
-import UserItemTile from "./UserItemTile"
+
+import UserItemTile from './UserItemTile'
 
 const UserItemsComponent = props => {
 

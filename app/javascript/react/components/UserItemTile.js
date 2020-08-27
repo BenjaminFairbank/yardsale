@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import UserItemFlipCard from "./UserItemFlipCard"
+import UserItemFlipCard from './UserItemFlipCard'
 
 const UserItemTile = props => {
 

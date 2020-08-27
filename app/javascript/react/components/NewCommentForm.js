@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from 'react'
 import _ from 'lodash'
-import ErrorList from "./ErrorList"
+
+import ErrorList from './ErrorList'
 
 const NewCommentForm = props => {
 

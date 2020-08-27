@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import _ from 'lodash'
-import ErrorList from "./ErrorList"
 import Dropzone from 'react-dropzone'
+
+import ErrorList from './ErrorList'
 
 const NewItemFormComponent = props => {
 
