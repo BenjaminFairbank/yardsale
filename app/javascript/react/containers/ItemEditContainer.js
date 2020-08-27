@@ -1,8 +1,8 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import _ from 'lodash'
-import ErrorList from "../components/ErrorList"
 import Dropzone from 'react-dropzone'
 
+import ErrorList from '../components/ErrorList'
 import ItemShowComponent from '../components/ItemShowComponent'
 import ExitEditLinks from '../components/ExitEditLinks'
 
@@ -16,20 +16,20 @@ const ItemEditContainer = props => {
   }
 
   const [editItemFormData, setEditItemFormData] = useState(defaultFormData)
-  const [imageDropIndicator, setImageDropIndicator] = useState("")
+  const [imageDropIndicator, setImageDropIndicator] = useState('')
   const [errors, setErrors] = useState({})
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [fileDropped, setFileDropped] = useState(false)
   const [currentUser, setCurrentUser] = useState({})
   const [item, setItem] = useState({
-    name: "",
-    description: "",
-    image: "",
-    asking_price: "",
-    zip_code: "",
+    name: '',
+    description: '',
+    image: '',
+    asking_price: '',
+    zip_code: '',
     user: {
-      user_name: "",
-      email: ""
+      user_name: '',
+      email: ''
     }
   })
 
@@ -90,7 +90,7 @@ const ItemEditContainer = props => {
     if (validForSubmission()) {
       fetchPostNewItem()
       setErrors({})
-      setImageDropIndicator("")
+      setImageDropIndicator('')
       fieldErrorIndicators = defaultFormData
       setFormSubmitted(false)
     }
@@ -98,43 +98,43 @@ const ItemEditContainer = props => {
 
   const validForSubmission = () => {
     let submitErrors = {}
-    const requiredFields = ["name", "description", "asking_price"]
+    const requiredFields = ['name', 'description', 'asking_price']
     requiredFields.forEach(field => {
-      if (editItemFormData[field].toString().trim() === "") {
+      if (editItemFormData[field].toString().trim() === '') {
         submitErrors = {
           ...submitErrors,
-          [field]: "is blank!"
+          [field]: 'is blank!'
         }
       }
     });
-    if (editItemFormData["name"].length > 20) {
+    if (editItemFormData['name'].length > 20) {
       submitErrors = {
         ...submitErrors,
-        ["name"]: "must be 20 characters or less!"
+        ['name']: 'must be 20 characters or less!'
       }
     }
-    if (editItemFormData["description"].length > 200) {
+    if (editItemFormData['description'].length > 200) {
       submitErrors = {
         ...submitErrors,
-        ["description"]: "must be 200 characters or less!"
+        ['description']: 'must be 200 characters or less!'
       }
     }
-    if (isNaN(editItemFormData["asking_price"])) {
+    if (isNaN(editItemFormData['asking_price'])) {
       submitErrors = {
         ...submitErrors,
-        ["asking_price"]: "must be a number!"
+        ['asking_price']: 'must be a number!'
       }
     }
-    if (editItemFormData["asking_price"] > 10000000) {
+    if (editItemFormData['asking_price'] > 10000000) {
       submitErrors = {
         ...submitErrors,
-        ["asking_price"]: "must be $ 10 million or less!"
+        ['asking_price']: 'must be $ 10 million or less!'
       }
     }
-    if (editItemFormData["image"] === "") {
+    if (editItemFormData['image'] === '') {
       submitErrors = {
         ...submitErrors,
-        ["image"]: "must be uploaded!"
+        ['image']: 'must be uploaded!'
       }
     }
     setErrors(submitErrors)
@@ -144,7 +144,7 @@ const ItemEditContainer = props => {
 
   const handleFileUpload = (acceptedFiles) => {
     setFileDropped(true)
-    setImageDropIndicator("✅")
+    setImageDropIndicator('✅')
     setEditItemFormData({
       ...editItemFormData,
       image: acceptedFiles[0]
@@ -154,17 +154,17 @@ const ItemEditContainer = props => {
   const fetchPostNewItem = () => {
     let formPayload = new FormData()
     if (fileDropped) {
-      formPayload.append("item[image]", editItemFormData.image)
+      formPayload.append('item[image]', editItemFormData.image)
     }
-    formPayload.append("item[name]", editItemFormData.name)
-    formPayload.append("item[description]", editItemFormData.description)
-    formPayload.append("item[asking_price]", parseInt(editItemFormData.asking_price*100))
+    formPayload.append('item[name]', editItemFormData.name)
+    formPayload.append('item[description]', editItemFormData.description)
+    formPayload.append('item[asking_price]', parseInt(editItemFormData.asking_price*100))
 
     const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
     fetch(`/api/v1/items/${itemID}`, {
       method: 'PATCH',
-      credentials: "same-origin",
+      credentials: 'same-origin',
       headers: {
         'Accept': 'application/json', 
         'Accept': 'image/jpeg', 
@@ -205,48 +205,48 @@ const ItemEditContainer = props => {
   if (currentUser.id) {
     if (allowed()) {
       page =
-        <div id="item-edit-container">
+        <div id='item-edit-container'>
           <ItemShowComponent item={item} />
           <ExitEditLinks itemId={item.id} userId={currentUser.id} />
-          <div id="new-item-form">
-            <div id="new-item-form-container">
+          <div id='new-item-form'>
+            <div id='new-item-form-container'>
               <h1>Edit this item</h1>
 
               <ErrorList errors={errors} />
 
-              <form className="grid-x" id="form" onSubmit={onSubmitHandler}>
+              <form className='grid-x' id='form' onSubmit={onSubmitHandler}>
 
-                <div className="input-box cell small-12 medium-6 large-6">
-                  <label htmlFor="name">Item {fieldErrorIndicators.name}</label>
+                <div className='input-box cell small-12 medium-6 large-6'>
+                  <label htmlFor='name'>Item {fieldErrorIndicators.name}</label>
                   <input
-                    type="text"
-                    name="name"
-                    id="name"
+                    type='text'
+                    name='name'
+                    id='name'
                     onChange={handleChange}
                     value={editItemFormData.name}
                   />
 
-                <label htmlFor="description">Description {fieldErrorIndicators.description}</label>
+                <label htmlFor='description'>Description {fieldErrorIndicators.description}</label>
                   <textarea
-                    type="text"
-                    name="description"
-                    id="description"
+                    type='text'
+                    name='description'
+                    id='description'
                     onChange={handleChange}
                     value={editItemFormData.description}
                   />
                 </div>
 
-                <div className="input-box cell small-12 medium-6 large-6">
-                  <label htmlFor="asking_price">Asking Price ($USD) {fieldErrorIndicators.asking_price}</label>
+                <div className='input-box cell small-12 medium-6 large-6'>
+                  <label htmlFor='asking_price'>Asking Price ($USD) {fieldErrorIndicators.asking_price}</label>
                   <input
-                    type="text"
-                    name="asking_price"
-                    id="asking_price"
+                    type='text'
+                    name='asking_price'
+                    id='asking_price'
                     onChange={handleChange}
                     value={editItemFormData.asking_price}
                   />
 
-                  <label htmlFor="description">Image {fieldErrorIndicators.image}</label>
+                  <label htmlFor='description'>Image {fieldErrorIndicators.image}</label>
                   <Dropzone onDrop={handleFileUpload}>
                     {({getRootProps, getInputProps}) => (
                       <section>
@@ -259,9 +259,9 @@ const ItemEditContainer = props => {
                   </Dropzone>
 
                   <input
-                    id="button"
-                    type="submit"
-                    value="Update your item!"
+                    id='button'
+                    type='submit'
+                    value='Update your item!'
                   />
                 </div>
 
@@ -272,7 +272,7 @@ const ItemEditContainer = props => {
     } else {
       page =
         <>
-          <div id="unauthorized-edit">
+          <div id='unauthorized-edit'>
             <h1>YOU ARE NOT AUTHORIZED !<br /> THIS IS NOT YOUR ITEM !</h1>
           </div>
           <ExitEditLinks itemId={item.id} userId={currentUser.id} />

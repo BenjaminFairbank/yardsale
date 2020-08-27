@@ -1,11 +1,11 @@
 import React from 'react'
 
-import ItemFlipCard from "./ItemFlipCard"
+import ItemFlipCard from './ItemFlipCard'
 
 const ItemTile = props => {
 
   const timestampConverter = (timestamp) => {
-    
+
     const time = new Date(timestamp)
     let hour = time.getHours()
     let timeOfDay = "AM"

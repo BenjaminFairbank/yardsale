@@ -9,7 +9,7 @@ const UserShowContainer = props => {
   const [user, setUser] = useState({})
   const [userItems, setUserItems] = useState([])
   const [currentUser, setCurrentUser] = useState({})
-  const [deleteError, setDeleteError] = useState("")
+  const [deleteError, setDeleteError] = useState('')
 
   const userID = props.match.params.id
 

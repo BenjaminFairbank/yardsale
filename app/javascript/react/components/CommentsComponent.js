@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import CommentTile from "../components/CommentTile"
+import CommentTile from '../components/CommentTile'
 
 const CommentsComponent = props => {
 
@@ -19,7 +19,7 @@ const CommentsComponent = props => {
   }
 
   return (
-    <div id="comments-container">
+    <div id='comments-container'>
       <h1>Comments</h1>
       <h3>{props.deleteError}</h3>
       {commentList}
