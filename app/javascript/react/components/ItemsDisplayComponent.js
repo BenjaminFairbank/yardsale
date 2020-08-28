@@ -17,7 +17,7 @@ const ItemsDisplayComponent = props => {
 
 
   return (
-    <div id="items-component" className="grid-x grid-margin-x grid-margin-y">
+    <div id='items-component' className='grid-x grid-margin-x grid-margin-y'>
       {itemsToDisplay}
     </div>
   )

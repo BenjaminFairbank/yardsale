@@ -22,7 +22,7 @@ const ItemSearchComponent = props => {
         const values = Object.values(item)
         let tipOff = false
         values.forEach((value) => {
-          if (typeof value === "string") {
+          if (typeof value === 'string') {
             if ( value.toLowerCase().includes(term) ) {
               tipOff = true
             }
@@ -45,24 +45,24 @@ const ItemSearchComponent = props => {
 
     props.setDisplayedItems(foundItems)
     if (foundItems.length === 0) {
-      props.setSearchMessage("Whoops!" + "\xa0\xa0\xa0" + `No results for "${searchFormData.search}"`)
+      props.setSearchMessage('Whoops!' + '\xa0\xa0\xa0' + `No results for "${searchFormData.search}"`)
     }
   }
 
   return (
-    <div id="item-search-component">
-      <form id="item-search-form" onSubmit={onSubmitHandler} >
+    <div id='item-search-component'>
+      <form id='item-search-form' onSubmit={onSubmitHandler} >
 
         <input
-          type="text"
-          name="search"
-          id="search"
+          type='text'
+          name='search'
+          id='search'
           onChange={handleChange}
           value={searchFormData.search}
-          placeholder="You never know what you might find!"
+          placeholder='You never know what you might find!'
         />
 
-        <input id="button" type="submit" value="Search the Yard" />
+      <input id='button' type='submit' value='Search the Yard' />
 
       </form>
     </div>

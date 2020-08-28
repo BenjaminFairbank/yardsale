@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
-  root 'homes#index'
+  root "homes#index"
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   unauthenticated :user do
-    root to: 'devise/sessions#new'
+    root to: "devise/sessions#new"
   end
 
-  get '/items', to: 'homes#index'
-  get '/items/:id', to: 'homes#index'
-  get '/users/:id', to: 'homes#index'
-  get '/items/:id/edit', to: 'homes#index'
+  get "/items", to: "homes#index"
+  get "/items/:id", to: "homes#index"
+  get "/users/:id", to: "homes#index"
+  get "/items/:id/edit", to: "homes#index"
 
   namespace :admin do
     resources :users, only: [:index, :show, :update, :destroy]

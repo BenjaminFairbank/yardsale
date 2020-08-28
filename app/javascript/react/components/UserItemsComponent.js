@@ -33,12 +33,12 @@ const UserItemsComponent = props => {
   }
 
   return (
-    <div id="user-items-component">
-      <div className="user-items-title">
+    <div id='user-items-component'>
+      <div className='user-items-title'>
         {title}
         <h2>{props.deleteError}</h2>
       </div>
-      <div id="tile-field" className="grid-x grid-margin-x grid-margin-y">
+      <div id='tile-field' className='grid-x grid-margin-x grid-margin-y'>
         {userItems}
       </div>
     </div>

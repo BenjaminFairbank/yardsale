@@ -66,12 +66,12 @@ const ItemEditContainer = props => {
       if ( Object.keys(errors).includes(field) ) {
         fieldErrorIndicators = {
           ...fieldErrorIndicators,
-          [field]: "❗"
+          [field]: '❗'
         }
       } else {
         fieldErrorIndicators = {
           ...fieldErrorIndicators,
-          [field]: "✅"
+          [field]: '✅'
         }
       }
     });

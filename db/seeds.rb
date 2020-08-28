@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # user = User.create(remote_profile_photo_url: 'http://pngimage.net/wp-content/uploads/2018/05/admin-png-images-6.png', user_name: "Admin", zip_code: "02138", email: "Admin@gmail.com", password: "Mr.Admin", password_confirmation: "Mr.Admin", blurb: "I am the ADMIN", role: "admin")
-user1 = User.find(1)
-user1["role"] = "admin"
-user1.save
+# user1 = User.find(1)
+# user1["role"] = "admin"
+# user1.save
 # user_1 = User.create(user_name: "MrHello", zip_code: "02138", email: "MrHello@gmail.com", password: "mrhello", password_confirmation: "mrhello")
 # user_2 = User.create(user_name: "MrGoodbye", zip_code: "02155", email: "MrGoodbye@gmail.com", password: "mrhello", password_confirmation: "mrhello")
 # user_3 = User.create(user_name: "TheSandMan", zip_code: "02124", email: "TheSandMan@gmail.com", password: "mrhello", password_confirmation: "mrhello")
