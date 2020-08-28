@@ -16,20 +16,20 @@ const CommentTile = props => {
   })
 
   let deleteButton
-  if (props.comment.user_id === props.currentUser.id || props.currentUser.role === "admin" || usersItemsIds.includes(props.comment.item.id)) {
-    deleteButton = <input id="button" type="button" onClick={onClickHandler} value="Delete Comment" />
+  if (props.comment.user_id === props.currentUser.id || props.currentUser.role === 'admin' || usersItemsIds.includes(props.comment.item.id)) {
+    deleteButton = <input id='button' type='button' onClick={onClickHandler} value='Delete Comment' />
   }
 
   const timestampConverter = (timestamp) => {
 
     const time = new Date(timestamp)
     let hour = time.getHours()
-    let timeOfDay = "AM"
+    let timeOfDay = 'AM'
     let min = time.getMinutes()
 
     if (time.getHours() > 12) {
       hour = time.getHours() - 12
-      timeOfDay = "PM"
+      timeOfDay = 'PM'
     }
 
     if (time.getHours() === 0 ) {
@@ -40,7 +40,7 @@ const CommentTile = props => {
       min = '0' + time.getMinutes()
     }
 
-    const timeString = time.toDateString() + " " + hour + ":" + min + " " + timeOfDay
+    const timeString = time.toDateString() + ' ' + hour + ':' + min + ' ' + timeOfDay
     return timeString
   }
 
@@ -48,13 +48,13 @@ const CommentTile = props => {
 
   const id = props.comment.user.id
 
-  let email = ""
+  let email = ''
   if ( props.comment.item.user_id === props.currentUser.id ) {
     email = <h5><span>{`${props.comment.user.email}`}</span></h5>
   }
 
   return (
-    <div className="comment-tile">
+    <div className='comment-tile'>
       <Link to={`../users/${id}`}><img src={props.comment.user.profile_photo.url}></img></Link>
       <h3><Link to={`../users/${id}`}>{props.comment.user.user_name}</Link>:</h3>
       <h4>&nbsp;&nbsp;&nbsp;{props.comment.body}</h4>

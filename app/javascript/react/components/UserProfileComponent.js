@@ -3,36 +3,36 @@ import { Link } from 'react-router-dom'
 
 const UserProfileComponent = props => {
 
-  let img = ""
+  let img = ''
   if (props.user.profile_photo) {
-    img = <img id="img" src={props.user.profile_photo.url}></img>
+    img = <img id='img' src={props.user.profile_photo.url}></img>
   }
 
-  let editLink = ""
-  let adminLink = ""
+  let editLink = ''
+  let adminLink = ''
   if (props.user.id === props.currentUser.id) {
-    editLink = <a href="/users/edit" className="edit-link">Edit profile</a>
-    if (props.currentUser.role === "admin") {
-      adminLink = <><br /><a href="/admin/users" className="admin-link">Admin's page</a></>
+    editLink = <a href='/users/edit' className='edit-link'>Edit profile</a>
+    if (props.currentUser.role === 'admin') {
+      adminLink = <><br /><a href='/admin/users' className='admin-link'>Admin's page</a></>
     }
   }
 
   return (
-    <div id="user-profile-component" className="grid-x">
+    <div id='user-profile-component' className='grid-x'>
 
-      <div className="user-show-image cell small-12 medium-6 large-6">
+      <div className='user-show-image cell small-12 medium-6 large-6'>
         {img}
       </div>
 
-      <div className="user-show-details cell small-12 medium-6 large-6">
+      <div className='user-show-details cell small-12 medium-6 large-6'>
 
-        <div id="profile">
+        <div id='profile'>
           <h1>{props.user.user_name}</h1>
           <h5>{props.user.zip_code}</h5>
           <h5>{props.user.blurb}</h5>
         </div>
 
-        <div className="profile-links">
+        <div className='profile-links'>
           {editLink}
           {adminLink}
         </div>

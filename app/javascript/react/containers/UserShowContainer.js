@@ -35,11 +35,11 @@ const UserShowContainer = props => {
 
   const fetchDeleteItem = (itemID) => {
     fetch(`/api/v1/items/${itemID}`, {
-      credentials: "same-origin",
-      method: "DELETE",
+      credentials: 'same-origin',
+      method: 'DELETE',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
       }
     })
     .then(response => {
@@ -71,8 +71,8 @@ const UserShowContainer = props => {
   }
 
   return (
-    <div id="user-show-container">
-      <div className="user-info">
+    <div id='user-show-container'>
+      <div className='user-info'>
         <UserProfileComponent
           user={user}
           currentUser={currentUser}

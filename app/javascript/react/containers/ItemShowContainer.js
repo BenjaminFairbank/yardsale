@@ -49,12 +49,12 @@ const ItemShowContainer = props => {
 
   const fetchPostNewComment = (commentPayload) => {
     fetch('/api/v1/comments', {
-      credentials: "same-origin",
-      method: "POST",
+      credentials: 'same-origin',
+      method: 'POST',
       body: JSON.stringify(commentPayload),
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
       }
     })
     .then(response => {
@@ -79,11 +79,11 @@ const ItemShowContainer = props => {
 
   const fetchDeleteComment = (commentID) => {
     fetch(`/api/v1/comments/${commentID}`, {
-      credentials: "same-origin",
-      method: "DELETE",
+      credentials: 'same-origin',
+      method: 'DELETE',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
       }
     })
     .then(response => {
@@ -108,11 +108,11 @@ const ItemShowContainer = props => {
 
   const fetchDeleteItem = (itemID) => {
     fetch(`/api/v1/items/${itemID}`, {
-      credentials: "same-origin",
-      method: "DELETE",
+      credentials: 'same-origin',
+      method: 'DELETE',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
       }
     })
     .then(response => {
@@ -158,7 +158,7 @@ const ItemShowContainer = props => {
   let page = ''
   if (!redirect) {
     page =
-      <div id="item-show-container">
+      <div id='item-show-container'>
         <ItemShowComponent item={item} />
         {editOrDeleteLinks}
         <NewCommentForm

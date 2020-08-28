@@ -16,14 +16,14 @@ const ErrorList = props => {
       )
     })
 
-    let pluralError = "errors"
+    let pluralError = 'errors'
 
     if (errantFields.length === 1) {
-      pluralError = "error"
+      pluralError = 'error'
     }
 
     return (
-      <div className="callout alert">
+      <div className='callout alert'>
         <h3>{errantFields.length} {pluralError} prohibited this item from being saved:</h3>
         <ul>{listItems}</ul>
       </div>

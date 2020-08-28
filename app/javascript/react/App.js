@@ -10,11 +10,11 @@ export const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={ItemsIndexContainer} />
-        <Route exact path="/items" component={ItemsIndexContainer} />
-        <Route exact path="/items/:id" component={ItemShowContainer} />
-        <Route exact path="/items/:id/edit" component={ItemEditContainer} />
-        <Route exact path="/users/:id" component={UserShowContainer} />
+        <Route exact path='/' component={ItemsIndexContainer} />
+        <Route exact path='/items' component={ItemsIndexContainer} />
+        <Route exact path='/items/:id' component={ItemShowContainer} />
+        <Route exact path='/items/:id/edit' component={ItemEditContainer} />
+        <Route exact path='/users/:id' component={UserShowContainer} />
       </Switch>
     </BrowserRouter>
   )

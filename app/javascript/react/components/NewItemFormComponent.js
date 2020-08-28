@@ -25,12 +25,12 @@ const NewItemFormComponent = props => {
       if ( Object.keys(errors).includes(field) ) {
         fieldErrorIndicators = {
           ...fieldErrorIndicators,
-          [field]: "❗"
+          [field]: '❗'
         }
       } else {
         fieldErrorIndicators = {
           ...fieldErrorIndicators,
-          [field]: "✅"
+          [field]: '✅'
         }
       }
     });
@@ -54,7 +54,7 @@ const NewItemFormComponent = props => {
     if (validForSubmission()) {
       fetchPostNewItem()
       clearFormData()
-      setImageDropIndicator("")
+      setImageDropIndicator('')
       fieldErrorIndicators = defaultFormData
       setFormSubmitted(false)
     }
@@ -62,43 +62,43 @@ const NewItemFormComponent = props => {
 
   const validForSubmission = () => {
     let submitErrors = {}
-    const requiredFields = ["name", "description", "asking_price"]
+    const requiredFields = ['name', 'description', 'asking_price']
     requiredFields.forEach(field => {
       if (newItemFormData[field].trim() === "") {
         submitErrors = {
           ...submitErrors,
-          [field]: "is blank!"
+          [field]: 'is blank!'
         }
       }
     });
-    if (newItemFormData["name"].length > 20) {
+    if (newItemFormData['name'].length > 20) {
       submitErrors = {
         ...submitErrors,
-        ["name"]: "must be 20 characters or less!"
+        ['name']: 'must be 20 characters or less!'
       }
     }
-    if (newItemFormData["description"].length > 200) {
+    if (newItemFormData['description'].length > 200) {
       submitErrors = {
         ...submitErrors,
-        ["description"]: "must be 200 characters or less!"
+        ['description']: 'must be 200 characters or less!'
       }
     }
-    if (isNaN(newItemFormData["asking_price"])) {
+    if (isNaN(newItemFormData['asking_price'])) {
       submitErrors = {
         ...submitErrors,
-        ["asking_price"]: "must be a number!"
+        ['asking_price']: 'must be a number!'
       }
     }
-    if (newItemFormData["asking_price"] > 10000000) {
+    if (newItemFormData['asking_price'] > 10000000) {
       submitErrors = {
         ...submitErrors,
-        ["asking_price"]: "must be $ 10 million or less!"
+        ['asking_price']: 'must be $ 10 million or less!'
       }
     }
-    if (newItemFormData["image"] === "") {
+    if (newItemFormData['image'] === '') {
       submitErrors = {
         ...submitErrors,
-        ["image"]: "must be uploaded!"
+        ['image']: 'must be uploaded!'
       }
     }
     setErrors(submitErrors)
@@ -107,7 +107,7 @@ const NewItemFormComponent = props => {
   }
 
   const handleFileUpload = (acceptedFiles) => {
-    setImageDropIndicator("✅")
+    setImageDropIndicator('✅')
     setNewItemFormData({
       ...newItemFormData,
       image: acceptedFiles[0]
@@ -116,10 +116,10 @@ const NewItemFormComponent = props => {
 
   const fetchPostNewItem = () => {
     let formPayload = new FormData()
-    formPayload.append("item[name]", newItemFormData.name)
-    formPayload.append("item[image]", newItemFormData.image)
-    formPayload.append("item[description]", newItemFormData.description)
-    formPayload.append("item[asking_price]", parseInt(newItemFormData.asking_price*100))
+    formPayload.append('item[name]', newItemFormData.name)
+    formPayload.append('item[image]', newItemFormData.image)
+    formPayload.append('item[description]', newItemFormData.description)
+    formPayload.append('item[asking_price]', parseInt(newItemFormData.asking_price*100))
 
     const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
@@ -154,45 +154,45 @@ const NewItemFormComponent = props => {
   }
 
   return (
-    <div id="new-item-form">
-      <div id="new-item-form-container">
+    <div id='new-item-form'>
+      <div id='new-item-form-container'>
         <h1>Post a new item</h1>
 
         <ErrorList errors={errors} />
 
-        <form className="grid-x" id="form" onSubmit={onSubmitHandler}>
+        <form className='grid-x' id='form' onSubmit={onSubmitHandler}>
 
-          <div className="input-box cell small-12 medium-6 large-6">
-            <label htmlFor="name">What is it? {fieldErrorIndicators.name}</label>
+          <div className='input-box cell small-12 medium-6 large-6'>
+            <label htmlFor='name'>What is it? {fieldErrorIndicators.name}</label>
             <input
-              type="text"
-              name="name"
-              id="name"
+              type='text'
+              name='name'
+              id='name'
               onChange={handleChange}
               value={newItemFormData.name}
             />
 
-          <label htmlFor="description">Can you describe it a little more? {fieldErrorIndicators.description}</label>
+          <label htmlFor='description'>Can you describe it a little more? {fieldErrorIndicators.description}</label>
             <textarea
-              type="text"
-              name="description"
-              id="description"
+              type='text'
+              name='description'
+              id='description'
               onChange={handleChange}
               value={newItemFormData.description}
             />
           </div>
 
-          <div className="input-box cell small-12 medium-6 large-6">
-            <label htmlFor="asking_price">What do you want for it? ($USD) {fieldErrorIndicators.asking_price}</label>
+          <div className='input-box cell small-12 medium-6 large-6'>
+            <label htmlFor='asking_price'>What do you want for it? ($USD) {fieldErrorIndicators.asking_price}</label>
             <input
-              type="text"
-              name="asking_price"
-              id="asking_price"
+              type='text'
+              name='asking_price'
+              id='asking_price'
               onChange={handleChange}
               value={newItemFormData.asking_price}
             />
 
-            <label htmlFor="description">Can we see a photo of it? {fieldErrorIndicators.image}</label>
+          <label htmlFor='description'>Can we see a photo of it? {fieldErrorIndicators.image}</label>
             <Dropzone onDrop={handleFileUpload}>
               {({getRootProps, getInputProps}) => (
                 <section>
@@ -205,9 +205,9 @@ const NewItemFormComponent = props => {
             </Dropzone>
 
             <input
-              id="button"
-              type="submit"
-              value="Post new item to My Lawn!"
+              id='button'
+              type='submit'
+              value='Post new item to My Lawn!'
             />
           </div>
 
