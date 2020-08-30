@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   get "/users/:id", to: "homes#index"
   get "/items/:id/edit", to: "homes#index"
 
+  resources :users do
+    member do
+      get :confirm_email
+    end
+  end
+
   namespace :admin do
     resources :users, only: [:index, :show, :update, :destroy]
     resources :items, only: [:destroy]
