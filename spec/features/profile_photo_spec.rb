@@ -14,6 +14,12 @@ feature "profile photo" do
 
     click_button "Create your new account"
 
+    User.first.confirm
+
+    fill_in "Enter your email:", with: "thesingingsandwich@cramular.com"
+    fill_in "Enter your password:", with: "boomstick!3vilisd3ad"
+    click_button "Log in to YardSale"
+
     expect(page).to have_content('My Lawn')
     expect(page).to have_content('Sign Out')
     expect(page).to have_css("img[src*='photo.png']")

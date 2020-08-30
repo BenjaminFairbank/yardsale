@@ -9,7 +9,8 @@ FactoryBot.define do
     password { 'password' }
     password_confirmation { 'password' }
     profile_photo { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/images/photo.png'), 'image/png') }
-
+    confirmed_at { Time.now }
+    
     factory :user_with_items do
       transient do
         items_count { 5 }
