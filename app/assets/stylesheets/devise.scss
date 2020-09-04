@@ -6,6 +6,20 @@
   padding: 2rem 3rem;
   width: 100%;
 
+  .confirmation-warning {
+    margin: auto;
+    margin-top: 1rem;
+    text-align: center;
+
+    p {
+      color: $crayolared;
+      font-weight: bolder;
+      font-family: 'Cutive';
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+  }
+
   .button_to {
     text-align: center;
 
