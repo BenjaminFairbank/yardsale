@@ -29,7 +29,7 @@ class Api::V1::CommentsController < ApplicationController
     author = comment.user
     item_owner = item.user
 
-    if author.id === current_user.id || item_owner.id === current_user.id || current_user.admin?
+    if author.id == current_user.id || item_owner.id == current_user.id || current_user.admin?
       comment.delete
       render json: item.comments
     else
