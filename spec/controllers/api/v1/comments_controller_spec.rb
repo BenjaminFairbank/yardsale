@@ -2,6 +2,48 @@ require "rails_helper"
 
 RSpec.describe Api::V1::CommentsController, type: :controller do
 
+  describe "GET#index" do
+
+    before(:example) do
+      @user1 = FactoryBot.create(:user)
+      item1 = FactoryBot.create(:item)
+      @comment1 = FactoryBot.create(:comment)
+      @comment2 = FactoryBot.create(:comment)
+      @comment3 = FactoryBot.create(:comment)
+      item1.comments << @comment1
+      item1.comments << @comment2
+      item1.comments << @comment3
+      @item1 = item1
+    end
+
+    it "should not show comments if the user is not logged in" do
+      get :index
+      expect(response.status).to eq(302)
+      expect(response).to redirect_to(new_user_session_path)
+    end
+
+    it "should allow signed in user to view the list of comments" do
+      sign_in(@user1)
+      get :index, params: {item_id: @item1.id}
+
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq ("application/json")
+    end
+
+    it "returns all comments in the database" do
+      sign_in(@user1)
+      get :index, params: {item_id: @item1.id}
+
+      returned_json = JSON.parse(response.body)
+
+      expect(returned_json.length).to eq 3
+      expect(returned_json[0]["body"]).to eq @comment1.body
+      expect(returned_json[1]["body"]).to eq @comment2.body
+      expect(returned_json[2]["body"]).to eq @comment3.body
+    end
+
+  end
+
   describe "POST#create" do
 
     before(:example) do
