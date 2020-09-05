@@ -115,24 +115,62 @@ RSpec.describe Api::V1::CommentsController, type: :controller do
 
     before(:example) do
       user1 = FactoryBot.create(:user)
+      user2 = FactoryBot.create(:user)
       item1 = FactoryBot.create(:item)
       @comment = FactoryBot.create(:comment)
       item1.comments << @comment
       user1.items << item1
       @user1 = user1
+      @user2 = user2
       @item1 = item1
     end
 
-    it "should not delete the item if the user is not logged in" do
+    it "should not delete the comment if the user is not logged in" do
       delete :destroy, params: {id: @comment.id}, format: :json
       expect(response.status).to eq(401)
       expect(JSON.parse(response.body)["error"]).to eq("")
     end
 
-    it "deletes the the item" do
+    it "should deletes the the comment if the current user is the author" do
       sign_in(@user1)
       prev_count = Comment.count
       delete :destroy, params: {id: @comment.id}, format: :json
+      expect(Comment.count).to eq(prev_count - 1)
+    end
+
+    it "should not delete the comment if the current user is not the author" do
+      sign_in(@user2)
+      delete :destroy, params: {id: @comment.id}, format: :json
+      expect(response.status).to eq(200)
+      expect(JSON.parse(response.body)["error"]).to eq("You are not authorized to delete this comment!")
+    end
+
+    it "should delete the comment if the current user is an admin" do
+      @user2.update_attribute("role", "admin")
+      prev_count = Comment.count
+      sign_in(@user2)
+      delete :destroy, params: {id: @comment.id}, format: :json
+      expect(response.status).to eq(200)
+      expect(Comment.count).to eq(prev_count - 1)
+    end
+
+    it "should allow the item's owner to delete comments on their item" do
+      user3 = FactoryBot.create(:user)
+      user4 = FactoryBot.create(:user)
+      item3 = FactoryBot.create(:item)
+      comment4 = FactoryBot.create(:comment)
+      item3.user = user3
+      comment4.user = user4
+      item3.comments << comment4
+      user3.items << item3
+      @user3 = user3
+      @comment4 = comment4
+
+      prev_count = Comment.count
+
+      sign_in(@user3)
+      delete :destroy, params: {id: @comment4.id}, format: :json
+      expect(response.status).to eq 200
       expect(Comment.count).to eq(prev_count - 1)
     end
 
