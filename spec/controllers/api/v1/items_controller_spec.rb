@@ -193,6 +193,94 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
     end
   end
 
+  describe "PATCH#update" do
+
+    before(:example) do
+      user = FactoryBot.create(:user)
+      item = FactoryBot.create(:item)
+      user.items << item
+      item.user = user
+      @user = user
+      @item = item
+      @user2 = FactoryBot.create(:user)
+
+      @post_json = {
+        id: @item.id,
+        item: {
+          name: "I'm a robot.",
+          description: "This is the most boring description I have ever wrote but It's almost just about long enought to simulate the real thing.  There we go.",
+          asking_price: 5000,
+          image: Rack::Test::UploadedFile.new(Rails.root.join('spec/support/images/photo2.png'), 'image/png'),
+        }
+      }
+    end
+
+    it "should not update the item if the user is not logged in" do
+      patch :update, params: @post_json, format: :json
+
+      expect(response.status).to eq(401)
+      expect(JSON.parse(response.body)["error"]).to eq("")
+      expect(Item.find(@item.id)).to eq(@item)
+    end
+
+    it "should update the item in the database" do
+      sign_in(@user)
+      patch :update, params: @post_json, format: :json
+
+      expect(response.status).to eq(200)
+      expect(Item.find(@item.id).name).to eq(@post_json[:item][:name])
+      expect(Item.find(@item.id).description).to eq(@post_json[:item][:description])
+      expect(Item.find(@item.id).asking_price).to eq(@post_json[:item][:asking_price])
+      expect(Item.find(@item.id).image.identifier).to eq(@post_json[:item][:image].original_filename)
+    end
+
+    it "should return the updated item" do
+      sign_in(@user)
+      patch :update, params: @post_json, format: :json
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq(200)
+      expect(response.content_type).to eq("application/json")
+
+      expect(returned_json["item"]["name"]).to eq(@post_json[:item][:name])
+      expect(returned_json["item"]["description"]).to eq(@post_json[:item][:description])
+      expect(returned_json["item"]["asking_price"]).to eq(@post_json[:item][:asking_price])
+      expect(returned_json["item"]["image"]["url"]).to include(@post_json[:item][:image].original_filename)
+    end
+
+    it "gives errors when the fields are incorrectly filled in" do
+      post_json = {
+        id: @item.id,
+        item: {
+          name: "",
+          description: "",
+          asking_price: "",
+        }
+      }
+
+      sign_in(@user)
+      patch :update, params: post_json, format: :json
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+
+      expect(returned_json["error"]).to eq("Name can't be blank, Description can't be blank, Asking price can't be blank, and Asking price is not a number")
+    end
+
+    it "doesn't allow users other than the item's owner to edit the item" do
+      sign_in(@user2)
+      patch :update, params: @post_json, format: :json
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+
+      expect(returned_json["error"]).to eq("You are not allowed to edit this item!")
+      expect(Item.find(@item.id)).to eq(@item)
+    end
+  end
+
   describe "DELETE#destroy" do
 
     before(:example) do
