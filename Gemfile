@@ -60,3 +60,4 @@ gem 'fog-aws'
 gem 'faraday'
 gem 'websocket-extensions', '~> 0.1.5'
 gem "rack", ">= 2.2.3"
+gem 'rails-controller-testing', '~> 0.0.3'
