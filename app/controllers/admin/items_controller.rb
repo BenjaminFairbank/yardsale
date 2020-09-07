@@ -6,7 +6,7 @@ class Admin::ItemsController < ApplicationController
     item = Item.find(params[:id])
     @user = item.user
     item.delete
-    render "/admin/users/show"
+    render "admin/users/show.html.erb"
   end
 
   private
