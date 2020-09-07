@@ -6,7 +6,7 @@ class Admin::CommentsController < ApplicationController
     comment = Comment.find(params[:id])
     @user = comment.user
     comment.delete
-    render "/admin/users/show"
+    render "admin/users/show.html.erb"
   end
 
   private
