@@ -13,16 +13,16 @@ RSpec.describe Admin::CommentsController, type: :controller do
 
     it "should not delete the comment if the current user is not logged in" do
       prev_count = Comment.count
-      delete :destroy, params: {id: @comment1.id}, format: :json
-      expect(response.status).to eq(401)
-      expect(JSON.parse(response.body)["error"]).to eq("")
+      delete :destroy, params: {id: @comment1.id}
+      expect(response.status).to eq(302)
+      expect(flash[:alert]).to eq("")
       expect(Comment.count).to eq(prev_count)
     end
 
     it "should not delete the comment if the current user is not an admin" do
       prev_count = Comment.count
       sign_in(@user1)
-      delete :destroy, params: {id: @comment1.id}, format: :json
+      delete :destroy, params: {id: @comment1.id}
       expect(response.status).to eq(302)
       expect(flash[:notice]).to eq("You do not have access to this page.")
       expect(Comment.count).to eq(prev_count)
@@ -32,7 +32,7 @@ RSpec.describe Admin::CommentsController, type: :controller do
       @user1.update_attribute("role", "admin")
       prev_count = Comment.count
       sign_in(@user1)
-      delete :destroy, params: {id: @comment1.id}, format: :json
+      delete :destroy, params: {id: @comment1.id}
       expect(response.status).to eq(200)
       expect(Comment.count).to eq(prev_count - 1)
     end
