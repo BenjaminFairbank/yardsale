@@ -5,7 +5,7 @@ class Admin::CommentsController < ApplicationController
   def destroy
     comment = Comment.find(params[:id])
     @user = comment.user
-    comment.destory
+    comment.destroy
     render "admin/users/show"
   end
 
