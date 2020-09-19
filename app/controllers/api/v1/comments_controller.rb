@@ -30,7 +30,7 @@ class Api::V1::CommentsController < ApplicationController
     item_owner = item.user
 
     if author.id == current_user.id || item_owner.id == current_user.id || current_user.admin?
-      comment.delete
+      comment.destroy
       render json: item.comments
     else
       render json: {error: "You are not authorized to delete this comment!"}
