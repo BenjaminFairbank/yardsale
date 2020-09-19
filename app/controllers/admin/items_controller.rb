@@ -5,7 +5,7 @@ class Admin::ItemsController < ApplicationController
   def destroy
     item = Item.find(params[:id])
     @user = item.user
-    item.delete
+    item.destroy
     render "admin/users/show"
   end
 

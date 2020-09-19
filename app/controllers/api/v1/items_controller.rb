@@ -65,7 +65,7 @@ class Api::V1::ItemsController < ApplicationController
     user = item.user
 
     if user.id == current_user.id || current_user.admin?
-      item.delete
+      item.destroy
       render json: user.items
     else
       render json: {error: "You are not authorized to delete this item!"}
