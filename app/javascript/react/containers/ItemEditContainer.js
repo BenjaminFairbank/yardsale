@@ -191,19 +191,9 @@ const ItemEditContainer = props => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
-  const allowed = () => {
-    let allow = false
-    currentUser.items.forEach((item) => {
-      if (item.id.toString() === itemID) {
-        allow = true
-      }
-    });
-    return allow
-  }
-
   let page = ''
   if (currentUser.id) {
-    if (allowed()) {
+    if (currentUser.id === item.user.id) {
       page =
         <div id='item-edit-container'>
           <ItemShowComponent item={item} />
