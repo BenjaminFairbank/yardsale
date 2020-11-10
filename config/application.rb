@@ -29,5 +29,7 @@ module Yardsale
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.action_mailer.asset_host = 'http://y-s.herokuapp.com'
   end
 end
