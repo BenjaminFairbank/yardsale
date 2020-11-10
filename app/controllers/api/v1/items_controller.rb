@@ -1,15 +1,10 @@
 class Api::V1::ItemsController < ApplicationController
 
   def index
-    zip = current_user.zip_code
-    url = "http://api.openweathermap.org/data/2.5/weather?q=#{zip},us&appid=#{ENV["OPEN_WEATHER_API_KEY"]}"
-    api_response = Faraday.get(url)
-    weather = JSON.parse(api_response.body)
-
     render json: {
       items: serialized_data(Item.all, ItemSerializer),
       current: serialized_data(current_user, UserSerializer),
-      weather: weather
+      weather: get_api_data()
     }
   end
 
@@ -80,5 +75,13 @@ class Api::V1::ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :description, :image, :asking_price)
+  end
+
+  def get_api_data
+    zip = current_user.zip_code
+    key = ENV["OPEN_WEATHER_API_KEY"]
+    url = "http://api.openweathermap.org/data/2.5/weather?q=#{zip},us&appid=#{key}"
+    api_response = Faraday.get(url)
+    JSON.parse(api_response.body)
   end
 end
