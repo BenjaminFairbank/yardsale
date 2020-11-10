@@ -1,14 +1,12 @@
 <div style="background: #43AA8B; width: 100%; margin: 0; padding: 0.5rem 2rem;">
-  <h1 style="color: #EF3054; font-family: Comic Sans MS, Comic Sans, cursive; font-weight: 1600;">
-    Welcome to <a href="https://y-s.herokuapp.com" style="color: #FF6F59; text-decoration: none; font-family: Marker Felt, fantasy;">YardSale</a> !
-  </h1>
+  <%= image_tag 'YardSaleNotifications', :style => 'height: 45px; margin-top: 5px;' %>
 </div>
 
-<div style="background: #254441; width: 100%; margin: 0; color: #43AA8B; text-align: center; font-family: Gill Sans, sans-serif; padding: 2rem; padding-bottom: 2rem; font-style: italic;">
+<div style="background: #254441; width: 100%; margin: 0; color: #43AA8B; text-align: center; font-family: Gill Sans, sans-serif; padding: 2rem 0rem;">
   <h1 style="margin-bottom: 3rem;">
-    You can confirm your account email through the link below:
+    Welcome! Confirm your account below:
   </h1>
-
-  <h1><%= link_to "~ Confirm account and start browsing YardSale! ~", confirmation_url(@resource, confirmation_token: @token), {:style=> "color: #FF6F59; text-decoration: none;"} %></h1>
-
+  <div style="height: 39px; border-radius: 19.5px; background: #43AA8B; width: 175px; text-align: center; margin: auto;">
+    <h1 style="padding-top: 6;"><%= link_to "Confirm", confirmation_url(@resource, confirmation_token: @token), {:style=> "color: #EF3054; text-decoration: none;"} %></h1>
+  </div>
 </div>

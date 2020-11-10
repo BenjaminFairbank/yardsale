@@ -5,13 +5,11 @@
   </head>
   <body style="background: #254441; margin: 0; padding: 0;">
     <div style="background: #43AA8B; width: 100%; margin: 0; padding: 0.5rem 2rem;">
-      <h1 style="color: #EF3054; font-family: Comic Sans MS, Comic Sans, cursive; font-weight: 1600;">
-        Hello from <a href="https://y-s.herokuapp.com" style="color: #FF6F59; text-decoration: none; font-family: Marker Felt, fantasy;">YardSale</a> <%= @item_owner.user_name %>
-      </h1>
+      <%= image_tag 'YardSaleNotifications', :style => 'height: 45px; margin-top: 5px;' %>
     </div>
-    <div style="color: #43AA8B; font-family: Gill Sans, sans-serif; margin: 2rem; padding-bottom: 2rem; font-style: italic;">
+    <div style="color: #43AA8B; font-family: Gill Sans, sans-serif; margin: 2rem; padding-bottom: 2rem;">
       <h1 style="margin-bottom: 3rem;">
-        There's a new comment on your posted item!
+        There's a new comment on your posted item, <%= @item_owner.user_name %>!
       </h1>
 
       <h3 style="margin-left: 1.5rem; margin-bottom: 2rem;">
