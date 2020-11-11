@@ -34,6 +34,7 @@ Download required yarn and node packages with:
 Create the PostgresSQL database with the following commands:
 
   `$ rake db:create`
+
   `$ rake db:migrate`
 
 Before running the app locally one must still configure a number of things.
@@ -45,8 +46,11 @@ YardSale uses AWS S3 for cloud image storage.  You must sign up for an AWS accou
 Once you have completed the setup, you must provide the keys in .env file in the project's directory as such:
 
   `AWS_ACCESS_KEY_ID='Your-access-key-ID'`
+
   `AWS_SECRET_ACCESS_KEY='Your-secret-access-key'`
+
   `DEVELOPMENT_S3_BUCKET='The-name-of-your-development-bucket'`
+
   `PRODUCTION_S3_BUCKET='The-name-of-your-production-bucket'`
 
 ...replacing the values in single quotations with your own corresponding values.
@@ -70,6 +74,7 @@ Finally, YardSale utilizes email notifications which requires a gmail account.
 Once you acquire an account, enter the credentials into the .env file as such:
 
   `GMAIL_ACCOUNT_LOGIN='Your-gmail-address'`
+
   `GMAIL_ACCOUNT_PASSWORD='Your-gmail-password'`
 
 ...once again, replacing the values in single quotations with your own information.
@@ -83,7 +88,9 @@ If you wish not to use gmail, the config.action_mailer.smtp_settings can be chan
 If you cannot configure the email setup, you may use the rails console to manually confirm users to gain access to the site.  From the project directory execute:
 
   `$ rails c`
+
   `$ User.all.last.confirm`
+
   `$ exit`
 
 ...after which the last user to sign-up will be able to sign in.
