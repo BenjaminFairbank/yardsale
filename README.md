@@ -17,7 +17,7 @@ Open your terminal and execute the following command to clone the GitHub reposit
 Make sure you execute this command from the directory that you wish to keep this project.
 If you do not have git configured on your machine you may refer to this guide: https://github.com/git-guides/install-git
 
-  `$ git clone https://github.com/BenjaminFairbank/heroku-sudoku.git`
+  `$ git clone https://github.com/BenjaminFairbank/yardsale.git`
 
 Once you have downloaded the repository to your local machine, navigate into the project directory.
 
