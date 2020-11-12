@@ -2,6 +2,9 @@
 
 YardSale is a buy-and-sell app where users can search, view, and post items for sale or to give away.  When a user comments on an item, the owner receives an email notification, opening up lines of communication between the users if it is agreeable to the item owner.
 
+YardSale is visitable at: http://y-s.herokuapp.com
+
+
 ### Stack
 
   - Ruby 2.6.5
